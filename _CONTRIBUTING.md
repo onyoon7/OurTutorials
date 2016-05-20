@@ -1,5 +1,36 @@
 # Contributing
 
+##Git Rebase Workflow : A Summary(in korean)
+1. git checkout master
+
+2. git pull --rebase upstream master
+    **1,2 : 기존에 다른사람이 업데이트했을 수 있는 upstream의 내용을 전부 pull한다.
+
+3. git chekout -b feature-branch
+    **모든 local 작업들은 **절대** master 브랜치에서 하지 않는다.
+    **모든 local 작업들은 **절대** master 브랜치에 merge하거나 rebase하지 않는다.
+
+4. edd/git add/git commit (작업하기)
+    **모든 local 작업들은 해당 각 작업에 맞는 branch에서 수행하도록 한다.
+    **branch 이름은 다음 convention을 따르도록 한다.
+      - bug/...
+      - feat/...
+      - test/...
+      - doc/...
+      - refactor/...
+5. git pull --rebase upstream master 
+
+    *push를 하기 전에 upstream(원래 repo)에 있는 정보들을 전부 최신화 해 주기
+    *반드시 모든 local change를 커밋한 후 실행할 것!
+
+6. git push origin feature-branch
+    **push origin master를 하면 안됨.
+
+7. Submit PR
+    ** 자기자신이 pullrequest를 받지 말고, 반드시 타인이 Review를 한 후 실행하도록 함.
+
+
+
 ## General Workflow
 
 1. Fork the repo
