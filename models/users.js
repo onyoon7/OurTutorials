@@ -3,7 +3,8 @@ const Schema = require('mongoose').Schema;
 const ObjectId = Schema.ObjectId;
 const UserSchema = new Schema({
 	name: {
-		type:String
+		type:String,
+		default: null
 	},
 	email:{
 		type:String,

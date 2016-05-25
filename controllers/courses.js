@@ -1,3 +1,3 @@
-var db = require('../connection')
-var ClassTree = require('../models/classTree');
+const db = require('../connection')
+const ClassTree = require('../models/classTree');
 

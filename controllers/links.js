@@ -9,15 +9,15 @@ const LinkFunction = {
 		.catch(function (e) {
 			return console.error(e);
 		})
-		.then(function (result) {
+		.then((result) => {
 			User.findOne({
 				_id:userId
 			})
-			.then(function(user){
+			.then((user) => {
 				user.myLink.push(result._id);
 				user
 				.save()
-				.then(function(res){
+				.then((res) => {
 					console.log('suceessfuly add link to user');
 				})
 			})
@@ -29,10 +29,10 @@ const LinkFunction = {
 			_id: linkId
 		})
 		.remove()
-		.then( function (result) {
+		.then( (result) => {
 			console.log('successfully removed: ', result)
 		})
-		.catch(function(e){
+		.catch((e) => {
 			console.error('ERROR WITH DELETING LINK ',e);
 		})
 	},
@@ -43,10 +43,24 @@ const LinkFunction = {
 			$inc: { likes: 1}
 		},{})
 	
-		.then(function(result) {
+		.then((result) => {
 			console.log('successfully updated. ',result);
 		})
-		.catch(function(e){
+		.catch((e) => {
+			console.error('ERROR WITH UPDATING LIKES OF LINK: ',e)
+		})
+	},
+	unlikeLink: (linkId) => {
+		Link.update({
+			_id: linkId
+		},{
+			$inc: { likes: -1}
+		},{})
+	
+		.then((result) => {
+			console.log('successfully updated. ',result);
+		})
+		.catch((e) => {
 			console.error('ERROR WITH UPDATING LIKES OF LINK: ',e)
 		})
 	}
