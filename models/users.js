@@ -9,17 +9,19 @@ const UserSchema = new Schema({
 		type:String,
 		required: true
 	},
-
+	password:{
+		type:String
+	}
 	//코스와 링크, 그리고 USER의 관계는 각각 M대 N관계로 복잡합니다.
 	//유저 기준으로 링크나 코스 찾는 경우가 더 많아 이쪽으로 빼 놓았습니다.
 
 	//링크들의 _id를 담고 있는 배열들입니다.
-	createLink:[{type: ObjectId, ref: 'Link'}],
-	likeLink: [{type: ObjectId, ref: 'Link'}],
-	laterLink:[{type: ObjectId, ref: 'Link'}],
+	myLink:[{type: ObjectId, ref: 'Link'}],
+	likedLink: [{type: ObjectId, ref: 'Link'}],
+	bucketLink:[{type: ObjectId, ref: 'Link'}],
 	//코스들의 Id를 담고 있는 배열입니다.
-	createCourse: [{type: ObjectId, ref: 'Course'}],
-	likeCourse: [{type: ObjectId, ref: 'Course'}]
+	myCourse: [{type: ObjectId, ref: 'Course'}],
+	likedCourse: [{type: ObjectId, ref: 'Course'}]
 
 })
 

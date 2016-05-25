@@ -11,16 +11,15 @@ const LinkSchema = new Schema({
 		required: true
 	},
 	isValid: {
-		//나중에 링크가 없어질 경우를 대비해서 만들어놓음.
+		//나중에 링크가 없어를질 경우를 대비해서 만들어놓음.
 		type: Boolean,
 		default: true
 	},
-	tag:{
-		type: Array
-	},
+	tag:[String],
 	summary: {
 		type: String
 	},
+	likes : Number
 });
 
 module.exports = mongoose.model('Link',LinkSchema);
