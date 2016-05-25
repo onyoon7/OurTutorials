@@ -1,23 +1,98 @@
 var db = require('../connection')
 var ClassTree = require('../models/classTree');
+var Link = require('../models/links');
 
 
+var classTreeFunction = {
 
-
-function makeClassTree(parentId) { 
-	ClassTree.find({
-		_id: parentId
-	}, function(err, result){
-		if(err) return console.error(err);
-		new ClassTree({
-		name: 'server',
-		parent: result[0]._id
-		}).save( function (err, result){
-			if(err) return console.error(err);
-			console.log(result);
+	//클래스를 하나 새로 만드는 함수.
+	//부모 트리의 Id와 새로운 Tree의 이름을 인수로 받는다.
+	makeClassTree : function (parentId, newTreeName) {
+		ClassTree.findOne({
+			_id: parentId
 		})
-	});
+		.catch(function (e){
+			return console.error('finding error ',e);
+		})
+		.then(function(result){
+			if(!result){
+				//만약 최상위 클래스면 부모 id를 null로 지정해줌.
+				result = {};
+				result._id = null;
+			}
+			new ClassTree({
+			name: newTreeName,
+			parent: result._id
+			})
+			.save()
+			.catch(function (e){
+				return console.error(e);
+			})
+			.then(function (result){
+				console.log('success ',result);
+				return result;
+			})
+		})
+	},
+	//특정 클래스에 링크를 저장해주는 함수.
+	//이를 위해 링크를 추가해줄 클래스의 _id와 link의 _id를 인수로 받는다.
+	addLinktoClass : function (classId, linkId){
+		ClassTree.findOne({
+			_id:classId
+		})
+		.then(function(result){
+			if(!result) {
+				return console.error('ERROR: NO CLASS FOUND WHEN ADDING LINK TO CLASS.')
+			}else {
+				result.children.push(linkId);
+				result.save()
+				.catch( function(e) {
+					console.error(e);
+				})
+				.then(function(result){
+					console.log('successfully link added', result);
+				})
+			}
+
+		})
+	},
+	deleteClassTree : function(parentId, Id){
+		//delete relationship with parent
+		//delete all children node.
+	}
 }
+module.exports = classTreeFunction;
+
+new Link({
+	link: 'http://naver.com',
+	title: 'naver'
+})
+.save()
+.then(function(result){
+	classTreeFunction.addLinktoClass( '57458dd1dac8368254542a84', result._id);	
+})
 
 
-function 
+
+//dummy data.
+
+// new ClassTree({
+// 		name: 'javascript'
+// })
+// .save()
+// .then(function (err, result){
+// 	if(err) return console.error(err);
+// 	console.log('success ',result);
+// 	return result;
+// })
+
+// ClassTree.findOne({
+// 	name:'javascript'
+// })
+// .then(function(result){
+// 	console.log(result);
+// 	makeClassTree(result._id, 'angular');
+// })
+
+
+
