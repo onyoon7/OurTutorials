@@ -7,14 +7,14 @@ var classTreeFunction = {
 
 	//클래스를 하나 새로 만드는 함수.
 	//부모 트리의 Id와 새로운 Tree의 이름을 인수로 받는다.
-	makeClassTree : function (parentId, newTreeName) {
+	makeClassTree : (parentId, newTreeName) =>{
 		ClassTree.findOne({
 			_id: parentId
 		})
-		.catch(function (e){
+		.catch((e) => {
 			return console.error('finding error ',e);
 		})
-		.then(function(result){
+		.then((result) => {
 			if(!result){
 				//만약 최상위 클래스면 부모 id를 null로 지정해줌.
 				result = {};
@@ -25,10 +25,10 @@ var classTreeFunction = {
 			parent: result._id
 			})
 			.save()
-			.catch(function (e){
+			.catch((e) => {
 				return console.error(e);
 			})
-			.then(function (result){
+			.then((result) => {
 				console.log('success ',result);
 				return result;
 			})
@@ -40,7 +40,7 @@ var classTreeFunction = {
 		ClassTree.findOne({
 			_id:classId
 		})
-		.then(function(result){
+		.then((result) => {
 			if(!result) {
 				return console.error('ERROR: NO CLASS FOUND WHEN ADDING LINK TO CLASS.')
 			}else {
@@ -56,7 +56,7 @@ var classTreeFunction = {
 
 		})
 	},
-	deleteClassTree : function(parentId, Id){
+	deleteClassTree : (parentId, Id) => {
 		//delete relationship with parent
 		//delete all children node.
 	}
