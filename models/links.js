@@ -19,7 +19,10 @@ const LinkSchema = new Schema({
 	summary: {
 		type: String
 	},
-	likes : Number
+	likes : {
+		type: Number,
+		default: 0
+	}
 });
 
 module.exports = mongoose.model('Link',LinkSchema);
