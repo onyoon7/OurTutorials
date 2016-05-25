@@ -52,3 +52,5 @@ const LinkFunction = {
 	}
 }
 
+module.exports = LinkFunction;
+

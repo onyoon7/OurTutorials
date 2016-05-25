@@ -62,37 +62,3 @@ var classTreeFunction = {
 	}
 }
 module.exports = classTreeFunction;
-
-new Link({
-	link: 'http://naver.com',
-	title: 'naver'
-})
-.save()
-.then(function(result){
-	classTreeFunction.addLinktoClass( '57458dd1dac8368254542a84', result._id);	
-})
-
-
-
-//dummy data.
-
-// new ClassTree({
-// 		name: 'javascript'
-// })
-// .save()
-// .then(function (err, result){
-// 	if(err) return console.error(err);
-// 	console.log('success ',result);
-// 	return result;
-// })
-
-// ClassTree.findOne({
-// 	name:'javascript'
-// })
-// .then(function(result){
-// 	console.log(result);
-// 	makeClassTree(result._id, 'angular');
-// })
-
-
-
