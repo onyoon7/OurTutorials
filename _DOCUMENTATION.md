@@ -7,9 +7,13 @@
 1. npm run lint - runs eslint once for all files in src.
 
 
-## Webpack
-1. npm start - starts the webpack-dev-server. Hot-loading & linting is enabled.
+## Development
+1. npm run dev - starts the webpack-dev-server. Hot-loading & linting is enabled.
 
+
+## Production
+1. npm run build
+2. npm start
 
 ## Testing React
 1. https://facebook.github.io/react/docs/test-utils.html

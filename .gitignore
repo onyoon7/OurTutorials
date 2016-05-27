@@ -40,3 +40,10 @@ bower_components
 
 .eslintcache
 dist
+npm-debug.log
+public
+compiled
+.vscode
+.swp
+.vscode
+
