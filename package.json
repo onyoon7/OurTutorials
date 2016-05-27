@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Best tutorials and custom courses are here",
   "scripts": {
-    "lint": "eslint app server --cache",
+    "lint": "eslint app --cache",
     "clean": "rimraf public && rimraf compiled",
     "start": "cross-env NODE_ENV=production node compiled/index.js",
     "babel": "babel --presets es2015,stage-0 --ignore node_modules, public",
