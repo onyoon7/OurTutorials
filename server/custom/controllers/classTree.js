@@ -1,73 +1,94 @@
-var db = require('../connection')
-var ClassTree = require('../models/classTree');
-var Link = require('../models/links');
+const db = require('../connection')
+const ClassTree = require('../models/classTree');
+const Link = require('../models/links');
 
-
-var classTreeFunction = {
-	getClassTree :(req,res,next) => {
-		var parentId = req.body.id;
-		if(!parentId){
-			parentId = null;
-		}
-		ClassTree.find({
-			parent: parentId
-		})
-		.then((classArray) => {
-			res.json(classArray);
-		})
-		.catch( (e) => {
-			console.error('ERROR WITH GET CLASS TREE : ',e)
-		})
-	},
-	getSiblingClasses : (req, res, next) => {
-		var parentId;
+module.exports = {
+	getChildrenClasses : (req, res, next) =>{
+		let MyId = req.body.id;
 		ClassTree.findOne({
-			_id:req.body.id
+			_id: myId
 		})
-		.then((result){
-			ClassTree.find({
-				parent: result.parent
+		.then((me) => {
+			console.log(me.children)
+			LinkIds = [];
+			for(let i=0; i<me.children.length; i++){
+				id.push(me.children[i].childId);
+			}
+
+			//이부분은 다시 테스트를 해 보아야 함.
+			Link.find({
+			    '_id': { $in: id}
 			})
-			.then((result) => {
-				res.json(result);
-			})
-			.catch((e) => {
-				res.end(e);
+			.then((links) => {
+				console.log(links);
 			})
 		})
 		.catch((e) => {
-			res.end(e)
+			console.error(e)
 		})
 	},
-	getAllLinkFromClassTree: () => {}, 
-	//클래스를 하나 새로 만드는 함수.
-	//부모 트리의 Id와 새로운 Tree의 이름을 인수로 받는다.
-	addClass : (req,res,next) =>{
+	getAllLinks : (req, res, next) =>{
+		let myId = req.body.id;
+		let returnArray = [];
+		ClassTree.find({
+			'parent.parentId': myId
+		})
+		.then((children)=>{
+			console.log(' successfully found All children ')
+			for(let i=0; i<children.length; i++){
+				console.log(children[i].name);
+				returnArray = returnArray.concat(children[i].links)
+			}
+			res.json(returnArray);
+		})
+		.catch((e) => {
+			console.error('Error :' , e)
+		})
+	},
+	addClass : (req, res, next) =>{
 		//클래스를 특정 부모 클래스 밑에 붙인다.
 		//예 : '자바스크립트' 클래스에 '서버'클래스를 붙이고 싶으면
 		//'자바스크립트'클래스 아이디와 '서버'클래스 아이디를 붙이면 됨.
-		var parentId = req.body.id;
-		var newTreeName = req.body.newTreeName
+		let parentId = req.body.parentId;
+		let newTreeName = req.body.newClassName
+		let newTreeParent;
 		ClassTree.findOne({
 			_id: parentId
 		})
-		.then((result) => {
-			if(!result){
-				//만약 최상위 클래스면 부모 id를 null로 지정해줌.
-				result = {};
-				result._id = null;
-			}
-			new ClassTree({
+		.then((parent) => {
+			if(!parent){
+				newTreeParent = [];
+			}else{
+			newTreeParent = parent.parent.slice();
+			newTreeParent.push({
+					parentId:parent._id,
+					name: parent.name
+				});
+			}	
+
+			new ClassTree({				
 			name: newTreeName,
-			parent: result._id
+			parent: newTreeParent
 			})
 			.save()
 			.catch((e) => {
 				return console.error(e);
 			})
-			.then((result) => {
-				console.log('success ',result);
-				res.json(result);
+			.then((newClass) => {
+				console.log('success ',newClass);
+				if(parent){
+					parent.children.push({
+						childId: newClass._id,
+						name: newClass.name
+					});
+					parent.save()
+					.then((r)=>{
+						res.json(newClass);
+					})
+					.catch((e) =>{
+						return console.error('ERROR :saving newClass\'s id to parent Class\' children array ', e)
+					})
+				}
 			})
 		})
 		.catch((e) => {
@@ -77,8 +98,8 @@ var classTreeFunction = {
 	//특정 클래스에 링크를 저장해주는 함수.
 	//이를 위해 링크를 추가해줄 클래스의 _id와 link의 _id를 인수로 받는다.
 	addLinktoClass : function (req, res, next){
-		var classId = req.body.classId;
-		var linkId = req.body.linkId;
+		let classId = req.body.classId;
+		let linkId = req.body.linkId;
 		ClassTree.findOne({
 			_id:classId
 		})
@@ -103,4 +124,4 @@ var classTreeFunction = {
 		//delete all children node.
 	}
 }
-module.exports = classTreeFunction;
+

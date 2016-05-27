@@ -61,7 +61,7 @@ const LinkFunction = {
 		},{})
 	
 		.then((result) => {
-			console.log('successfully updated. ',result);
+			console.log('successfully like updated. ',result);
 		})
 		.catch((e) => {
 			console.error('ERROR WITH UPDATING LIKES OF LINK: ',e)
@@ -75,7 +75,7 @@ const LinkFunction = {
 		},{})
 	
 		.then((result) => {
-			console.log('successfully updated. ',result);
+			console.log('successfully link unlike updated. ',result);
 		})
 		.catch((e) => {
 			console.error('ERROR WITH UPDATING LIKES OF LINK: ',e)

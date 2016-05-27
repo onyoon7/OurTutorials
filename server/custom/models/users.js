@@ -27,5 +27,8 @@ const UserSchema = new Schema({
 
 })
 
-
+const a = {}
+a.b = 3;
+console.log(a);
+	
 module.exports = mongoose.model('User',UserSchema);

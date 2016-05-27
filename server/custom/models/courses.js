@@ -9,7 +9,8 @@ const CourseSchema = new Schema({
 	Summary: String,
 	parent: {
 		type: ObjectId,
-		ref: 'Course'
+		ref: 'Course',
+		default: null
 	},
 	//칠드런 배열에서는 자기 자신, 또는 링크 아이디를 담고 있는 배열입니다.
 	//isCourse가 트루이면 또 다른 Course를 안에 담고있는것과 마찬가지로 취급됩니다.
