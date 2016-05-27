@@ -31,6 +31,9 @@ const UserFunction = {
 		})
 	},
 	likeLinkToggle: (userId, linkId) => {
+		//'좋아요'를 누르지 않았으면 좋아요를 누를 수 있음.
+		//'좋아요'를 누르면, link의 likes가 1 증가하고 유저의 likedlink배열에 들어간다.
+		//'좋아요'를 이미 누른 상태에서 이 함수를 한번 더 호출하면 좋아요 수가 감소하고 유저의 배열에서도 사라진다.
 		User.findOne({
 			_id:userId
 		})
@@ -58,8 +61,6 @@ const UserFunction = {
 				})
 			}
 		})
-	},
-	likeCourse: () => {
 	}
 }
 

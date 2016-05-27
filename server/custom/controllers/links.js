@@ -1,33 +1,56 @@
 var db = require('../connection')
 var Link = require('../models/links');
 var User = require('../models/users');
+var ClassTree = require('../models/classTree')
 
 const LinkFunction = {
-	getLinkFromClass: () => {
-		//특정 클래스에 속해있는 링크를 가져오기.
-	},
-	addLink: (userId, data) => {
-		new Link(data)
-		.save()
-		.catch(function (e) {
-			return console.error(e);
+	addLink: (req, res, next) => {
+		let userId = req.body.userId;
+		let classId = req.body.classId;
+		let link = req.body.link;
+		let title = req.body.title;
+		let tag = req.body.tag;
+		new Link({
+			link: link,
+			title: title,
+			tag: tag
 		})
-		.then((result) => {
+		.save()
+		.then((savedLink) => {
+			//링크를 유저의 mylink에 넣는다.
 			User.findOne({
 				_id:userId
 			})
 			.then((user) => {
-				user.myLink.push(result._id);
+				user.myLink.push(savedLink._id);
 				user
 				.save()
-				.then((res) => {
-					console.log('suceessfuly add link to user');
+				.then((saved) => {
+					//링크를 class에 넣는다.(classTree에 링크를 class에 넣는 함수가 또 하나 있으니 사용해도 됨.)
+					ClassTree.findOne({
+						_id: classId
+					})
+					.then((foundClass) => {
+						foundClass.links.push(savedLink._id);
+						foundClass
+						.save()
+						.then((r) => {
+							console.log('successfully link saved. ',r)
+							res.json(r)
+						})
+						.catch((e) => {
+							return console.error(e);
+						})
+					})
 				})
 			})
-			console.log('link is saved. ', result);
+		})
+		.catch(function (e) {
+			return console.error(e);
 		})
 	},
-	deleteLink: (linkId) => {
+	deleteLink: (req, res, next) => {
+		let linkId = req.body.linkId;
 		Link.findOne({
 			_id: linkId
 		})
@@ -38,11 +61,30 @@ const LinkFunction = {
 				myLink : linkId
 			})
 			.then((user) => {
-				if(!user) return console.error('NO User that have this link in MyLink.')
+				if(!user) return console.error('No User that have this link in MyLink.')
 				user.myLink.splice(user.myLink.indexOf(linkId),1);
 				user.save()
 				.then((savedUser) => {
-					console.log('successfully delete link from user')
+					//클래스에 가서 삭제하기.
+					ClassTree.findOne({
+						links : linkId
+					})
+					.then((classNode) => {
+						if(!classNode) return console.error('No Class that have this link in links.')
+						classNode.links.splice(classNode.links.indexOf(linkId),1);
+						classNode.save()
+						.then((r) => {
+							console.log('successfully deleted.');
+							res.json(r);
+						})
+						.catch((e) => {
+							console.error(e);
+						})
+					})
+					.catch((e) =>{
+						console.error(e);
+					})
+					 
 				})
 			})
 			.catch((e) => {
@@ -59,7 +101,6 @@ const LinkFunction = {
 		},{
 			$inc: { likes: 1}
 		},{})
-	
 		.then((result) => {
 			console.log('successfully like updated. ',result);
 		})
