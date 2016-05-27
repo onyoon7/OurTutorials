@@ -14,8 +14,7 @@ module.exports = {
 			for(let i=0; i<me.children.length; i++){
 				id.push(me.children[i].childId);
 			}
-
-			//이부분은 다시 테스트를 해 보아야 함.
+			//이부분은 더미 링크를 넣고 다시 테스트 해 보아야 함.
 			Link.find({
 			    '_id': { $in: id}
 			})
@@ -28,6 +27,7 @@ module.exports = {
 		})
 	},
 	getAllLinks : (req, res, next) =>{
+		//특정 클래스로부터 자식 클래스에 이르기까지 하위 모든 클래스의 링크들을 전부 배열로 가져옴.
 		let myId = req.body.id;
 		let returnArray = [];
 		ClassTree.find({
@@ -64,8 +64,7 @@ module.exports = {
 					parentId:parent._id,
 					name: parent.name
 				});
-			}	
-
+			}
 			new ClassTree({				
 			name: newTreeName,
 			parent: newTreeParent
@@ -116,7 +115,6 @@ module.exports = {
 					console.log('successfully link added', result);
 				})
 			}
-
 		})
 	},
 	deleteClassTree : (req, res, next) => {
