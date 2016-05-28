@@ -13,6 +13,8 @@ const initialState = window.__INITIAL_STATE__;
 
 const store = configureStore(initialState, browserHistory);
 const history = syncHistoryWithStore(browserHistory, store);
+
+// 현재상태를 반영하는 routes를 생성한다. 이 routes는 client의 entry point로 볼 수 있다.
 const routes = createRoutes(store);
 
 /**

@@ -76,6 +76,19 @@ export default function render(req, res) {
     } else if (props) {
       // This method waits for all render component
       // promises to resolve before returning to browser
+
+      // 이 경우에는 Vote Component에 있는 static need = [fetchTopics]를 보고 dispatch(fetchTopics)가 끝날 때까지 기다리는 것.
+
+      // topics.js
+      // export function fetchTopics() {
+      //   return {
+      //     type: types.GET_TOPICS,
+      //     promise: makeTopicRequest('get')
+      //   };
+      // }
+
+      // server/routes.js
+      // app.get('/topic', topicsController.all);
       preRenderMiddleware(
         store.dispatch,
         props.components,
