@@ -3,7 +3,7 @@ const Link = require('../models/links');
 
 module.exports = {
 	getChildrenClasses : (req, res, next) =>{
-		let MyId = req.body.id;
+		let MyId = req.body.classId;
 		ClassTree.findOne({
 			_id: myId
 		})
@@ -73,7 +73,7 @@ module.exports = {
 					returnArray = returnArray.concat(children[i].courses)
 				}
 				console.log(returnArray);
-				res.json(returnArray);
+				res.status(200).json(returnArray);
 			})
 			.catch((e) => {
 				console.error('Error :' , e)
@@ -119,7 +119,7 @@ module.exports = {
 					});
 					parent.save()
 					.then((r)=>{
-						res.json(newClass);
+						res.status(200).json({message:'class saved successfully'});
 					})
 					.catch((e) =>{
 						return console.error('ERROR :saving newClass\'s id to parent Class\' children array ', e)
@@ -145,11 +145,11 @@ module.exports = {
 			}else {
 				result.children.push(linkId);
 				result.save()
+				.then(function(result){
+					res.status(200).json({message: 'successfully added'});
+				})
 				.catch( function(e) {
 					console.error(e);
-				})
-				.then(function(result){
-					console.log('successfully link added', result);
 				})
 			}
 		})
