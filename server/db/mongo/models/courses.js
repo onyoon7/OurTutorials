@@ -11,7 +11,7 @@ const CourseSchema = new Schema({
 	//isCourse가 트루이면 또 다른 Course를 안에 담고있는것과 마찬가지로 취급됩니다.
 	//만약 isCourse가 false이면 평범한 link의 id로 보여집니다.
 	contents: [],
-	likes: {
+	like: {
 		type: Number,
 		default:0
 	},

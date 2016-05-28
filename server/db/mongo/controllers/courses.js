@@ -7,7 +7,7 @@ module.exports = {
 	addCourse : (req, res, next) => {
 		//코스 만들고, 만들어진 코스의 아이디를 해당 클래스와 유저의 mycourse에 넣는다.
 		let userId = req.body.userId;
-		let courseData = req.body.courseData; 
+		let courseData = req.body.courseData;
 		let classId = req.body.classId//nested object형태를 띈 contents입니다.
 		console.log(userId, courseData, classId);
 		new Course(
@@ -40,7 +40,7 @@ module.exports = {
 
 		})
 		.catch(e => console.error(e))
-	},	
+	},
 	deleteCourse : (req, res, next) => {
 		let courseId = req.body.courseId;
 		Course.findOne({
@@ -80,7 +80,7 @@ module.exports = {
 		Course.update({
 			_id: courseId
 		},{
-			$inc: { likes: 1}
+			$inc: { like: 1}
 		},{})
 		.then((result) => {
 			res.status(200).json({ message: 'course liked.'});
@@ -94,7 +94,7 @@ module.exports = {
 		Course.update({
 			_id: courseId
 		},{
-			$inc: { likes: -1}
+			$inc: { like: -1}
 		},{})
 		.then((result) => {
 			res.status(200).json({ message: 'course unliked.'});

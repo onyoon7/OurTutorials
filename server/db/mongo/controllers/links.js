@@ -84,7 +84,7 @@ const LinkFunction = {
 					.catch((e) =>{
 						console.error(e);
 					})
-					 
+
 				})
 			})
 			.catch((e) => {
@@ -100,7 +100,7 @@ const LinkFunction = {
 		Link.update({
 			_id: linkId
 		},{
-			$inc: { likes: 1}
+			$inc: { like: 1}
 		},{})
 		.then((result) => {
 			res.status(200).json({ message: 'successfully added to like '});
@@ -114,9 +114,9 @@ const LinkFunction = {
 		Link.update({
 			_id: linkId
 		},{
-			$inc: { likes: -1}
+			$inc: { like: -1}
 		},{})
-	
+
 		.then((result) => {
 			res.status(200).json({ message: 'successfully unlike'});
 		})
