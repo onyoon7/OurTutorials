@@ -45,5 +45,4 @@ public
 compiled
 .vscode
 .swp
-.vscode
-
+.tern-project

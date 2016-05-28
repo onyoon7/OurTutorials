@@ -73,7 +73,7 @@
           todos: [...state.todos, {
             text: action.text,
             completed: false
-          }]  
+          }]
         });
       default:
         return state;
@@ -184,7 +184,7 @@
       // 실제 앱에서는 네트워크 호출에서
       // 에러도 잡고 싶을겁니다.
     };
-  }   
+  }
 
 
 ###10. 비동기 흐름
@@ -212,5 +212,23 @@
 
 ###12. 서버 렌더링
 1. 유저가 처음으로 어플리케이션에 요청을 보냈을 때 서버 렌더링이 주로 사용된다. 필요한 컴포넌트들을 HTML string으로 만든 후, 클라이언트에게 보내면, 그 이후는 클라이언트가 렌더링 임무를 넘겨받는다.
+
+###참고
+1. propTypes
+앱의 규모가 커지면 컴포넌트들이 바르게 사용되었는지 확인하는게 도움이 됩니다. 확인은 propTypes를 명시해서 할 수 있습니다. React.PropTypes는 받은 데이터가 적절한지(valid) 확인하는데 사용할 수 있는 다양한 검증자(validator)를 제공합니다. prop에 부적절한 값을 명시한다면 JavaScript 콘솔에 경고가 보일 것입니다. 성능상의 문제로 propTypes는 개발 모드에서만 검사됩니다. 다음은 제공되는 검증자를 설명하는 예제입니다.
+
+
+2. connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
+Connects a React component to a Redux store.
+
+It does not modify the component class passed to it.
+Instead, it returns a new, connected component class, for you to use.
+
+Arguments
+
+[mapStateToProps(state, [ownProps]): stateProps] (Function): If specified, the component will subscribe to Redux store updates. Any time it updates, mapStateToProps will be called. Its result must be a plain object*, and it will be merged into the component’s props. If you omit it, the component will not be subscribed to the Redux store. If ownProps is specified as a second argument, its value will be the props passed to your component, and mapStateToProps will be re-invoked whenever the component receives new props.
+
+Note: in advanced scenarios where you need more control over the rendering performance, mapStateToProps() can also return a function. In this case, that function will be used as mapStateToProps() for a particular component instance. This allows you to do per-instance memoization. You can refer to #279 and the tests it adds for more details. Most apps never need this.
+[mapDispatchToProps(dispatch, [ownProps]): dispatchProps] (Object or Function): If an object is passed, each function inside it will be assumed to be a Redux action creator. An object with the same function names, but with every action creator wrapped into a dispatch call so they may be invoked directly, will be merged into the component’s props. If a function is passed, it will be given dispatch. It’s up to you to return an object that somehow uses dispatch to bind action creators in your own way. (Tip: you may use the bindActionCreators() helper from Redux.) If you omit it, the default implementation just injects dispatch into your component’s props. If ownProps is specified as a second argument, its value will be the props passed to your component, and mapDispatchToProps will be re-invoked whenever the component receives new props.
 
 
