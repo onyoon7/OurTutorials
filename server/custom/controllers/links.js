@@ -4,12 +4,13 @@ var User = require('../models/users');
 var ClassTree = require('../models/classTree')
 
 const LinkFunction = {
-	addLink: (req, res, next) => {
+		addLink: (req, res, next) => {
 		let userId = req.body.userId;
 		let classId = req.body.classId;
 		let link = req.body.link;
 		let title = req.body.title;
 		let tag = req.body.tag;
+
 		new Link({
 			link: link,
 			title: title,

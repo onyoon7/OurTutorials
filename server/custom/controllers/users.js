@@ -63,19 +63,4 @@ const UserFunction = {
 		})
 	}
 }
-
-//dummy data.
-// User.findOne({
-// 	email:'glnt1@naver.com'
-// })
-// .then((result) =>{
-// 	Link.findOne({
-// 		title:'google'
-// 	})
-// 	.then((link) => {
-// 		UserFunction.likeLink(result._id, link._id)
-// 	})
-	
-// })
-
 module.exports = UserFunction;
