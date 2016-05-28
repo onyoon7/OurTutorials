@@ -25,7 +25,13 @@ const UserSchema = new mongoose.Schema({
   },
   resetPasswordToken: String,
   resetPasswordExpires: Date,
-  google: {}
+  google: {},
+  myLink:[{type: mongoose.Schema.ObjectId, ref: 'Link'}],
+  likedLink: [{type: mongoose.Schema.ObjectId, ref: 'Link'}],
+  bucketLink:[{type: mongoose.Schema.ObjectId, ref: 'Link'}],
+  //코스들의 Id를 담고 있는 배열입니다.
+  myCourse: [{type: mongoose.Schema.ObjectId, ref: 'Course'}],
+  likedCourse: [{type: mongoose.Schema.ObjectId, ref: 'Course'}]
 });
 
 function encryptPassword(next) {
