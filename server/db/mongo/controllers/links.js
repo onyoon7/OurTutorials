@@ -36,7 +36,7 @@ const LinkFunction = {
 						.save()
 						.then((r) => {
 							console.log('successfully link saved. ',r)
-							res.json(r)
+							res.status(200).json(r)
 						})
 						.catch((e) => {
 							return console.error(e);
@@ -75,7 +75,7 @@ const LinkFunction = {
 						classNode.save()
 						.then((r) => {
 							console.log('successfully deleted.');
-							res.json(r);
+							res.status(200).json(r);
 						})
 						.catch((e) => {
 							console.error(e);
@@ -103,7 +103,7 @@ const LinkFunction = {
 			$inc: { likes: 1}
 		},{})
 		.then((result) => {
-			console.log('successfully like updated. ',result);
+			res.status(200).json({ message: 'successfully added to like '});
 		})
 		.catch((e) => {
 			console.error('ERROR WITH UPDATING LIKES OF LINK: ',e)
@@ -118,7 +118,7 @@ const LinkFunction = {
 		},{})
 	
 		.then((result) => {
-			console.log('successfully link unlike updated. ',result);
+			res.status(200).json({ message: 'successfully unlike'});
 		})
 		.catch((e) => {
 			console.error('ERROR WITH UPDATING LIKES OF LINK: ',e)

@@ -64,9 +64,6 @@ const UserFunction = {
 	// 		return console.error('ERROR WITH SAVING NEW USER ',e);
 	// 	})
 	// },
-	signin: (req, res, next) => {
-		
-	},
 	addLinkToBucket: (req, res, next) => {
 		let userId = req.body.userId;
 		let linkId = req.body.linkId;
@@ -77,7 +74,7 @@ const UserFunction = {
 			result.bucketLink.push(linkId);
 			result.save()
 			.then((update) => {
-				console.log('successfully added to bucket ' , update);
+				return res.status(200).json({ message: 'successfully added to bucket.'})
 			})
 			.catch((e) => {
 				return console.error(e);
@@ -100,7 +97,6 @@ const UserFunction = {
 				result.likedLink.splice(result.likedLink.indexOf(linkId),1);
 				result.save()
 				.then((update) => {
-					console.log('successfully deleted like ' , update);
 					LinkFunc.unlikeLink(req, res, next)
 				})
 				.catch((e) => {
@@ -110,7 +106,6 @@ const UserFunction = {
 				result.likedLink.push(linkId);
 				result.save()
 				.then((update) => {
-					console.log('successfully added to like ' , update);
 					LinkFunc.likeLink(req, res, next)
 				})
 				.catch((e) => {
@@ -132,7 +127,6 @@ const UserFunction = {
 				result.likedCourse.splice(result.likedCourse.indexOf(courseId),1);
 				result.save()
 				.then(update => {
-					console.log('successfully deleted like ' , update);
 					CourseFunc.unlikeCourse(req, res, next)
 				})
 				.catch(e => {
@@ -142,7 +136,6 @@ const UserFunction = {
 				result.likedCourse.push(courseId);
 				result.save()
 				.then(update => {
-					console.log('successfully added to like ' , update);
 					CourseFunc.likeCourse(req, res, next)
 				})
 				.catch(e => {

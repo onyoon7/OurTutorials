@@ -30,7 +30,7 @@ module.exports = {
 						classNode.save()
 						.then(classNode =>{
 							console.log('successfully saved.', classNode.courses, user.myCourse);
-							res.json(savedCourse);
+							res.status(200).json(savedCourse);
 						})
 						.catch(e => console.error(e))
 					})
@@ -62,7 +62,7 @@ module.exports = {
 						classNode.courses.splice(classNode.courses.indexOf(courseId),1);
 						classNode.save()
 						.then(fn=>{
-							console.log('completely deleted.')
+							res.status(200).json({message: 'completely deleted'});
 						})
 					})
 					.catch(e =>console.log(e))
@@ -83,7 +83,7 @@ module.exports = {
 			$inc: { likes: 1}
 		},{})
 		.then((result) => {
-			console.log('successfully like updated. ',result);
+			res.status(200).json({ message: 'course liked.'});
 		})
 		.catch((e) => {
 			console.error('ERROR WITH UPDATING LIKES OF course: ',e)
@@ -97,7 +97,7 @@ module.exports = {
 			$inc: { likes: -1}
 		},{})
 		.then((result) => {
-			console.log('successfully course unlike updated. ',result);
+			res.status(200).json({ message: 'course unliked.'});
 		})
 		.catch((e) => {
 			console.error('ERROR WITH UPDATING LIKES OF course: ',e)

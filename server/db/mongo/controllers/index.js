@@ -4,7 +4,7 @@ import links from './links';
 import courses from './courses';
 import users from './users';
 
-export { topics, users };
+export { topics, users, classTrees, links, courses };
 
 export default {
   topics,

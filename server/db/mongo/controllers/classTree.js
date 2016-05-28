@@ -44,7 +44,7 @@ module.exports = {
 					returnArray = returnArray.concat(children[i].links)
 				}
 				console.log(returnArray);
-				res.json(returnArray);
+				res.status(200).json(returnArray);
 			})
 			.catch((e) => {
 				console.error('Error :' , e)
