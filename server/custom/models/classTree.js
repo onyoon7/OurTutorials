@@ -31,10 +31,13 @@ const ClassTreeSchema = new Schema({
 
 			}
 		}],
-	
 	links:[{
 		type: ObjectId, 
 		ref: 'Link'
+	}],
+	courses: [{
+		type: ObjectId,
+		ref: 'Course'
 	}]
 })
 

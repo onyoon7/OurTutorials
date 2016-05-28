@@ -28,22 +28,60 @@ module.exports = {
 	},
 	getAllLinks : (req, res, next) =>{
 		//특정 클래스로부터 자식 클래스에 이르기까지 하위 모든 클래스의 링크들을 전부 배열로 가져옴.
-		let myId = req.body.id;
+		let currentClassId = req.body.classId;
 		let returnArray = [];
-		ClassTree.find({
-			'parent.parentId': myId
+		ClassTree.findOne({
+			_id : currentClassId
 		})
-		.then((children)=>{
-			console.log(' successfully found All children ')
-			for(let i=0; i<children.length; i++){
-				console.log(children[i].name);
-				returnArray = returnArray.concat(children[i].links)
-			}
-			res.json(returnArray);
+		.then(me => {
+			returnArray = returnArray.concat(me.links)
+			ClassTree.find({
+				'parent.parentId': currentClassId
+			})
+			.then((children)=>{
+				console.log(' successfully found All children ')
+				for(let i=0; i<children.length; i++){
+					console.log(children[i].name);
+					returnArray = returnArray.concat(children[i].links)
+				}
+				console.log(returnArray);
+				res.json(returnArray);
+			})
+			.catch((e) => {
+				console.error('Error :' , e)
+			})
 		})
-		.catch((e) => {
-			console.error('Error :' , e)
+		.catch(e => console.log(e));
+		
+	},
+	getAllCourses : (req, res, next) =>{
+		//특정 클래스로부터 자식 클래스에 이르기까지 하위 모든 클래스의 링크들을 전부 배열로 가져옴.
+		let currentClassId = req.body.classId;
+		let returnArray = [];
+
+		ClassTree.findOne({
+			_id : currentClassId
 		})
+		.then(me => {
+			returnArray = returnArray.concat(me.courses);
+			ClassTree.find({
+				'parent.parentId': currentClassId
+			})
+			.then((children)=>{
+				console.log(' successfully found All children ')
+				for(let i=0; i<children.length; i++){
+					console.log(children[i].name);
+					returnArray = returnArray.concat(children[i].courses)
+				}
+				console.log(returnArray);
+				res.json(returnArray);
+			})
+			.catch((e) => {
+				console.error('Error :' , e)
+			})
+		})
+		.catch(e =>console.log(e))
+		
 	},
 	addClass : (req, res, next) =>{
 		//클래스를 특정 부모 클래스 밑에 붙인다.

@@ -43,7 +43,7 @@ var courseFunc = require('./controllers/courses.js');
 // ClassTree.findOne({name: 'server'})
 // .then( (result) => {
 // 	console.log(result)
-// 	req.body.id = result._id;
+// 	req.body.classId = result._id;
 // 	classFunc.getAllLinks(req)
 // })
 
@@ -59,24 +59,24 @@ var courseFunc = require('./controllers/courses.js');
 
 //<link query>
 //4. add Link to class and user
-let req = {};
-req.body = {};
+// let req = {};
+// req.body = {};
 
 
-ClassTree.findOne({name: 'express.js'})
-.then( (classNode) => {
-	// console.log(classNode);
-	User.findOne({name: 'hyeonsoo'})
-	.then ( (user) => {
-		// console.log(user);
-		req.body.userId = user._id;
-		req.body.classId = classNode._id;
-		req.body.link = 'http://es10.com/';
-		req.body.title = 'es111 nodejs site.';
-		req.body.tag = ['nodejs', 'official', 'site'];
-		linkFunc.addLink(req)
-	})	
-})
+// ClassTree.findOne({name: 'express.js'})
+// .then( (classNode) => {
+// 	// console.log(classNode);
+// 	User.findOne({name: 'hyeonsoo'})
+// 	.then ( (user) => {
+// 		// console.log(user);
+// 		req.body.userId = user._id;
+// 		req.body.classId = classNode._id;
+// 		req.body.link = 'http://es10.com/';
+// 		req.body.title = 'es111 nodejs site.';
+// 		req.body.tag = ['nodejs', 'official', 'site'];
+// 		linkFunc.addLink(req)
+// 	})	
+// })
 
 //5.delete Link.
 // let req = {};
@@ -127,64 +127,82 @@ ClassTree.findOne({name: 'express.js'})
 // 	console.log(link)
 // })
 
-(req, res, next) =>{
-		let userId = req.body.userId;
-		let classId = req.body.classId;
-		let link = req.body.link;
-		let title = req.body.title;
-		let tag = req.body.tag;
-		new Promise((resolve, reject) => {
-			new Link({
-				link: link,
-				title: title,
-				tag: tag
-			})
-			.save()
-			.then(savedLink => resolve(savedLink))
-			.catch(e => console.error(e))
-		})
-		.then(savedLink =>{
-			console.log('savedLink is', savedLink)
-			return new Promise((resolve,reject) => {
-				User.findOne({
-					_id:userId
-				})
-				.then(user => resolve(user, savedLink))
-				.catch(e => console.error(e))
-			})
-		})
-		.then((user, savedLink) => {
-			console.log('savedUser', user,savedLink);
-			return new Promise((resolve, reject) => {
-				user.myLink.push(savedLink._id);
-				user
-				.save()
-				.then(saved => resolve(saved))
-				.catch(e => console.error(e))
-			})
-		})
-		.then(saved => {
-			return new Promise((resolve, reject) => {
-				ClassTree.findOne({
-					_id: classId
-				})
-				.then(classNode => resolve(classNode))
-			})
-		})
-		.then(classNode => {
-			return new Promise((resolve, reject) => {
-				classNode.links.push(savedLink._id);
-				classNode
-				.save()
-				.then(r => resolve(r))
-			})
-		})
-		.then(r =>{
-			console.log('successfully saved. ',r)
-		})
-},
+
+//6. make course with nested object.
+
+// let req = {};
+// req.body = {};
+// req.body.courseData ={
+// 	title: '2지우기용2',
+// 	summary: '지우기용입니다.',
+// 	contents: [
+// 			{
+// 				title: '첫 번째 단원 ', 
+// 				links: ['naver.com','mongodb.com']
+// 			},{
+// 				title: '두 번쨰 단원',
+// 				summary: '좀 어려워요 여긴',
+// 				links: ['google.com', 'stackoverflow.com']
+// 			}
+// 			]
+// }
+
+// User.findOne({name:'hi'})
+// .then(user =>{
+// 	ClassTree.findOne({
+// 		name: 'server'
+// 	})
+// 	.then(cn =>{
+// 		req.body.userId = user._id;
+// 		req.body.classId = cn._id;
+// 		courseFunc.addCourse(req)
+// 	})
+// })
+
+//7.delete course
+
+// let req = {};
+// req.body = {};
+
+// Course.findOne({
+// 	title: '2지우기용2'
+// })
+// .then(r=>{
+// 	req.body.courseId = r._id
+// 	courseFunc.deleteCourse(req)
+// })
+
+//8. like course
+
+// let req = {};
+// req.body = {};
+
+// Link.findOne({
+// 	title: 'express official site.'
+// })
+// .then(r => {
+// 	console.log(r)
+// 	User.findOne({
+// 		name:'hi'
+// 	})
+// 	.then(user => {
+// 		console.log(user);
+// 		req.body.linkId = r._id
+// 		req.body.userId = user._id
+// 		userFunc.likeLinkToggle(req)
+// 	})	
+// })
 
 
+//9.get all courses
 
+let req = {};
+req.body = {};
+ClassTree.findOne({name: 'server'})
+.then( (result) => {
+	console.log(result)
+	req.body.classId = result._id;
+	classFunc.getAllCourses(req)
+})
 
 

@@ -25,4 +25,5 @@ const LinkSchema = new Schema({
 	}
 });
 
+
 module.exports = mongoose.model('Link',LinkSchema);

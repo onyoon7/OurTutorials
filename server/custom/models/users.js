@@ -12,11 +12,11 @@ const UserSchema = new Schema({
 		unique: true
 	},
 	password:{
+		
 		type:String
 	},
 	//코스와 링크, 그리고 USER의 관계는 각각 M대 N관계로 복잡합니다.
 	//유저 기준으로 링크나 코스 찾는 경우가 더 많아 이쪽으로 빼 놓았습니다.
-
 	//링크들의 _id를 담고 있는 배열들입니다.
 	myLink:[{type: ObjectId, ref: 'Link'}],
 	likedLink: [{type: ObjectId, ref: 'Link'}],

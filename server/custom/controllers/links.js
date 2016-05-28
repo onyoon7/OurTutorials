@@ -96,7 +96,8 @@ const LinkFunction = {
 			console.error('ERROR WITH DELETING LINK ',e);
 		})
 	},
-	likeLink: (linkId) => {
+	likeLink: (req, res, next) => {
+		let linkId = req.body.linkId;
 		Link.update({
 			_id: linkId
 		},{
@@ -109,7 +110,8 @@ const LinkFunction = {
 			console.error('ERROR WITH UPDATING LIKES OF LINK: ',e)
 		})
 	},
-	unlikeLink: (linkId) => {
+	unlikeLink: (req, res, next) => {
+		let linkId = req.body.linkId;
 		Link.update({
 			_id: linkId
 		},{
