@@ -7,6 +7,12 @@ import { controllers, passport as passportConfig } from '../db';
 
 const usersController = controllers && controllers.users;
 const topicsController = controllers && controllers.topics;
+const classController = controllers && controllers.classTrees;
+const linkController = controllers && controllers.links;
+const courseController = controllers && controllers.courses;
+
+
+
 
 export default (app) => {
   // user routes
@@ -14,6 +20,10 @@ export default (app) => {
     app.post('/login', usersController.login);
     app.post('/signup', usersController.signUp);
     app.post('/logout', usersController.logout);
+    app.post('/likelink', usersController.likeLinkToggle);
+    app.post('/likecourse', usersController.likeCourseToggle);
+    app.post('/bucket', usersController.addLinkToBucket);
+
   } else {
     console.warn(unsupportedMessage('users routes'));
   }
@@ -43,10 +53,25 @@ export default (app) => {
     );
   }
 
+  if (classController){
+    app.post('/class', classController.addClass);
+    app.get('/class', classController.getChildrenClasses);
+    app.get('/class/link', classController.getAllLinks);
+    app.get('/class/course', classController.getAllCourses);
+  }else{
+    console.warn(unsupportedMessage('class routes'));
+  }
+  
+  if(linkController){
+    app.post('/link', linkController.addLink);
+    app.delete('/link', linkController.deleteLink);
+  }else{
+    console.warn(unsupportedMessage('link routes'));
+  }
   // topic routes
   if (topicsController) {
     app.get('/topic', topicsController.all);
-    app.post('/topic/:id', topicsController.add);
+    app.post('/topic/:id', classController.addClass);
     app.put('/topic/:id', topicsController.update);
     app.delete('/topic/:id', topicsController.remove);
   } else {
