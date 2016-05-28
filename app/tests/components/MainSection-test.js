@@ -3,14 +3,14 @@ import ReactTestUtils from 'react-addons-test-utils';
 import expect from 'expect';
 import { wrap } from 'react-stateless-wrapper';
 import MainSection from 'components/MainSection';
-import TopicItem from 'components/TopicItem';
+import LinkItem from 'components/LinkItem';
 
 const WrappedMainSection = wrap(MainSection);
 
 describe('MainSection', () => {
   let result;
-  let topicItems;
-  const topicItemData = {
+  let linkItems;
+  const linkItemData = {
     text: '',
     id: '',
     index: 0,
@@ -23,21 +23,21 @@ describe('MainSection', () => {
     onDecrement: () => {},
     onDestroy: () => {}
   };
-  const topics = [topicItemData];
+  const links = [linkItemData];
 
-  describe('Has topics', () => {
-    it('should render TopicItems', () => {
-      result = ReactTestUtils.renderIntoDocument(<WrappedMainSection topics={topics} {...stubFunctions} />);
-      topicItems = ReactTestUtils.scryRenderedComponentsWithType(result, TopicItem);
-      expect(topicItems.length).toBe(1);
+  describe('Has links', () => {
+    it('should render LinkItems', () => {
+      result = ReactTestUtils.renderIntoDocument(<WrappedMainSection links={links} {...stubFunctions} />);
+      linkItems = ReactTestUtils.scryRenderedComponentsWithType(result, LinkItem);
+      expect(linkItems.length).toBe(1);
     });
   });
 
-  describe('Does not have topics', () => {
-    it('should not render TopicItems', () => {
-      result = ReactTestUtils.renderIntoDocument(<WrappedMainSection topics={[]} {...stubFunctions} />);
-      topicItems = ReactTestUtils.scryRenderedComponentsWithType(result, TopicItem);
-      expect(topicItems.length).toBe(0);
+  describe('Does not have links', () => {
+    it('should not render LinkItems', () => {
+      result = ReactTestUtils.renderIntoDocument(<WrappedMainSection links={[]} {...stubFunctions} />);
+      linkItems = ReactTestUtils.scryRenderedComponentsWithType(result, LinkItem);
+      expect(linkItems.length).toBe(0);
     });
   });
 });

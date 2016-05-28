@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from 'containers/App';
-import Vote from 'containers/Vote';
-import About from 'containers/About';
+import Tutorial from 'containers/Tutorial';
+import Course from 'containers/Course';
 import LoginOrRegister from 'containers/LoginOrRegister';
 import Dashboard from 'containers/Dashboard';
 
@@ -46,11 +46,11 @@ export default (store) => {
   };
   return (
     <Route path="/" component={App}>
-      {/* Vote 컴포넌트는 App 컴포넌트에서 children으로 사용될 것 */}
-      <IndexRoute component={Vote} />
+      {/* Tutorial 컴포넌트는 App 컴포넌트에서 children으로 사용될 것 */}
+      <IndexRoute component={Tutorial} />
       <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
       <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
-      <Route path="about" component={About} />
+      <Route path="course" component={Course} />
     </Route>
   );
 };

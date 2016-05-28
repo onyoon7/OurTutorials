@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'css/components/topic-item';
+import styles from 'css/components/link-item';
 
 const cx = classNames.bind(styles);
 
-export default class TopicItem extends Component {
+export default class LinkItem extends Component {
   constructor(props) {
     super(props);
     this.onIncrement = this.onIncrement.bind(this);
@@ -29,8 +29,8 @@ export default class TopicItem extends Component {
 
   render() {
     return (
-      <li className={cx('topic-item')} key={this.props.id}>
-        <span className={cx('topic')}>{this.props.text}</span>
+      <li className={cx('link-item')} key={this.props.id}>
+        <span className={cx('link')}>{this.props.text}</span>
         <button className={
           cx('button', 'increment')
         } onClick={this.onIncrement}>+</button>
@@ -45,7 +45,7 @@ export default class TopicItem extends Component {
   }
 }
 
-TopicItem.propTypes = {
+LinkItem.propTypes = {
   text: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,

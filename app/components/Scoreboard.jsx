@@ -4,26 +4,26 @@ import styles from 'css/components/scoreboard';
 
 const cx = classNames.bind(styles);
 
-const Scoreboard = ({topics}) => {
-  const topicListItems = topics.map((topic, key) => {
+const Scoreboard = ({links}) => {
+  const linkListItems = links.map((link, key) => {
     return (
     <li className={cx('item')} key={key}>
-      <span className={cx('topic')}>{topic.text}</span>
-      <span className={cx('count')}>{topic.count}</span>
+      <span className={cx('link')}>{link.text}</span>
+      <span className={cx('like')}>{link.like}</span>
     </li>);
   });
   return (
     <div className={cx('scoreboard')}>
-      <h3 className={cx('header')}>Vote count</h3>
+      <h3 className={cx('header')}>Tutorial like</h3>
       <ul className={cx('list')}>
-        {topicListItems}
+        {linkListItems}
       </ul>
     </div>
   );
 };
 
 Scoreboard.propTypes = {
-  topics: PropTypes.array.isRequired
+  links: PropTypes.array.isRequired
 };
 
 export default Scoreboard;
