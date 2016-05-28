@@ -1,7 +1,7 @@
 body {	color:#666;	font:300 15px/15px Roboto,Arial,Helvetica;background-color:#fff;-webkit-font-smoothing:antialiased;}
 
 a{color:#00a9c6; text-decoration:none;}
-a:hover{color:red; text-decoration:none;}
+a:hover{color:white; text-decoration:none;}
 .btn,a,.btn:hover,a:hover {
 -webkit-transition: all 0.3s ease-in-out;
 -moz-transition: all 0.3s ease-in-out;

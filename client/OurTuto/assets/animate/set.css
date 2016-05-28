@@ -703,7 +703,7 @@ figure.effect-oscar:hover p {
 }
 
 figure.effect-oscar:hover figcaption {
-	background-color: rgba(0,0,0,0.8);
+	background-color: rgba(28, 37, 255, 0.35);
 }
 
 figure.effect-oscar:hover img {

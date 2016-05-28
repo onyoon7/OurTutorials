@@ -77,7 +77,7 @@ export default React.createClass({
 
               <img src="images/link/4l.png" alt="img01"/>
               <figcaption>
-                <a href="https://www.google.com/" target="_black">asdf</a>
+                <a href="https://www.google.com/" target="_black">9등</a>
               </figcaption>
           </figure>
 
@@ -85,7 +85,7 @@ export default React.createClass({
 
               <img src="images/link/3l.png" alt="img01"/>
               <figcaption>
-                <a href="https://www.google.com/" target="_black">asdf</a>
+                <a href="https://www.google.com/" target="_black">10등</a>
               </figcaption>
           </figure>
 
@@ -93,7 +93,7 @@ export default React.createClass({
 
               <img src="images/link/1l.png" alt="img01"/>
               <figcaption>
-                <a href="https://www.google.com/" target="_black">asdf</a>
+                <a href="https://www.google.com/" target="_black">11등</a>
               </figcaption>
           </figure>
         </div>

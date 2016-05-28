@@ -28,7 +28,8 @@ export default React.createClass({
 */}
 {/*figure 요소는 사진 도표 삽화 오디오 비디오 등을 담는 컨테이너 역할을 하는 태그*/}
         <div id="works"  className=" clearfix grid">
-          <figure className="effect-oscar  wowload fadeInUp">
+
+          <figure className="effect-oscar  wowload fadeInUp">{/*mouseover effect*/}
               <img src="images/portfolio/1.png" alt="img01"/>
               <figcaption>
                 <h3>python</h3>
