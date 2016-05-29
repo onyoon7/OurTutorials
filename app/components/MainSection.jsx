@@ -20,20 +20,15 @@ const MainSection = ({onGetChildren, onGetLinks, onAdd, categories}) => {
     <div className={cx('main-section')}>
       <h3 className={cx('header')}>Choose A Category</h3>
       <ul className={cx('list')}>{categoryItems}</ul>
-      {/*<button onClick={this.props.onAdd}*/}/>
     </div>
   );
 };
 
 MainSection.propTypes = {
-  // links: PropTypes.array.isRequired,
-  // onIncrement: PropTypes.func.isRequired,
-  // onDecrement: PropTypes.func.isRequired,
-  // onDestroy: PropTypes.func.isRequired
   categories: PropTypes.array.isRequired,
   onGetChildren: PropTypes.func.isRequired,
   onGetLinks: PropTypes.func.isRequired,
-  // onAdd: PropTypes.func.isRequired
+  onAdd: PropTypes.func.isRequired
 };
 
 export default MainSection;

@@ -39,7 +39,7 @@ export function getAllLinks(id) {
   };
 }
 
-// export function addCategory(parentId, name) {
-//   type: types.ADD_CATEGORY,
-//   promise
-// }
+export function addCategory(parentId, name) {
+  type: types.ADD_CATEGORY,
+  promise
+}
