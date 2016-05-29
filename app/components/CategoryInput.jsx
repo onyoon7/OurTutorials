@@ -54,5 +54,5 @@ CategoryInput.propTypes = {
   value: PropTypes.string,
   onEntrySave: PropTypes.func,
   onEntryChange: PropTypes.func,
-  currentCategory: PropTypes.number
+  currentCategory: PropTypes.string
 };

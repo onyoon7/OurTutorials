@@ -21,6 +21,10 @@ export function makeLinkRequest(method, data, api='/category/link') {
   return request[method](api, data);
 }
 
+export function makeChildrenRequest(method, data, api='/category/children') {
+  return request[method](api, data);
+}
+
 export function fetchCategories() {
   return {
     type: types.GET_CATEGORIES,
@@ -29,11 +33,12 @@ export function fetchCategories() {
 }
 
 export function getChildren(id) {
+  console.log('parentId: ', id);
   return {
     type: types.GET_CHILDREN,
     id: id,
-    promise: makeCategoryRequest('get', {
-      classId : id
+    promise: makeChildrenRequest('post', {
+      categoryId : id
     })
   };
 }
@@ -42,14 +47,16 @@ export function getAllLinks(id) {
   return {
     type: types.GET_ALL_LINKS,
     promise: makeLinkRequest('get', {
-      classId: id
+      categoryId: id
     })
   };
 }
 
-export function addCategorySuccess() {
+export function addCategorySuccess(data) {
   return {
-    type: types.ADD_CATEGORY_SUCCESS
+    type: types.ADD_CATEGORY_SUCCESS,
+    id: data._id,
+    name: data.name
   };
 }
 
@@ -85,12 +92,14 @@ export function addCategory(parentId, name) {
       })
       .then(res => {
         if(res.status === 200) {
-          return dispatch(addCategorySuccess());
+          // console.log('success: ',res);
+          return dispatch(addCategorySuccess(res.data));
         }
       })
-      .catch(() => {
-        return dispatch(addCategoryFailure());
-      })
+      // .catch((err) => {
+      //   console.log('failure: ',err);
+      //   return dispatch(addCategoryFailure());
+      // })
     }
   }
 }

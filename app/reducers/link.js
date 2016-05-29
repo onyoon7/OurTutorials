@@ -12,7 +12,7 @@ import {
 
 export default function link(state = {
   links: [],
-  newLink: ''
+  newLink: '',
 }, action) {
   switch (action.type) {
     case TYPING:

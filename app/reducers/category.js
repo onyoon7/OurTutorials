@@ -8,7 +8,6 @@ import {
   GET_CATEGORIES_SUCCESS,
   GET_ALL_LINKS_FAILURE,
   GET_CATEGORIES_FAILURE,
-  ADD_CATEGORY_REQUEST,
   ADD_CATEGORY_SUCCESS,
   ADD_CATEGORY_FAILURE,
   TYPING,
@@ -17,7 +16,7 @@ import {
 
 export default function category(state = {
   categories: [],
-  currentCategory: null,
+  currentCategory: '',
   newCategory: '',
   links: []
 },action) {
@@ -35,7 +34,7 @@ export default function category(state = {
       return Object.assign({}, state, {
         isFetching: false,
         categories: action.req.data,
-        currentCategory: action.id
+        currentCategory: ''
       });
     case GET_CATEGORIES_FAILURE:
       return Object.assign({}, state, {
@@ -48,7 +47,8 @@ export default function category(state = {
     case GET_CHILDREN_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        categories: action.req.data
+        categories: action.req.data,
+        currentCategory: action.id
       });
     case GET_CHILDREN_FAILURE:
       return Object.assign({}, state, {
@@ -67,13 +67,11 @@ export default function category(state = {
       return Object.assign({}, state, {
         isFetching: false
       });
-    case ADD_CATEGORY_REQUEST:
-      return {
-
-      };
     case ADD_CATEGORY_SUCCESS:
       return {
-
+        categories: [...state.categories, {
+          _id: action.id, name: action.name
+        }]
       };
     case ADD_CATEGORY_FAILURE:
       return {

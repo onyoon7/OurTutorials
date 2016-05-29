@@ -27,7 +27,7 @@ const EntryBox = ({onEntryChange, onEntrySave, newCategory, currentCategory}) =>
 
 EntryBox.propTypes = {
   newCategory: PropTypes.string,
-  currentCategory: PropTypes.number,
+  currentCategory: PropTypes.string,
   onEntryChange: PropTypes.func.isRequired,
   onEntrySave: PropTypes.func.isRequired
 };
