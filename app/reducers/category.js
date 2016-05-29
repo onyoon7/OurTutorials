@@ -2,22 +2,30 @@ import {
   GET_CHILDREN_REQUEST,
   GET_CHILDREN_SUCCESS,
   GET_CHILDREN_FAILURE,
-  ADD_CLASS,
   GET_ALL_LINKS_REQUEST,
   GET_ALL_LINKS_SUCCESS,
   GET_CATEGORIES_REQUEST,
   GET_CATEGORIES_SUCCESS,
   GET_ALL_LINKS_FAILURE,
   GET_CATEGORIES_FAILURE,
+  ADD_CATEGORY_REQUEST,
+  ADD_CATEGORY_SUCCESS,
+  ADD_CATEGORY_FAILURE,
+  TYPING,
 } from 'types';
 
 
 export default function category(state = {
   categories: [],
+  currentCategory: null,
   newCategory: '',
   links: []
 },action) {
   switch (action.type) {
+    case TYPING:
+      return Object.assign({}, state, {
+        newCategory: action.newCategory
+      })
     case GET_CATEGORIES_REQUEST:
       console.log('Request!!!')
       return Object.assign({}, state, {
@@ -26,7 +34,8 @@ export default function category(state = {
     case GET_CATEGORIES_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        categories: action.req.data
+        categories: action.req.data,
+        currentCategory: action.id
       });
     case GET_CATEGORIES_FAILURE:
       return Object.assign({}, state, {
@@ -58,6 +67,18 @@ export default function category(state = {
       return Object.assign({}, state, {
         isFetching: false
       });
+    case ADD_CATEGORY_REQUEST:
+      return {
+
+      };
+    case ADD_CATEGORY_SUCCESS:
+      return {
+
+      };
+    case ADD_CATEGORY_FAILURE:
+      return {
+
+      };
 
     default:
       return state;

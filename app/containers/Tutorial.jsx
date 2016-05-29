@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import MainSection from 'components/MainSection';
-import { fetchCategories, getChildren, addCategory, getAllLinks } from 'actions/categories'
+import EntryBox from 'components/EntryBox';
+import { fetchCategories, getChildren, addCategory, getAllLinks, typing } from 'actions/categories'
 import styles from 'css/components/Tutorial';
 
 const cx = classNames.bind(styles);
@@ -19,13 +20,16 @@ class Tutorial extends Component {
   ]
 
   render() {
-    const {categories, currentCategory, getChildren, getAllLinks, addCategory } = this.props;
+    const {currentCategory, newCategory, categories, getChildren, getAllLinks, addCategory, typing } = this.props;
     return (
       <div className={cx('Tutorial')}>
         <MainSection categories={categories}
-          onAdd = { addCategory }
-          onGetChildren = { getChildren }
-          onGetLinks = { getAllLinks }/>
+          onGetChildren = {getChildren}
+          onGetLinks = {getAllLinks}/>
+        <EntryBox newCategory = {newCategory}
+          currentCategory = {currentCategory}
+          onEntryChange = {typing}
+          onEntrySave = {addCategory}/>
       </div>
     );
   }
@@ -33,15 +37,18 @@ class Tutorial extends Component {
 
 Tutorial.propTypes = {
   categories: PropTypes.array.isRequired,
-  currentCategory: PropTypes.string,
+  currentCategory: PropTypes.number,
+  newCategory: PropTypes.string,
   getChildren: PropTypes.func.isRequired,
-  addCategory: PropTypes.func.isRequired,
   getAllLinks: PropTypes.func.isRequired,
+  addCategory: PropTypes.func.isRequired,
+  typing: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
     categories: state.category.categories,
+    newCategory: state.category.newCategory,
     currentCategory: state.category.currentCategory
   };
 }
@@ -52,5 +59,5 @@ function mapStateToProps(state) {
 // Tutorial 컴포넌트를 리덕스 스토어와 연결한 새 컴포넌트를 export하는데, 이 때 connect된 객체가 가지는 props에는 액션이 dispatch로 wrap 돼 있기 떄문에 호출할 경우 바로 dispatch가 일어난다.
 
 export default connect(mapStateToProps, {
-  getChildren, addCategory, getAllLinks}
+  getChildren, addCategory, getAllLinks, typing}
 )(Tutorial);
