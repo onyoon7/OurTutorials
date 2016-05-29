@@ -24,7 +24,8 @@
   }
 
   .alternative-link {
-    color: color-dodger-blue;
+
+    color: purple;
     font-weight: bold;
 
     cursor: pointer;
@@ -43,6 +44,7 @@
 
   .google-container {
     padding: 16px 12px;
+    height: 50px;
   }
 
   .header {}

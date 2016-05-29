@@ -21,8 +21,8 @@
 .greenButton {
   composes: button;
 
-  background: color-salem;
-  border-color: color-salem;
+  background: purple;
+  border-color: gray;
 
   color: color-white;
 

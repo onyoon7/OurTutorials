@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 const Course = () => {
   return (
     <div className={cx('course')}>
-      <h1 className={cx('header')}>OurTutorials Course</h1>
+      <div className={cx('header')}>OurTutorials Course</div>
       <div className={cx('description')}>
         <p>Imagine an ocean of ninjas. Now think of it as a metaphor.<br />
           Seriously, we love good tech. React, redux, scala, Haskell, machine learning, you name it!
