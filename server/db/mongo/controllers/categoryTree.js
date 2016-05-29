@@ -3,17 +3,13 @@ const Link = require('../models/links');
 
 module.exports = {
 	getChildrenCategories : (req, res, next) =>{
-
-		// new CategoryTree({
-		// 			name:'javascript'
-		// })
-		// .save()
-		// .then(r => console.log(r))
-
-
 		let myId;
 		if(req && req.body) {
+<<<<<<< HEAD
 			//console.log(req)
+=======
+
+>>>>>>> fba1e962865a61bdf9a1ea5ca3c605fe830a06a4
 			myId = req.body.categoryId
 		}
 		CategoryTree.findOne({
@@ -21,8 +17,11 @@ module.exports = {
 		})
 		.then((me) => {
 			if(me){
+<<<<<<< HEAD
 
 				//console.log('me is ',me)
+=======
+>>>>>>> fba1e962865a61bdf9a1ea5ca3c605fe830a06a4
 				LinkIds = [];
 				for(let i=0; i<me.children.length; i++){
 				id.push(me.children[i].childId);
@@ -32,8 +31,12 @@ module.exports = {
 				    '_id': { $in: id}
 				})
 				.then((children) => {
+<<<<<<< HEAD
 					//console.log(children);
 					res.json(children);
+=======
+					res.status(200).json(children);
+>>>>>>> fba1e962865a61bdf9a1ea5ca3c605fe830a06a4
 				})
 				.catch(e => console.log(e))
 			}else{
@@ -42,8 +45,14 @@ module.exports = {
 					parent:[]
 				})
 				.then((children) =>{
+<<<<<<< HEAD
 					console.log('children: ',children);
 					res.json(children);
+=======
+
+					console.log(children);
+					res.status(200).json(children);
+>>>>>>> fba1e962865a61bdf9a1ea5ca3c605fe830a06a4
 				})
 				.catch(e => console.log(e))
 			}
@@ -117,31 +126,28 @@ module.exports = {
 		//예 : '자바스크립트' 클래스에 '서버'클래스를 붙이고 싶으면
 		//'자바스크립트'클래스 아이디와 '서버'클래스 아이디를 붙이면 됨.
 		let parentId = req.body.parentId;
-		let newTreeName = req.body.newCategoryName
-		let newTreeParent;
+		let newCategoryName = req.body.newCategoryName
+		console.log(parentId,newCategoryName);
+		let newCategoryParent;
 		CategoryTree.findOne({
 			_id: parentId
 		})
 		.then((parent) => {
 			if(!parent){
-				newTreeParent = [];
+				newCategoryParent = [];
 			}else{
-			newTreeParent = parent.parent.slice();
-			newTreeParent.push({
+			newCategoryParent = parent.parent.slice();
+			newCategoryParent.push({
 					parentId:parent._id,
 					name: parent.name
 				});
 			}
 			new CategoryTree({
-			name: newTreeName,
-			parent: newTreeParent
+			name: newCategoryName,
+			parent: newCategoryParent
 			})
 			.save()
-			.catch((e) => {
-				return console.error(e);
-			})
 			.then((newCategory) => {
-				console.log('success ',newCategory);
 				if(parent){
 					parent.children.push({
 						childId: newCategory._id,
@@ -152,9 +158,14 @@ module.exports = {
 						res.status(200).json({message:'category saved successfully'});
 					})
 					.catch((e) =>{
-						return console.error('ERROR :saving newCategory\'s id to parent Category\' children array ', e)
+						return console.error(e);
 					})
+				}else{
+					res.status(200).json({message:'category saved successfully'});
 				}
+			})
+			.catch((e) => {
+				return console.error(e);
 			})
 		})
 		.catch((e) => {

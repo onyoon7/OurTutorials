@@ -1,5 +1,24 @@
 /* gridChild Common style */
 
+
+.gridMenu {
+	position: relative;
+	margin: 0 auto;
+	list-style: none;
+	text-align: center;
+}
+.gridMenu figure {
+	position: relative;
+
+	overflow: hidden;
+	margin: 0;	/*change here for spacing*/
+	width: 25%;
+	height: 50px;
+	float: left;
+	text-align: center;
+	cursor: pointer;
+}
+
 .gridChild {
 	position: relative;
 	margin: 0 auto;
@@ -13,7 +32,7 @@
 	overflow: hidden;
 	margin: 0;	/*change here for spacing*/
 	width: 100%;
-	height: 10%;
+	height: 100px;
 	text-align: center;
 	cursor: pointer;
 }
@@ -45,9 +64,6 @@
 	width: 100%;
 	height: 100%;
 }
-
-
-
 
 
 /* grid Common style */
