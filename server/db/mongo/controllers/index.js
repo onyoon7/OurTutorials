@@ -13,3 +13,6 @@ export default {
   links,
   courses
 };
+
+
+categoryTrees.getChildrenCategories()
