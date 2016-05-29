@@ -181,6 +181,40 @@ module.exports = {
 		})
 	},
 	deleteCategoryTree : (req, res, next) => {
+		let cateogryId = req.body.categoryId;
+		let returnArray = [];
+		CategoryTree.findOne({
+			_id:categoryId
+		})
+		.then(r => {
+			if(!r){
+				res.status(404).json({message: 'no category with this id : ',id})
+			}else{
+				r.remove()
+				.then(removed =>{
+					//하위의 모든 카테고리를 삭제 해 줍니다.
+					CategoryTree.find({
+						'parent.parentId': removed._id
+					})
+					.remove()
+					.then((children)=>{
+						// if(!children) { res.json({message: 'this category has no children.'})}
+						// console.log(' successfully found All children ')
+						// for(let i=0; i<children.length; i++){
+						// 	console.log(children[i].name);
+						// 	returnArray = returnArray.concat(children[i].courses)
+						// }
+						res.status(200).json({message: 'successfully deleted.'})
+					})
+					.catch((e) => {
+						console.error('Error :' , e)
+					})
+				})
+				.catch(e => console.log(e))
+			}
+
+		})
+		.catch(e => console.log(e))
 		//delete relationship with parent
 		//delete all children node.
 	}
