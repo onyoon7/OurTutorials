@@ -44,6 +44,20 @@ const makeDummyCategory = (name, parentName)=>{
 
 }
 
+const makeDelete = (name) =>{
+	Category.findOne({
+		name : name
+	})
+	.then(r =>{
+		console.log('name is ', r.name)
+		let req = {};
+		req.body = {};
+		req.body.categoryId = r._id
+		cateFunc.deleteCategryTree(req);
+	})
+}
+
+makeDelete('server');
 
 //(1) parent
 // makeDummyCategory('javascript');
