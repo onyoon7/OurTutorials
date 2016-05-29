@@ -30,6 +30,7 @@ export default class CategoryInput extends Component {
    * @param  {object} event
    */
   onKeyDown(event) {
+    console.log('keyDown');
     if (event.keyCode === ENTER_KEY_CODE) {
       this.onSave();
     }
