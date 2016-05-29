@@ -7,8 +7,6 @@ import classNames from 'classnames/bind';
 import styles from 'css/components/navigation';
 import logo from 'images/logo.png';
 
-
-
 const cx = classNames.bind(styles);
 
 const Navigation = ({ user, logOut }) => {

@@ -3,6 +3,7 @@ import Navigation from 'containers/Navigation';
 import Message from 'containers/Message';
 import classNames from 'classnames/bind';
 import styles from 'css/main';
+import bootstrap from 'css/bootstrap/css/bootstrap'
 
 const cx = classNames.bind(styles);
 
