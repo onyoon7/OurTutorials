@@ -52,9 +52,10 @@ export function getAllLinks(id) {
   };
 }
 
-export function addCategorySuccess(data) {
+export function addCategorySuccess(data,parentId) {
   return {
     type: types.ADD_CATEGORY_SUCCESS,
+    parentId: parentId,
     id: data._id,
     name: data.name
   };
@@ -93,13 +94,13 @@ export function addCategory(parentId, name) {
       .then(res => {
         if(res.status === 200) {
           // console.log('success: ',res);
-          return dispatch(addCategorySuccess(res.data));
+          return dispatch(addCategorySuccess(res.data, parentId));
         }
       })
-      // .catch((err) => {
-      //   console.log('failure: ',err);
-      //   return dispatch(addCategoryFailure());
-      // })
+      .catch((err) => {
+        console.log('failure: ',err);
+        return dispatch(addCategoryFailure());
+      })
     }
   }
 }

@@ -71,7 +71,8 @@ export default function category(state = {
       return {
         categories: [...state.categories, {
           _id: action.id, name: action.name
-        }]
+        }],
+        currentCategory: action.parentId
       };
     case ADD_CATEGORY_FAILURE:
       return {
