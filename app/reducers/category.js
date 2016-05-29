@@ -2,13 +2,15 @@ import {
   GET_CHILDREN_REQUEST,
   GET_CHILDREN_SUCCESS,
   GET_CHILDREN_FAILURE,
-  ADD_CLASS,
   GET_ALL_LINKS_REQUEST,
   GET_ALL_LINKS_SUCCESS,
   GET_CATEGORIES_REQUEST,
   GET_CATEGORIES_SUCCESS,
   GET_ALL_LINKS_FAILURE,
   GET_CATEGORIES_FAILURE,
+  ADD_CATEGORY_REQUEST,
+  ADD_CATEGORY_SUCCESS,
+  ADD_CATEGORY_FAILURE,
 } from 'types';
 
 
@@ -58,6 +60,10 @@ export default function category(state = {
       return Object.assign({}, state, {
         isFetching: false
       });
+    case ADD_CATEGORY_REQUEST:
+      return {
+
+      }
 
     default:
       return state;
