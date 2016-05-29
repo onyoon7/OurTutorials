@@ -1,11 +1,11 @@
 var Link = require('../models/links');
 var User = require('../models/user');
-var ClassTree = require('../models/classTree')
+var CategoryTree = require('../models/categoryTree')
 
 const LinkFunction = {
 		addLink: (req, res, next) => {
 		let userId = req.body.userId;
-		let classId = req.body.classId;
+		let categoryId = req.body.categoryId;
 		let link = req.body.link;
 		let title = req.body.title;
 		let tag = req.body.tag;
@@ -26,13 +26,13 @@ const LinkFunction = {
 				user
 				.save()
 				.then((saved) => {
-					//링크를 class에 넣는다.(classTree에 링크를 class에 넣는 함수가 또 하나 있으니 사용해도 됨.)
-					ClassTree.findOne({
-						_id: classId
+					//링크를 category에 넣는다.(categoryTree에 링크를 category에 넣는 함수가 또 하나 있으니 사용해도 됨.)
+					CategoryTree.findOne({
+						_id: categoryId
 					})
-					.then((foundClass) => {
-						foundClass.links.push(savedLink._id);
-						foundClass
+					.then((foundCategory) => {
+						foundCategory.links.push(savedLink._id);
+						foundCategory
 						.save()
 						.then((r) => {
 							console.log('successfully link saved. ',r)
@@ -66,13 +66,13 @@ const LinkFunction = {
 				user.save()
 				.then((savedUser) => {
 					//클래스에 가서 삭제하기.
-					ClassTree.findOne({
+					CategoryTree.findOne({
 						links : linkId
 					})
-					.then((classNode) => {
-						if(!classNode) return console.error('No Class that have this link in links.')
-						classNode.links.splice(classNode.links.indexOf(linkId),1);
-						classNode.save()
+					.then((categoryNode) => {
+						if(!categoryNode) return console.error('No Category that have this link in links.')
+						categoryNode.links.splice(categoryNode.links.indexOf(linkId),1);
+						categoryNode.save()
 						.then((r) => {
 							console.log('successfully deleted.');
 							res.status(200).json(r);

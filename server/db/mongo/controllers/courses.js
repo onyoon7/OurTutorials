@@ -1,4 +1,4 @@
-const ClassTree = require('../models/classTree');
+const CategoryTree = require('../models/categoryTree');
 const Course = require('../models/courses');
 const User = require('../models/user')
 
@@ -8,8 +8,8 @@ module.exports = {
 		//코스 만들고, 만들어진 코스의 아이디를 해당 클래스와 유저의 mycourse에 넣는다.
 		let userId = req.body.userId;
 		let courseData = req.body.courseData;
-		let classId = req.body.classId//nested object형태를 띈 contents입니다.
-		console.log(userId, courseData, classId);
+		let categoryId = req.body.categoryId//nested object형태를 띈 contents입니다.
+		console.log(userId, courseData, categoryId);
 		new Course(
 			courseData
 		)
@@ -22,14 +22,14 @@ module.exports = {
 				user.myCourse.push(savedCourse._id);
 				user.save()
 				.then(user =>{
-					ClassTree.findOne({
-						_id: classId
+					CategoryTree.findOne({
+						_id: categoryId
 					})
-					.then(classNode =>{
-						classNode.courses.push(savedCourse._id);
-						classNode.save()
-						.then(classNode =>{
-							console.log('successfully saved.', classNode.courses, user.myCourse);
+					.then(categoryNode =>{
+						categoryNode.courses.push(savedCourse._id);
+						categoryNode.save()
+						.then(categoryNode =>{
+							console.log('successfully saved.', categoryNode.courses, user.myCourse);
 							res.status(200).json(savedCourse);
 						})
 						.catch(e => console.error(e))
@@ -55,12 +55,12 @@ module.exports = {
 				user.myCourse.splice(user.myCourse.indexOf(courseId),1);
 				user.save()
 				.then( savedUser=> {
-					ClassTree.findOne({
+					CategoryTree.findOne({
 						courses: courseId
 					})
-					.then(classNode =>{
-						classNode.courses.splice(classNode.courses.indexOf(courseId),1);
-						classNode.save()
+					.then(categoryNode =>{
+						categoryNode.courses.splice(categoryNode.courses.indexOf(courseId),1);
+						categoryNode.save()
 						.then(fn=>{
 							res.status(200).json({message: 'completely deleted'});
 						})

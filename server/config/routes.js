@@ -54,14 +54,14 @@ export default (app) => {
   }
 
   if (classController){
-    app.post('/class', classController.addClass);
-    app.get('/class', classController.getChildrenClasses);
+    app.post('/class', classController.addCategory);
+    app.get('/class', classController.getChildrenCategories);
     app.get('/class/link', classController.getAllLinks);
     app.get('/class/course', classController.getAllCourses);
   }else{
     console.warn(unsupportedMessage('class routes'));
   }
-  
+
   if(linkController){
     app.post('/link', linkController.addLink);
     app.delete('/link', linkController.deleteLink);
@@ -71,7 +71,7 @@ export default (app) => {
   // topic routes
   if (topicsController) {
     app.get('/topic', topicsController.all);
-    app.post('/topic/:id', classController.addClass);
+    app.post('/topic/:id', classController.addCategory);
     app.put('/topic/:id', topicsController.update);
     app.delete('/topic/:id', topicsController.remove);
   } else {

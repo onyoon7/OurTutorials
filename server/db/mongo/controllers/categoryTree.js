@@ -1,10 +1,10 @@
-const ClassTree = require('../models/classTree');
+const CategoryTree = require('../models/categoryTree');
 const Link = require('../models/links');
 
 module.exports = {
-	getChildrenClasses : (req, res, next) =>{
-		let MyId = req.body.classId;
-		ClassTree.findOne({
+	getChildrenCategories : (req, res, next) =>{
+		let MyId = req.body.categoryId;
+		CategoryTree.findOne({
 			_id: myId
 		})
 		.then((me) => {
@@ -27,15 +27,15 @@ module.exports = {
 	},
 	getAllLinks : (req, res, next) =>{
 		//특정 클래스로부터 자식 클래스에 이르기까지 하위 모든 클래스의 링크들을 전부 배열로 가져옴.
-		let currentClassId = req.body.classId;
+		let currentCategoryId = req.body.categoryId;
 		let returnArray = [];
-		ClassTree.findOne({
-			_id : currentClassId
+		CategoryTree.findOne({
+			_id : currentCategoryId
 		})
 		.then(me => {
 			returnArray = returnArray.concat(me.links)
-			ClassTree.find({
-				'parent.parentId': currentClassId
+			CategoryTree.find({
+				'parent.parentId': currentCategoryId
 			})
 			.then((children)=>{
 				console.log(' successfully found All children ')
@@ -51,20 +51,20 @@ module.exports = {
 			})
 		})
 		.catch(e => console.log(e));
-		
+
 	},
 	getAllCourses : (req, res, next) =>{
 		//특정 클래스로부터 자식 클래스에 이르기까지 하위 모든 클래스의 링크들을 전부 배열로 가져옴.
-		let currentClassId = req.body.classId;
+		let currentCategoryId = req.body.categoryId;
 		let returnArray = [];
 
-		ClassTree.findOne({
-			_id : currentClassId
+		CategoryTree.findOne({
+			_id : currentCategoryId
 		})
 		.then(me => {
 			returnArray = returnArray.concat(me.courses);
-			ClassTree.find({
-				'parent.parentId': currentClassId
+			CategoryTree.find({
+				'parent.parentId': currentCategoryId
 			})
 			.then((children)=>{
 				console.log(' successfully found All children ')
@@ -80,16 +80,16 @@ module.exports = {
 			})
 		})
 		.catch(e =>console.log(e))
-		
+
 	},
-	addClass : (req, res, next) =>{
+	addCategory : (req, res, next) =>{
 		//클래스를 특정 부모 클래스 밑에 붙인다.
 		//예 : '자바스크립트' 클래스에 '서버'클래스를 붙이고 싶으면
 		//'자바스크립트'클래스 아이디와 '서버'클래스 아이디를 붙이면 됨.
 		let parentId = req.body.parentId;
-		let newTreeName = req.body.newClassName
+		let newTreeName = req.body.newCategoryName
 		let newTreeParent;
-		ClassTree.findOne({
+		CategoryTree.findOne({
 			_id: parentId
 		})
 		.then((parent) => {
@@ -102,7 +102,7 @@ module.exports = {
 					name: parent.name
 				});
 			}
-			new ClassTree({				
+			new CategoryTree({
 			name: newTreeName,
 			parent: newTreeParent
 			})
@@ -110,19 +110,19 @@ module.exports = {
 			.catch((e) => {
 				return console.error(e);
 			})
-			.then((newClass) => {
-				console.log('success ',newClass);
+			.then((newCategory) => {
+				console.log('success ',newCategory);
 				if(parent){
 					parent.children.push({
-						childId: newClass._id,
-						name: newClass.name
+						childId: newCategory._id,
+						name: newCategory.name
 					});
 					parent.save()
 					.then((r)=>{
-						res.status(200).json({message:'class saved successfully'});
+						res.status(200).json({message:'category saved successfully'});
 					})
 					.catch((e) =>{
-						return console.error('ERROR :saving newClass\'s id to parent Class\' children array ', e)
+						return console.error('ERROR :saving newCategory\'s id to parent Category\' children array ', e)
 					})
 				}
 			})
@@ -133,15 +133,15 @@ module.exports = {
 	},
 	//특정 클래스에 링크를 저장해주는 함수.
 	//이를 위해 링크를 추가해줄 클래스의 _id와 link의 _id를 인수로 받는다.
-	addLinktoClass : function (req, res, next){
-		let classId = req.body.classId;
+	addLinktoCategory : function (req, res, next){
+		let categoryId = req.body.categoryId;
 		let linkId = req.body.linkId;
-		ClassTree.findOne({
-			_id:classId
+		CategoryTree.findOne({
+			_id:categoryId
 		})
 		.then((result) => {
 			if(!result) {
-				return console.error('ERROR: NO CLASS FOUND WHEN ADDING LINK TO CLASS.')
+				return console.error('ERROR: NO CATEGORY FOUND WHEN ADDING LINK TO CATEGORY.')
 			}else {
 				result.children.push(linkId);
 				result.save()
@@ -154,7 +154,7 @@ module.exports = {
 			}
 		})
 	},
-	deleteClassTree : (req, res, next) => {
+	deleteCategoryTree : (req, res, next) => {
 		//delete relationship with parent
 		//delete all children node.
 	}
