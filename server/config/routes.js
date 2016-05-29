@@ -58,6 +58,7 @@ export default (app) => {
     app.get('/category', categoryController.getChildrenCategories);
     app.get('/category/link', categoryController.getAllLinks);
     app.get('/category/course', categoryController.getAllCourses);
+    app.delete('/category', categoryController.deleteCategoryTree);
   }else{
     console.warn(unsupportedMessage('category routes'));
   }
