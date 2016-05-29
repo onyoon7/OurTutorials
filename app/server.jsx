@@ -122,18 +122,17 @@ export default function render(req, res) {
                  <li ><a href="#contact">contact</a></li>
               </ul>
             </div>
+            -->
 
+              <div id="app">${componentHTML}</div>
 
-              <div class="footer text-center spacer">
+               <div class="footer text-center spacer">
               <p class="wowload flipInX"></p>
               Copyright 2016 Code Hot-guys Studio. All rights reserved.
               </div>
 
               <a href="#works" class="gototop"><i class="fa fa-angle-up  fa-3x"></i></a>
 
-            -->
-
-              <div id="app">${componentHTML}</div>
               <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};</script>
               <script type="text/javascript" charset="utf-8" src="/assets/app.js"></script>
             </body>

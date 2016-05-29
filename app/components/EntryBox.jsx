@@ -17,7 +17,7 @@ const EntryBox = ({onEntryChange, onEntrySave, newCategory, currentCategory}) =>
       <CategoryInput
         className={cx('input')}
         value={newCategory}
-        placeholder="Do you want to add a new Category?"
+        placeholder="+ Add Category!! +"
         currentCategory={currentCategory}
         onEntryChange={onEntryChange}
         onEntrySave={onEntrySave} />
