@@ -30,6 +30,10 @@ class Tutorial extends Component {
           onEntryChange={typing}
           onEntrySave={createLink} />
         <MainSection categories={categories}
+          /*onIncrement={incrementLike}
+          onDecrement={decrementLike}
+          onDestroy={destroyLink}
+          onAdd = { addCategory }*/
           onGetChildren = { getChildren }
           onGetLinks = { getAllLinks }/>
         <Scoreboard links={links} />
@@ -72,5 +76,5 @@ function mapStateToProps(state) {
 // export default connect(mapStateToProps, { createLink, typing, incrementLike, decrementLike, destroyLink })(Tutorial);
 
 export default connect(mapStateToProps, {
-  createLink, typing, getChildren, addCategory, getAllLinks
-})(Tutorial);
+  createLink, typing, getChildren, addCategory, getAllLinks}
+)(Tutorial);
