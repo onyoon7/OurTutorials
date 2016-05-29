@@ -1,7 +1,7 @@
 require('babel-preset-es2015')
 
 const mongoose = require('mongoose');
-const dburl = 'mongodb://localhost/tutorial'
+const dburl = 'mongodb://localhost/ReactWebpackNode'
 
 var User = require('./models/user');
 var Link = require('./models/links');
@@ -27,10 +27,10 @@ const makeDummyCategory = (name, parentName)=>{
 	req.body = {};
 	req.body.newCategoryName = name;
 	if(!parentName){
-	
+
 		req.body.parentId = null;
-		
-		cateFunc.addCategory(req);	
+
+		cateFunc.addCategory(req);
 	}else{
 		Category.findOne({
 			name: parentName
@@ -41,7 +41,7 @@ const makeDummyCategory = (name, parentName)=>{
 		})
 
 	}
-	
+
 }
 
 //(1) parent
@@ -116,7 +116,7 @@ const makeDummyCategory = (name, parentName)=>{
 // 		req.body.title = 'es111 nodejs site.';
 // 		req.body.tag = ['nodejs', 'official', 'site'];
 // 		linkFunc.addLink(req)
-// 	})	
+// 	})
 // })
 
 //5.delete Link.
@@ -156,7 +156,7 @@ const makeDummyCategory = (name, parentName)=>{
 // 	})
 // })
 // .then(user => {
-// 	return new Promise((resolve, reject) => {		
+// 	return new Promise((resolve, reject) => {
 // 		Link.findOne({_id:user.myLink[0]})
 // 		.then(Link => resolve(Link))
 // 		})
@@ -178,7 +178,7 @@ const makeDummyCategory = (name, parentName)=>{
 // 	summary: '지우기용입니다.',
 // 	contents: [
 // 			{
-// 				title: '첫 번째 단원 ', 
+// 				title: '첫 번째 단원 ',
 // 				links: ['naver.com','mongodb.com']
 // 			},{
 // 				title: '두 번쨰 단원',
@@ -231,7 +231,7 @@ const makeDummyCategory = (name, parentName)=>{
 // 		req.body.linkId = r._id
 // 		req.body.userId = user._id
 // 		userFunc.likeLinkToggle(req)
-// 	})	
+// 	})
 // })
 
 

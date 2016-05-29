@@ -5,11 +5,6 @@ module.exports = {
 	getChildrenCategories : (req, res, next) =>{
 		let myId;
 		if(req && req.body) {
-<<<<<<< HEAD
-			//console.log(req)
-=======
-
->>>>>>> fba1e962865a61bdf9a1ea5ca3c605fe830a06a4
 			myId = req.body.categoryId
 		}
 		CategoryTree.findOne({
@@ -17,11 +12,7 @@ module.exports = {
 		})
 		.then((me) => {
 			if(me){
-<<<<<<< HEAD
 
-				//console.log('me is ',me)
-=======
->>>>>>> fba1e962865a61bdf9a1ea5ca3c605fe830a06a4
 				LinkIds = [];
 				for(let i=0; i<me.children.length; i++){
 				id.push(me.children[i].childId);
@@ -31,12 +22,9 @@ module.exports = {
 				    '_id': { $in: id}
 				})
 				.then((children) => {
-<<<<<<< HEAD
-					//console.log(children);
-					res.json(children);
-=======
+
 					res.status(200).json(children);
->>>>>>> fba1e962865a61bdf9a1ea5ca3c605fe830a06a4
+
 				})
 				.catch(e => console.log(e))
 			}else{
@@ -45,14 +33,8 @@ module.exports = {
 					parent:[]
 				})
 				.then((children) =>{
-<<<<<<< HEAD
-					console.log('children: ',children);
-					res.json(children);
-=======
-
 					console.log(children);
 					res.status(200).json(children);
->>>>>>> fba1e962865a61bdf9a1ea5ca3c605fe830a06a4
 				})
 				.catch(e => console.log(e))
 			}
