@@ -13,7 +13,7 @@ module.exports = {
 
 		let myId;
 		if(req && req.body) {
-			console.log(req)
+			//console.log(req)
 			myId = req.body.categoryId
 		}
 		CategoryTree.findOne({
@@ -22,7 +22,7 @@ module.exports = {
 		.then((me) => {
 			if(me){
 
-				console.log('me is ',me)
+				//console.log('me is ',me)
 				LinkIds = [];
 				for(let i=0; i<me.children.length; i++){
 				id.push(me.children[i].childId);
@@ -32,22 +32,22 @@ module.exports = {
 				    '_id': { $in: id}
 				})
 				.then((children) => {
-					console.log(children);
+					//console.log(children);
 					res.json(children);
 				})
 				.catch(e => console.log(e))
 			}else{
-				console.log('me..? ',me)
+				//console.log('me..? ',me)
 				CategoryTree.find({
 					parent:[]
 				})
 				.then((children) =>{
-					console.log(children);
+					console.log('children: ',children);
 					res.json(children);
 				})
 				.catch(e => console.log(e))
 			}
-			
+
 		})
 		.catch((e) => {
 			console.error(e)

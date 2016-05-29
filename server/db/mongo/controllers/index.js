@@ -15,4 +15,4 @@ export default {
 };
 
 
-categoryTrees.getChildrenCategories()
+// categoryTrees.getChildrenCategories()

@@ -25,14 +25,10 @@ const MainSection = ({onGetChildren, onGetLinks, onAdd, categories}) => {
 };
 
 MainSection.propTypes = {
-  // links: PropTypes.array.isRequired,
-  // onIncrement: PropTypes.func.isRequired,
-  // onDecrement: PropTypes.func.isRequired,
-  // onDestroy: PropTypes.func.isRequired
   categories: PropTypes.array.isRequired,
   onGetChildren: PropTypes.func.isRequired,
   onGetLinks: PropTypes.func.isRequired,
-  // onAdd: PropTypes.func.isRequired
+  onAdd: PropTypes.func.isRequired
 };
 
 export default MainSection;

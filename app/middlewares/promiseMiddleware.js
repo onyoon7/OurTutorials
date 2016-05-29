@@ -12,6 +12,9 @@ export default function promiseMiddleware() {
     const SUCCESS = type + '_SUCCESS';
     const REQUEST = type + '_REQUEST';
     const FAILURE = type + '_FAILURE';
+    console.log(REQUEST);
+    // console.log('next: ',next);
+    // console.log('rest: ',...rest);
     next({ ...rest, type: REQUEST });
     return promise
       .then(req => {
