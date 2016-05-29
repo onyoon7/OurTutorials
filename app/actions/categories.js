@@ -47,9 +47,11 @@ export function getAllLinks(id) {
   };
 }
 
-export function addCategorySuccess() {
+export function addCategorySuccess(data) {
   return {
-    type: types.ADD_CATEGORY_SUCCESS
+    type: types.ADD_CATEGORY_SUCCESS,
+    id: data._id,
+    name: data.name
   };
 }
 
@@ -85,12 +87,14 @@ export function addCategory(parentId, name) {
       })
       .then(res => {
         if(res.status === 200) {
-          return dispatch(addCategorySuccess());
+          // console.log('success: ',res);
+          return dispatch(addCategorySuccess(res.data));
         }
       })
-      .catch(() => {
-        return dispatch(addCategoryFailure());
-      })
+      // .catch((err) => {
+      //   console.log('failure: ',err);
+      //   return dispatch(addCategoryFailure());
+      // })
     }
   }
 }

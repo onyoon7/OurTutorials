@@ -109,7 +109,7 @@ module.exports = {
 		//'자바스크립트'클래스 아이디와 '서버'클래스 아이디를 붙이면 됨.
 		let parentId = req.body.parentId;
 		let newCategoryName = req.body.newCategoryName
-		console.log(parentId,newCategoryName);
+		console.log('parentId, newCategoryName: ',parentId,newCategoryName);
 		let newCategoryParent;
 		CategoryTree.findOne({
 			_id: parentId
@@ -137,13 +137,13 @@ module.exports = {
 					});
 					parent.save()
 					.then((r)=>{
-						res.status(200).json({message:'category saved successfully'});
+						res.status(200).json(newCategory);
 					})
 					.catch((e) =>{
 						return console.error(e);
 					})
 				}else{
-					res.status(200).json({message:'category saved successfully'});
+					res.status(200).json(newCategory);
 				}
 			})
 			.catch((e) => {
