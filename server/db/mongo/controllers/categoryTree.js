@@ -180,6 +180,9 @@ module.exports = {
 	deleteCategoryTree : (req, res, next) => {
 		let cateogryId = req.body.categoryId;
 		let returnArray = [];
+		if(!categoryId) {
+			res.json({ message: 'no categoryId..'})
+		}
 		CategoryTree.findOne({
 			_id:categoryId
 		})
@@ -190,7 +193,7 @@ module.exports = {
 				r.remove()
 				.then(removed =>{
 					//하위의 모든 카테고리를 삭제 해 줍니다.
-					CategoryTree.find({
+					CategoryTree.remove({
 						'parent.parentId': removed._id
 					})
 					.remove()
