@@ -20,7 +20,7 @@ class Tutorial extends Component {
   ]
 
   render() {
-    const {categories, getChildren, getAllLinks, addCategory, typing } = this.props;
+    const {currentCategory, newCategory, categories, getChildren, getAllLinks, addCategory, typing } = this.props;
     return (
       <div className={cx('Tutorial')}>
         <MainSection categories={categories}
@@ -48,7 +48,7 @@ Tutorial.propTypes = {
 function mapStateToProps(state) {
   return {
     categories: state.category.categories,
-    newCategory: state.category.newCategory
+    newCategory: state.category.newCategory,
     currentCategory: state.category.currentCategory
   };
 }

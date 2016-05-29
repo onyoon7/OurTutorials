@@ -29,7 +29,7 @@ module.exports = {
             loader: 'react-hot!babel',
         },
         {
-            test: /\.json$/, 
+            test: /\.json$/,
             loader: 'json-loader'
         },
         {
@@ -42,7 +42,7 @@ module.exports = {
         },
         {
             test: /\.html$/,
-            loader: 'html-loader' 
+            loader: 'html-loader'
         },
         {
             test:/\.css$/,

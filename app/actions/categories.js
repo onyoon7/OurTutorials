@@ -71,13 +71,12 @@ export function addCategory(parentId, name) {
   //   parentId: parentId,
   //   newCategoryName: name
   // })
-  const name = name.trim();
 
   return (dispatch, getState) => {
-    if(name.length <= 0) return;
+    if(name.trim().length <= 0) return;
 
     const { category } = getState();
-    if (category.categories.filter(categoryItem => categoryItem.name === name).length > 0) {
+    if (category.categories.filter(categoryItem => categoryItem.name === name.trim()).length > 0) {
       return dispatch(addCategoryDuplicate());
     }else {
       return makeCategoryRequest('post',{

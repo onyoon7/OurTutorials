@@ -48,7 +48,7 @@ export default class CategoryInput extends Component {
   }
 }
 
-LinkTextInput.propTypes = {
+CategoryInput.propTypes = {
   className: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
