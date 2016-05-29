@@ -53,7 +53,7 @@ module.exports = {
         },
         {
             test:/\.css$/,
-            loader: 'style!css?module&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader',
+            loader: 'style!css?module&localIdentName=[local]!postcss-loader',
         },
         {
             test:/\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
@@ -62,6 +62,14 @@ module.exports = {
               name: '[hash].[ext]',
               limit: 10000,
             }
+        },
+        {
+            test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+            loader: 'url?limit=10000&mimetype=application/octet-stream'
+        },
+        {
+            test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+            loader: 'file'
         },
         {
             test:/\.html$/,

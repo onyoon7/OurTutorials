@@ -46,7 +46,7 @@ module.exports = {
         },
         {
             test:/\.css$/,
-            loader: 'css/locals?module&localIdentName=[name]__[local]__[hash:base64:5]',
+            loader: 'css/locals?module&localIdentName=[local]',
         }
         ]
     },
