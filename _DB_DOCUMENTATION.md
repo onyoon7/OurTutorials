@@ -37,7 +37,7 @@
 				contents: ''
 			}
 		deleteCourse
-			req.body.courseid : 지울 코스 아이디
+			req.body.courseId : 지울 코스 아이디
 
 
 
