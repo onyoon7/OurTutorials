@@ -7,6 +7,46 @@ export default React.createClass({
     return (
     <div>
 
+
+    {/*gridMenu*/}
+        <div id="works"  className=" clearfix gridMenu">
+
+          <figure className="effect-oscar  wowload fadeInUp">
+
+              <img src="images/link/12l.png" alt="img01"/>
+              <figcaption>
+                <Link to="/ChooseChild"><Link>
+              </figcaption>
+          </figure>
+
+          <figure className="effect-oscar  wowload fadeInUp">
+
+              <img src="images/link/11l.png" alt="img01"/>
+              <figcaption>
+                <a href="https://www.google.com/" target="_black">2등</a>
+              </figcaption>
+          </figure>
+
+          <figure className="effect-oscar  wowload fadeInUp">
+
+              <img src="images/link/10l.png" alt="img01"/>
+              <figcaption>
+                <a href="https://www.google.com/" target="_black">3등</a>
+              </figcaption>
+          </figure>
+
+          <figure className="effect-oscar  wowload fadeInUp">
+
+              <img src="images/link/9l.png" alt="img01"/>
+              <figcaption>
+                <a href="https://www.google.com/" target="_black">4등</a>
+              </figcaption>
+          </figure>
+        </div>
+
+
+
+    {/*gridChild*/}
         <div id="works"  className=" clearfix gridChild">
 
           <figure className="effect-oscar  wowload fadeInUp">

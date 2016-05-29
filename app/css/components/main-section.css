@@ -2,16 +2,21 @@
 
 .main-section {
   composes: card from '../common/card';
-  width: 50%;
+  width: 100%;
   border-radius: global-radius;
 }
 
 
+.category {
+
+}
+
 .header {
   composes: title from '../common/card';
-  composes: subheading from '../common/typography';
-  background: #ed193a;
-  color: #fff;
+/*  composes: subheading from '../common/typography';*/
+  background: #8BED3B;
+  color: #FF95FF;
+  clear:both;
 }
 
 .list {

@@ -1,16 +1,19 @@
+require('babel-preset-es2015')
+
 const mongoose = require('mongoose');
 const dburl = 'mongodb://localhost/tutorial'
+
 var User = require('./models/user');
 var Link = require('./models/links');
-var categoryTree = require('./models/categoryTree');
+var Category = require('./models/categoryTree');
 var Course = require('./models/courses');
 
-var userFunc = require('./controllers/user.js');
+var userFunc = require('./controllers/users.js');
 var linkFunc = require('./controllers/links.js');
 var cateFunc = require('./controllers/categoryTree.js');
 var courseFunc = require('./controllers/courses.js');
 
-
+mongoose.connect(dburl);
 
 
 // userFunc.addUser({
@@ -18,13 +21,50 @@ var courseFunc = require('./controllers/courses.js');
 // })
 
 //<categoryTree Query>
-//1. make class Tree by depth 2
-// let req = {};
-// req.body = {};
-// req.body.parentId = null;
-// req.body.newClassName = 'javascript'
-// classFunc.addClass(req);
+//1. make Category Tree by depth 2
+const makeDummyCategory = (name, parentName)=>{
+	let req = {};
+	req.body = {};
+	req.body.newCategoryName = name;
+	if(!parentName){
+	
+		req.body.parentId = null;
+		
+		cateFunc.addCategory(req);	
+	}else{
+		Category.findOne({
+			name: parentName
+		})
+		.then(p =>{
+			req.body.parentId = p._id
+			cateFunc.addCategory(req);
+		})
 
+	}
+	
+}
+
+//(1) parent
+// makeDummyCategory('javascript');
+// makeDummyCategory('python');
+// makeDummyCategory('lisp');
+// makeDummyCategory('C++');
+// makeDummyCategory('ruby');
+
+//(2) childrencateogry
+// makeDummyCategory('javascript','server');
+// makeDummyCategory('client','javascript');
+// makeDummyCategory('db','javascript');
+// makeDummyCategory('datastructure','javascript');
+// makeDummyCategory('algorithm','javascript');
+// makeDummyCategory('client','python');
+// makeDummyCategory('db','python');
+// makeDummyCategory('datastructure','python');
+// makeDummyCategory('algorithm','python');
+// makeDummyCategory('client','ruby');
+// makeDummyCategory('db','ruby');
+// makeDummyCategory('datastructure','ruby');
+// makeDummyCategory('algorithm','ruby');
 
 // 2. make children
 // let req = {};
@@ -33,8 +73,8 @@ var courseFunc = require('./controllers/courses.js');
 // .then( (result) => {
 // 	console.log(result)
 // 	req.body.parentId = result._id;
-// 	req.body.newClassName = 'middleware';
-// 		classFunc.addClass(req)
+// 	req.body.newCategoryName = 'middleware';
+// 		cateFunc.addCategory(req)
 // })
 
 //3.get ALL Links
@@ -44,8 +84,8 @@ var courseFunc = require('./controllers/courses.js');
 // categoryTree.findOne({name: 'server'})
 // .then( (result) => {
 // 	console.log(result)
-// 	req.body.classId = result._id;
-// 	classFunc.getAllLinks(req)
+// 	req.body.categoryId = result._id;
+// 	cateFunc.getAllLinks(req)
 // })
 
 //4.add dummy User
@@ -59,19 +99,19 @@ var courseFunc = require('./controllers/courses.js');
 
 
 //<link query>
-//4. add Link to class and user
+//4. add Link to Category and user
 // let req = {};
 // req.body = {};
 
 
 // categoryTree.findOne({name: 'express.js'})
-// .then( (classNode) => {
-// 	// console.log(classNode);
+// .then( (CategoryNode) => {
+// 	// console.log(CategoryNode);
 // 	User.findOne({name: 'hyeonsoo'})
 // 	.then ( (user) => {
 // 		// console.log(user);
 // 		req.body.userId = user._id;
-// 		req.body.classId = classNode._id;
+// 		req.body.categoryId = CategoryNode._id;
 // 		req.body.link = 'http://es10.com/';
 // 		req.body.title = 'es111 nodejs site.';
 // 		req.body.tag = ['nodejs', 'official', 'site'];
@@ -155,7 +195,7 @@ var courseFunc = require('./controllers/courses.js');
 // 	})
 // 	.then(cn =>{
 // 		req.body.userId = user._id;
-// 		req.body.classId = cn._id;
+// 		req.body.categoryId = cn._id;
 // 		courseFunc.addCourse(req)
 // 	})
 // })
@@ -202,10 +242,9 @@ var courseFunc = require('./controllers/courses.js');
 // categoryTree.findOne({name: 'server'})
 // .then( (result) => {
 // 	console.log(result)
-// 	req.body.classId = result._id;
-// 	classFunc.getAllCourses(req)
+// 	req.body.categoryId = result._id;
+// 	cateFunc.getAllCourses(req)
 // })
 
-cateFunc.getChildrenCategories()
 
 

@@ -3,16 +3,25 @@
 
 .navigation {
   padding: 0 28px;
+  height: 100px;
 }
 
 .item {
+
+  float: right;
+  font-size: 15px;
   display: inline-block;
   text-decoration: none;
-  padding: 16px 32px;
-  color: color-black;
+  /*css padding 상우하좌 시계방향*/
+  padding: 16px 20px;
+  color: #A39FAA;
 }
 
+
 .logo {
+  height: 120%;
+  margin-left: 100px;
+  float:left;
   font-size: font-x-large;
 }
 

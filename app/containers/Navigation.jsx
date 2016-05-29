@@ -5,6 +5,9 @@ import { logOut } from 'actions/users';
 
 import classNames from 'classnames/bind';
 import styles from 'css/components/navigation';
+import logo from 'images/logo.png';
+
+
 
 const cx = classNames.bind(styles);
 
@@ -13,7 +16,10 @@ const Navigation = ({ user, logOut }) => {
       <nav className={cx('navigation')} role="navigation">
         <Link to="/"
           className={cx('item', 'logo')}
-          activeClassName={cx('active')}>Ninja Ocean</Link>
+          activeClassName={cx(logo)}><img className={cx('logo1')} src={logo} /></Link>
+
+
+
           { user.authenticated ? (
             <Link onClick={logOut}
               className={cx('item')} to="/">Logout</Link>
@@ -24,6 +30,8 @@ const Navigation = ({ user, logOut }) => {
           <Link to="/course" className={cx('item')} activeClassName={cx('active')}>Course</Link>
       </nav>
     );
+
+
 };
 
 Navigation.propTypes = {
