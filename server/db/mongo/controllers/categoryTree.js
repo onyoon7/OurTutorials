@@ -5,7 +5,7 @@ module.exports = {
 	getChildrenCategories : (req, res, next) =>{
 		let MyId = req.body.categoryId;
 		CategoryTree.findOne({
-			_id: myId
+			_id: MyId
 		})
 		.then((me) => {
 			console.log(me.children)
