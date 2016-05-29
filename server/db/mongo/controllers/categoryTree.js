@@ -3,23 +3,51 @@ const Link = require('../models/links');
 
 module.exports = {
 	getChildrenCategories : (req, res, next) =>{
-		let MyId = req.body.categoryId;
+
+		// new CategoryTree({
+		// 			name:'javascript'
+		// })
+		// .save()
+		// .then(r => console.log(r))
+
+
+		let myId;
+		if(req && req.body) {
+			console.log(req)
+			myId = req.body.categoryId
+		}
 		CategoryTree.findOne({
-			_id: MyId
+			_id: myId
 		})
 		.then((me) => {
-			console.log(me.children)
-			LinkIds = [];
-			for(let i=0; i<me.children.length; i++){
+			if(me){
+
+				console.log('me is ',me)
+				LinkIds = [];
+				for(let i=0; i<me.children.length; i++){
 				id.push(me.children[i].childId);
+				}
+				//이부분은 더미 링크를 넣고 다시 테스트 해 보아야 함.
+				CategoryTree.find({
+				    '_id': { $in: id}
+				})
+				.then((children) => {
+					console.log(children);
+					res.json(children);
+				})
+				.catch(e => console.log(e))
+			}else{
+				console.log('me..? ',me)
+				CategoryTree.find({
+					parent:[]
+				})
+				.then((children) =>{
+					console.log(children);
+					res.json(children);
+				})
+				.catch(e => console.log(e))
 			}
-			//이부분은 더미 링크를 넣고 다시 테스트 해 보아야 함.
-			Link.find({
-			    '_id': { $in: id}
-			})
-			.then((links) => {
-				console.log(links);
-			})
+			
 		})
 		.catch((e) => {
 			console.error(e)
@@ -27,8 +55,10 @@ module.exports = {
 	},
 	getAllLinks : (req, res, next) =>{
 		//특정 클래스로부터 자식 클래스에 이르기까지 하위 모든 클래스의 링크들을 전부 배열로 가져옴.
-		let currentCategoryId = req.body.categoryId;
+		let currentCategoryId = [];
 		let returnArray = [];
+		if(req) currentCategoryId = req.body.categoryId;
+
 		CategoryTree.findOne({
 			_id : currentCategoryId
 		})
