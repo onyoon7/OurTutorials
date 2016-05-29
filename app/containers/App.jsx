@@ -17,6 +17,44 @@ const cx = classNames.bind(styles);
  * https://github.com/rackt/react-router/blob/latest/docs/Introduction.md
  */
 const App = ({children}) => {
+  // console.log('children.props.route: ',children.props.route);
+
+  // console.log('--------------------------')
+
+  // console.log('children.props.route.component.WrappedComponent.propTypes',children.props.route.component.WrappedComponent.propTypes);
+
+  // console.log('--------------------------')
+
+  // console.log('children.props.route.component.propTypes',children.props.route.component.propTypes)
+
+  // console.log('--------------------------')
+
+  // console.log('children.props.route.component.contextTypes',children.props.route.component.contextTypes)
+
+  // console.log('--------------------------')
+
+  // console.log('children.props.routes: ',children.props.routes);
+
+  // console.log('--------------------------')
+
+  // console.log('children.props.routes[0].indexRoute',children.props.routes[0].indexRoute);
+
+  // console.log('--------------------------')
+
+  // console.log('children.props.routes[1].component.WrappedComponent',children.props.routes[1].component.WrappedComponent);
+
+  // console.log('--------------------------')
+
+  // console.log('children.props.routes[1].component.contextTypes',children.props.routes[1].component.contextTypes);
+
+  // console.log('--------------------------')
+
+  // console.log('children.props.routes[1].component.propTypes',children.props.routes[1].component.propTypes);
+
+  // console.log('--------------------------')
+
+  // console.log('children.type.WrappedComponent.propTypes', children.type.WrappedComponent.propTypes);
+
   return (
     <div className={cx('app')}>
       <Navigation />

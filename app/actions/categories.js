@@ -4,6 +4,8 @@ import request from 'axios';
 import md5 from 'spark-md5';
 import * as types from 'types';
 
+polyfill();
+
 export function makeCategoryRequest(method, data, api = '/category') {
   return request[method](api, data);
 }

@@ -42,7 +42,8 @@ export default function render(req, res) {
       isWaiting: false,
       message: '',
       isLogin: true
-    }
+    },
+
   }, history);
   // store를 받아서 '/', 'login', 'dashboard', 'course' 경로에 대한 component를 정의한 route를 반환한다.
   const routes = createRoutes(store);
@@ -120,6 +121,7 @@ export default function render(req, res) {
         `);
       })
       .catch((err) => {
+        console.log('err: ',err);
         res.status(500).json(err);
       });
     } else {

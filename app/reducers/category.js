@@ -19,6 +19,7 @@ export default function category(state = {
 },action) {
   switch (action.type) {
     case GET_CATEGORIES_REQUEST:
+      console.log('Request!!!')
       return Object.assign({}, state, {
         isFetching: true
       });
