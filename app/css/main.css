@@ -1,6 +1,4 @@
 @value montserrat from './common/typography.css';
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-/*폰트사용 - google폰트 들어가서 url 불러온뒤에 사용*/
 
 /*
  * Add any global styles here

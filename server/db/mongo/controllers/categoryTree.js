@@ -33,7 +33,7 @@ module.exports = {
 					parent:[]
 				})
 				.then((children) =>{
-					console.log(children);
+					// console.log(children);
 					res.status(200).json(children);
 				})
 				.catch(e => console.log(e))
