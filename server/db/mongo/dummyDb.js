@@ -44,6 +44,7 @@ const makeDummyCategory = (name, parentName)=>{
 
 }
 
+
 //(1) parent
 // makeDummyCategory('javascript');
 // makeDummyCategory('python');
@@ -65,6 +66,27 @@ const makeDummyCategory = (name, parentName)=>{
 // makeDummyCategory('db','ruby');
 // makeDummyCategory('datastructure','ruby');
 // makeDummyCategory('algorithm','ruby');
+
+
+
+
+
+//(3) children category
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 2. make children
 // let req = {};
