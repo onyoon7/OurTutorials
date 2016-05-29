@@ -25,7 +25,7 @@ export default class CategoryItem extends Component {
   render() {
     return (
 
-          <figure className="effect-oscar  wowload fadeInUp">
+          <figure className="effect-oscar  wowload fadeInUp" key = {this.props.id} onClick={this.onGetChildren}>
               <img className={cx('back')} src={back} />
               <figcaption>
                 <h3>{this.props.name}</h3>

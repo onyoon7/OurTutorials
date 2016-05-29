@@ -23,13 +23,13 @@ class Tutorial extends Component {
     const {currentCategory, newCategory, categories, getChildren, getAllLinks, addCategory, typing } = this.props;
     return (
       <div className={cx('Tutorial')}>
-        <EntryBox newCategory = {newCategory}
-          currentCategory = {currentCategory}
-          onEntryChange = {typing}
-          onEntrySave = {addCategory}/>
         <MainSection categories={categories}
           onGetChildren = {getChildren}
           onGetLinks = {getAllLinks}/>
+          <EntryBox newCategory = {newCategory}
+            currentCategory = {currentCategory}
+            onEntryChange = {typing}
+            onEntrySave = {addCategory}/>
       </div>
     );
   }
