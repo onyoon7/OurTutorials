@@ -112,6 +112,18 @@ export default function render(req, res) {
               ${header.link.toString()}
             </head>
             <body>
+
+         <!--
+            <div class="navbar-collapse  collapse">
+              <ul class="nav navbar-nav navbar-right scroll">
+                 <li class="active"><a href="#works">Tutorials</a></li>
+                 <li ><a href="/">Course</a></li>
+                 <li ><a href="#partners">Sign in</a></li>
+                 <li ><a href="#contact">contact</a></li>
+              </ul>
+            </div>
+          -->
+
               <div id="app">${componentHTML}</div>
               <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};</script>
               <script type="text/javascript" charset="utf-8" src="/assets/app.js"></script>

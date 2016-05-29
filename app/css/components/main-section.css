@@ -1,23 +1,23 @@
 @value global-radius from '../settings.css';
 
-.main-section {
+/*.main-section {
   composes: card from '../common/card';
   width: 100%;
   border-radius: global-radius;
-}
+}*/
 
-
+/*
 .category {
 
 }
-
+*//*
 .header {
   composes: title from '../common/card';
-/*  composes: subheading from '../common/typography';*/
+  composes: subheading from '../common/typography';
   background: #8BED3B;
   color: #FF95FF;
   clear:both;
-}
+}*/
 
 .list {
   list-style: none;

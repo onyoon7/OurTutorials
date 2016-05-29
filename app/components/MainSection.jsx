@@ -19,8 +19,10 @@ const MainSection = ({onGetChildren, onGetLinks, categories}) => {
 
   return (
     <div className={cx('main-section')}>
-      <h3 className={cx('header')}>Choose A Category</h3>
+      {/*<h3 className={cx('header')}>Choose A Category</h3>*/}
+      <div id="works"  className=" clearfix grid">
       <ul className={cx('list')}>{categoryItems}</ul>
+      </div>
     </div>
   );
 };

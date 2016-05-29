@@ -4,10 +4,12 @@
 .navigation {
   padding: 0 28px;
   height: 100px;
+  clear: both;
 }
 
-.item {
 
+.item {
+  margin-top: 30px;
   float: right;
   font-size: 15px;
   display: inline-block;
@@ -19,10 +21,10 @@
 
 
 .logo {
-  height: 120%;
-  margin-left: 100px;
+  clear: both;
+  margin-top: 25px;
+  margin-left: 20px;
   float:left;
-  font-size: font-x-large;
 }
 
 .active {

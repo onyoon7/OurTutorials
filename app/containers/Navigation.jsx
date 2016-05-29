@@ -11,14 +11,14 @@ const cx = classNames.bind(styles);
 
 const Navigation = ({ user, logOut }) => {
     return (
-      <nav className={cx('navigation')} role="navigation">
+
+      <nav className={cx('navbar-collapse  collapse')} role="navigation">
         <Link to="/"
-          className={cx('item', 'logo')}
+          className={cx('logo')}
           activeClassName={cx(logo)}><img className={cx('logo1')} src={logo} /></Link>
 
-
-
           { user.authenticated ? (
+
             <Link onClick={logOut}
               className={cx('item')} to="/">Logout</Link>
           ) : (
@@ -27,6 +27,7 @@ const Navigation = ({ user, logOut }) => {
           <Link className={cx('item')} to="/dashboard">Dashboard</Link>
           <Link to="/course" className={cx('item')} activeClassName={cx('active')}>Course</Link>
       </nav>
+
     );
 
 
