@@ -30,10 +30,10 @@ var courseFunc = require('./controllers/courses.js');
 // req.body = {};
 // ClassTree.findOne({name: 'express.js'})
 // .then( (result) => {
-// 	console.log(result)
-// 	req.body.parentId = result._id;
-// 	req.body.newClassName = 'middleware';
-// 		classFunc.addClass(req)
+//     console.log(result)
+//     req.body.parentId = result._id;
+//     req.body.newClassName = 'middleware';
+//             classFunc.addClass(req)
 // })
 
 //3.get ALL Links
@@ -75,7 +75,7 @@ var courseFunc = require('./controllers/courses.js');
 // 		req.body.title = 'es111 nodejs site.';
 // 		req.body.tag = ['nodejs', 'official', 'site'];
 // 		linkFunc.addLink(req)
-// 	})	
+// 	})
 // })
 
 //5.delete Link.
@@ -115,7 +115,7 @@ var courseFunc = require('./controllers/courses.js');
 // 	})
 // })
 // .then(user => {
-// 	return new Promise((resolve, reject) => {		
+// 	return new Promise((resolve, reject) => {
 // 		Link.findOne({_id:user.myLink[0]})
 // 		.then(Link => resolve(Link))
 // 		})
@@ -137,7 +137,7 @@ var courseFunc = require('./controllers/courses.js');
 // 	summary: '지우기용입니다.',
 // 	contents: [
 // 			{
-// 				title: '첫 번째 단원 ', 
+// 				title: '첫 번째 단원 ',
 // 				links: ['naver.com','mongodb.com']
 // 			},{
 // 				title: '두 번쨰 단원',
@@ -190,7 +190,7 @@ var courseFunc = require('./controllers/courses.js');
 // 		req.body.linkId = r._id
 // 		req.body.userId = user._id
 // 		userFunc.likeLinkToggle(req)
-// 	})	
+// 	})
 // })
 
 

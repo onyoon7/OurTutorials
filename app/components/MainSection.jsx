@@ -20,6 +20,7 @@ const MainSection = ({onGetChildren, onGetLinks, onAdd, categories}) => {
     <div className={cx('main-section')}>
       <h3 className={cx('header')}>Choose A Category</h3>
       <ul className={cx('list')}>{categoryItems}</ul>
+      <button onClick={onAdd}/>
     </div>
   );
 };
