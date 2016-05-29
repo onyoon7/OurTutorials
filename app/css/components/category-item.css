@@ -1,12 +1,12 @@
 @value font-medium from '../settings.css';
 @value color-salem, color-dodger-blue, color-punch from '../common/colors.css';
 
-.link-item {
+.category-item {
   display: flex;
   justify-content: space-between;
 }
 
-.link {
+.category {
   composes: flexNotMoreThan200 from '../common/layout';
   font-size: font-medium;
 }
