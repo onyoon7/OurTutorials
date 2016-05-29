@@ -44,7 +44,7 @@ export default function render(req, res) {
       isLogin: true
     }
   }, history);
-  // store를 받아서 '/', 'login', 'dashboard', 'about' 경로에 대한 component를 정의한 route를 반환한다.
+  // store를 받아서 '/', 'login', 'dashboard', 'course' 경로에 대한 component를 정의한 route를 반환한다.
   const routes = createRoutes(store);
 
   /*
@@ -77,18 +77,18 @@ export default function render(req, res) {
       // This method waits for all render component
       // promises to resolve before returning to browser
 
-      // 이 경우에는 Vote Component에 있는 static need = [fetchTopics]를 보고 dispatch(fetchTopics)가 끝날 때까지 기다리는 것.
+      // 이 경우에는 Tutorial Component에 있는 static need = [fetchLinks]를 보고 dispatch(fetchLinks)가 끝날 때까지 기다리는 것.
 
-      // topics.js
-      // export function fetchTopics() {
+      // links.js
+      // export function fetchLinks() {
       //   return {
-      //     type: types.GET_TOPICS,
-      //     promise: makeTopicRequest('get')
+      //     type: types.GET_LINKS,
+      //     promise: makeLinkRequest('get')
       //   };
       // }
 
       // server/routes.js
-      // app.get('/topic', topicsController.all);
+      // app.get('/link', linksController.all);
       preRenderMiddleware(
         store.dispatch,
         props.components,
@@ -96,6 +96,7 @@ export default function render(req, res) {
       )
       .then(() => {
         const initialState = store.getState();
+        console.log(initialState);
         const componentHTML = renderToString(
           <Provider store={store}>
             <RouterContext {...props} />

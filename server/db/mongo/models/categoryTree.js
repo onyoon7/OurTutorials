@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = require('mongoose').Schema;
 const ObjectId = Schema.ObjectId;
-const ClassTreeSchema = new Schema({
+const CategoryTreeSchema = new Schema({
 	name : {
 		type: String,
 		required: true
@@ -10,7 +10,7 @@ const ClassTreeSchema = new Schema({
 			_id: false,
 			parentId:{
 				type: Schema.ObjectId,
-				ref: 'ClassTree',
+				ref: 'CategoryTree',
 
 			},
 			name:{
@@ -19,12 +19,12 @@ const ClassTreeSchema = new Schema({
 			}
 		}
 	],
-	//자기 자신의 id들을 담고 있는 배열입니다. ClassTree는 트리의 노드나 마찬가지입니다.
+	//자기 자신의 id들을 담고 있는 배열입니다. CategoryTree는 트리의 노드나 마찬가지입니다.
 	children:[{
 			_id: false,
 			childId:{
 				type: Schema.ObjectId,
-				ref: 'ClassTree',
+				ref: 'CategoryTree',
 			},
 			name:{
 				type: String,
@@ -32,7 +32,7 @@ const ClassTreeSchema = new Schema({
 			}
 		}],
 	links:[{
-		type: ObjectId, 
+		type: ObjectId,
 		ref: 'Link'
 	}],
 	courses: [{
@@ -42,4 +42,4 @@ const ClassTreeSchema = new Schema({
 })
 
 
-module.exports = mongoose.model('ClassTree', ClassTreeSchema);
+module.exports = mongoose.model('CategoryTree', CategoryTreeSchema);

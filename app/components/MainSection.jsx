@@ -1,35 +1,38 @@
 import React, { PropTypes } from 'react';
-import TopicItem from 'components/TopicItem';
+import CategoryItem from 'components/CategoryItem';
 import classNames from 'classnames/bind';
 import styles from 'css/components/main-section';
 
 const cx = classNames.bind(styles);
 
-const MainSection = ({onIncrement, onDecrement, onDestroy, topics}) => {
-  const topicItems = topics.map((topic, key) => {
+const MainSection = ({onGetChildren, onGetLinks, onAdd, categories}) => {
+  const categoryItems = categories.map((category, key) => {
     return (
-      <TopicItem index={key}
-        id={topic.id}
+      <CategoryItem index={key}
+        id={category._id}
         key={key}
-        text={topic.text}
-        onIncrement={onIncrement}
-        onDecrement={onDecrement}
-        onDestroy={onDestroy} />);
+        name={category.name}
+        onGetChildren={onGetChildren}
+        onGetLinks={onGetLinks} />);
     });
 
   return (
     <div className={cx('main-section')}>
-      <h3 className={cx('header')}>Vote for your favorite hack day idea</h3>
-      <ul className={cx('list')}>{topicItems}</ul>
+      <h3 className={cx('header')}>Choose A Category</h3>
+      <ul className={cx('list')}>{categoryItems}</ul>
     </div>
   );
 };
 
 MainSection.propTypes = {
-  topics: PropTypes.array.isRequired,
-  onIncrement: PropTypes.func.isRequired,
-  onDecrement: PropTypes.func.isRequired,
-  onDestroy: PropTypes.func.isRequired
+  // links: PropTypes.array.isRequired,
+  // onIncrement: PropTypes.func.isRequired,
+  // onDecrement: PropTypes.func.isRequired,
+  // onDestroy: PropTypes.func.isRequired
+  categories: PropTypes.array.isRequired,
+  onGetChildren: PropTypes.func.isRequired,
+  onGetLinks: PropTypes.func.isRequired,
+  // onAdd: PropTypes.func.isRequired
 };
 
 export default MainSection;

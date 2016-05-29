@@ -1,39 +1,39 @@
 import expect from 'expect';
 import md5 from 'spark-md5';
-import reducer from 'reducers/topic';
+import reducer from 'reducers/link';
 import * as types from 'types';
 
-describe('Topics reducer', () => {
+describe('Links reducer', () => {
   it('Should return the initial state', () => {
     expect(
       reducer(undefined, {})
     ).toEqual(
       {
-        topics: [],
-        newTopic: ''
+        links: [],
+        newLink: ''
       }
     );
   });
 
-  it('Should add a new topic to an empty initial state', () => {
-    const topic = 'A time machine';
-    const id = md5.hash(topic);
+  it('Should add a new link to an empty initial state', () => {
+    const link = 'A time machine';
+    const id = md5.hash(link);
     expect(
       reducer(undefined, {
-        type: types.CREATE_TOPIC_REQUEST,
+        type: types.CREATE_LINK_REQUEST,
         id,
         count: 1,
-        text: topic
+        text: link
       })
     ).toEqual({
-      topics: [
+      links: [
         {
           id,
           count: 1,
-          text: topic
+          text: link
         }
       ],
-      newTopic: ''
+      newLink: ''
     });
   });
 });

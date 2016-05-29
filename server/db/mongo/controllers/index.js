@@ -1,14 +1,14 @@
 import topics from './topics';
-import classTrees from './classTree';
+import categoryTrees from './categoryTree';
 import links from './links';
 import courses from './courses';
 import users from './users';
 
-export { topics, users, classTrees, links, courses };
+export { topics, users, categoryTrees, links, courses };
 
 export default {
   topics,
-  classTrees,
+  categoryTrees,
   users,
   links,
   courses

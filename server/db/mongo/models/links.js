@@ -19,7 +19,7 @@ const LinkSchema = new Schema({
 	summary: {
 		type: String
 	},
-	likes : {
+	like : {
 		type: Number,
 		default: 0
 	}

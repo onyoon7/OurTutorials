@@ -7,7 +7,7 @@ import { controllers, passport as passportConfig } from '../db';
 
 const usersController = controllers && controllers.users;
 const topicsController = controllers && controllers.topics;
-const classController = controllers && controllers.classTrees;
+const categoryController = controllers && controllers.categoryTrees;
 const linkController = controllers && controllers.links;
 const courseController = controllers && controllers.courses;
 
@@ -53,15 +53,15 @@ export default (app) => {
     );
   }
 
-  if (classController){
-    app.post('/class', classController.addClass);
-    app.get('/class', classController.getChildrenClasses);
-    app.get('/class/link', classController.getAllLinks);
-    app.get('/class/course', classController.getAllCourses);
+  if (categoryController){
+    app.post('/category', categoryController.addCategory);
+    app.get('/category', categoryController.getChildrenCategories);
+    app.get('/category/link', categoryController.getAllLinks);
+    app.get('/category/course', categoryController.getAllCourses);
   }else{
-    console.warn(unsupportedMessage('class routes'));
+    console.warn(unsupportedMessage('category routes'));
   }
-  
+
   if(linkController){
     app.post('/link', linkController.addLink);
     app.delete('/link', linkController.deleteLink);
@@ -71,7 +71,7 @@ export default (app) => {
   // topic routes
   if (topicsController) {
     app.get('/topic', topicsController.all);
-    app.post('/topic/:id', classController.addClass);
+    app.post('/topic/:id', categoryController.addCategory);
     app.put('/topic/:id', topicsController.update);
     app.delete('/topic/:id', topicsController.remove);
   } else {
