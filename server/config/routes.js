@@ -56,6 +56,7 @@ export default (app) => {
   if (categoryController){
     app.post('/category', categoryController.addCategory);
     app.get('/category', categoryController.getChildrenCategories);
+    app.post('/category/children', categoryController.getChildrenCategories);
     app.get('/category/link', categoryController.getAllLinks);
     app.get('/category/course', categoryController.getAllCourses);
   }else{

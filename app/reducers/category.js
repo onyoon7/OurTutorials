@@ -34,7 +34,7 @@ export default function category(state = {
       return Object.assign({}, state, {
         isFetching: false,
         categories: action.req.data,
-        currentCategory: action.id
+        currentCategory: ''
       });
     case GET_CATEGORIES_FAILURE:
       return Object.assign({}, state, {
@@ -47,7 +47,8 @@ export default function category(state = {
     case GET_CHILDREN_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        categories: action.req.data
+        categories: action.req.data,
+        currentCategory: action.id
       });
     case GET_CHILDREN_FAILURE:
       return Object.assign({}, state, {

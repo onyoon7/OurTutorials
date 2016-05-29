@@ -43,7 +43,6 @@ export default function render(req, res) {
       message: '',
       isLogin: true
     },
-
   }, history);
   // store를 받아서 '/', 'login', 'dashboard', 'course' 경로에 대한 component를 정의한 route를 반환한다.
   const routes = createRoutes(store);

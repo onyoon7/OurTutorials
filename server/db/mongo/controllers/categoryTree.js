@@ -7,13 +7,15 @@ module.exports = {
 		if(req && req.body) {
 			myId = req.body.categoryId
 		}
+		// console.log('body is ', req.body);
+		// console.log('my Id ' , myId);
 		CategoryTree.findOne({
 			_id: myId
 		})
 		.then((me) => {
 			if(me){
 
-				LinkIds = [];
+				let id = [];
 				for(let i=0; i<me.children.length; i++){
 				id.push(me.children[i].childId);
 				}
