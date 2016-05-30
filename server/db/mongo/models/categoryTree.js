@@ -28,7 +28,6 @@ const CategoryTreeSchema = new Schema({
 			},
 			name:{
 				type: String,
-
 			}
 		}],
 	links:[{

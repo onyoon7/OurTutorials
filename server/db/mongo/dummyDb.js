@@ -1,4 +1,6 @@
-require('babel-preset-es2015')
+//더미 디비를 넣어보고 싶을 때 활용하면 됩니다.
+
+
 const mongoose = require('mongoose');
 const dburl = 'mongodb://localhost/ReactWebpackNode';
 import User from './models/user'
@@ -15,6 +17,25 @@ mongoose.connect(dburl);
 // })
 //<categoryTree Query>
 //1. make Category Tree by depth 2
+
+const findCategory = (name) => {
+   return new Promise((rs, rj) =>{
+    Category.findOne({'name':name})
+    .then(category =>{
+        rs(category);
+        })
+    })
+}
+
+const findUser = (email) => {
+    return new Promise((rs, rj) =>{
+        User.findOne({'email': email})
+        .then(user=> {
+            rs(user);
+        })
+    })
+}
+
 const makeDummyCategory = (name, parentName)=>{
     let req = {};
     req.body = {};
@@ -44,55 +65,29 @@ const makeDelete = (name) =>{
         cateFunc.deleteCategryTree(req);
     })
 }
-//make new user
-// let req = {};
-// req.body  = {}
-// req.body.email = 'glnt1@naver.com';
-// req.body.password = '12345'
-// userFunc.signUp(req);
-const dummyLink = (category, link, title, tag) =>{
+
+const dummyLink = (category, email, link, title, tag) =>{
     let req = {};
     req.body  = {}
-    console.log(category)
-    Category.findOne({
-        name: category
-    })
-    .then(r => {
-        console.log('found category',r);
-        User.findOne({
-            email: 'glnt133@naver.com'
-        })
-        .then(user => {
+    findCategory(category)
+    .then(cate =>{
+        findUser(email)
+        .then(user =>{
             console.log(user);
             req.body.userId = user._id;
-            req.body.categoryId = r._id;
+            req.body.categoryId = cate._id;
             req.body.link = link;
             req.body.title = title;
             req.body.tag = tag;
             linkFunc.addLink(req)
         })
-        .catch(e =>console.log(e))
+    })
+    Category.findOne({
+        name: category
     })
 }
 
-//<get all links>
-Category.findOne({'name':'javascript'})
-.then(r =>{
-    let req = {};
-    req.body = {};
-    req.body.categoryId = r._id
-    cateFunc.getAllLinks(req)
-})
 
-
-//<dummy Link>
-// dummyLink('javascript','http://a.com','a',['google','naver']);
-// dummyLink('javascript','http://b.com','b',['google','naver']);
-// dummyLink('javascript','http://c.com','c',['google','naver']);
-
-// dummyLink('javascript','http://d.com','d',['google','naver']);
-// dummyLink('javascript','http://e.com','e',['google','naver']);
-// dummyLink('javascript','http://e.com','e',['google','naver']);
 
 //(1) parent
 // makeDummyCategory('javascript');
@@ -124,10 +119,23 @@ Category.findOne({'name':'javascript'})
 //  req.body.newCategoryName = 'middleware';
 //      cateFunc.addCategory(req)
 // })
+
+//(3) dummy Link
+// dummyLink('javascript', 'glnt133@naver.com', 'http://a.com','a',['google','naver']);
+// dummyLink('javascript', 'glnt133@naver.com', 'http://b.com','b',['google','naver']);
+// dummyLink('javascript', 'glnt133@naver.com', 'http://c.com','c',['google','naver']);
+
+// dummyLink('javascript', 'glnt133@naver.com', 'http://d.com','d',['google','naver']);
+// dummyLink('javascript', 'glnt133@naver.com', 'http://e.com','e',['google','naver']);
+// dummyLink('javascript', 'glnt133@naver.com', 'http://e.com','e',['google','naver']);
+
+
+
+
 //3.get ALL Links
 // let req = {};
 // req.body = {};
-// categoryTree.findOne({name: 'server'})
+// Category.findOne({name: 'server'})
 // .then( (result) => {
 //  console.log(result)
 //  req.body.categoryId = result._id;
@@ -143,7 +151,7 @@ Category.findOne({'name':'javascript'})
 //4. add Link to Category and user
 // let req = {};
 // req.body = {};
-// categoryTree.findOne({name: 'express.js'})
+// Category.findOne({name: 'express.js'})
 // .then( (CategoryNode) => {
 //  // console.log(CategoryNode);
 //  User.findOne({name: 'hyeonsoo'})
@@ -216,7 +224,7 @@ Category.findOne({'name':'javascript'})
 // }
 // User.findOne({name:'hi'})
 // .then(user =>{
-//  categoryTree.findOne({
+//  Category.findOne({
 //      name: 'server'
 //  })
 //  .then(cn =>{
@@ -256,7 +264,7 @@ Category.findOne({'name':'javascript'})
 //9.get all courses
 // let req = {};
 // req.body = {};
-// categoryTree.findOne({name: 'server'})
+// Category.findOne({name: 'server'})
 // .then( (result) => {
 //  console.log(result)
 //  req.body.categoryId = result._id;

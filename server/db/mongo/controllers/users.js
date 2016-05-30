@@ -33,12 +33,10 @@ const UserFunction = {
 	    email: req.body.email,
 	    password: req.body.password
 	  });
-
 	  User.findOne({ email: req.body.email }, (findErr, existingUser) => {
 	    if (existingUser) {
 	      return res.status(409).json({ message: 'Account with this email address already exists!' });
 	    }
-
 	    return user.save((saveErr) => {
 	      if (saveErr) return next(saveErr);
 	      return req.logIn(user, (loginErr) => {
@@ -50,20 +48,6 @@ const UserFunction = {
 	    });
 	  });
 	},
-
-	//
-	// addUser : (req, res, next) => {
-	// 	let data = req.body.data;
-	// 	new User(data)
-	// 	.save()
-	// 	.then((result) => {
-	// 		console.log('successfully add user ',result);
-	// 		res.json(result);
-	// 	})
-	// 	.catch((e) => {
-	// 		return console.error('ERROR WITH SAVING NEW USER ',e);
-	// 	})
-	// },
 	addLinkToBucket: (req, res, next) => {
 		let userId = req.body.userId;
 		let linkId = req.body.linkId;
