@@ -30,10 +30,23 @@ const findCategory = (name) => {
 const findUser = (email) => {
     return new Promise((rs, rj) =>{
         User.findOne({'email': email})
-        .then(user=> {
+        .then(user => {
             rs(user);
         })
     })
+}
+
+const makeUser (name, email) =>{
+    return new Promise((rs, rj)=>{
+        new User({
+            name: name,
+            email: email
+        })
+        .then(user => {
+            rs(user)
+        })
+    })
+
 }
 
 const makeDummyCategory = (name, parentName)=>{
@@ -95,7 +108,9 @@ const dummyLink = (category, email, link, title, tag) =>{
 // makeDummyCategory('lisp');
 // makeDummyCategory('C++');
 // makeDummyCategory('ruby');
-//(2) childrencateogry
+
+
+//(2) children cateogry
 // makeDummyCategory('client','javascript');
 // makeDummyCategory('db','javascript');
 // makeDummyCategory('datastructure','javascript');
@@ -108,26 +123,21 @@ const dummyLink = (category, email, link, title, tag) =>{
 // makeDummyCategory('db','ruby');
 // makeDummyCategory('datastructure','ruby');
 // makeDummyCategory('algorithm','ruby');
-//(3) children category
-// 2. make children
-// let req = {};
-// req.body = {};
-// categoryTree.findOne({name: 'express.js'})
-// .then( (result) => {
-//  console.log(result)
-//  req.body.parentId = result._id;
-//  req.body.newCategoryName = 'middleware';
-//      cateFunc.addCategory(req)
-// })
+
 
 //(3) dummy Link
-// dummyLink('javascript', 'glnt133@naver.com', 'http://a.com','a',['google','naver']);
-// dummyLink('javascript', 'glnt133@naver.com', 'http://b.com','b',['google','naver']);
-// dummyLink('javascript', 'glnt133@naver.com', 'http://c.com','c',['google','naver']);
+//let myEmail = '';
+//let myLanguage = 'javascript'
+// dummyLink(myLanguage, myEmail, 'http://google.com','google',['google','naver']);
+// dummyLink(myLanguage, myEmail, 'http://stackoverflow.com','stackoverflow',['google','naver']);
+// dummyLink(myLanguage, myEmail, 'http://yahoo.com','yahoo',['google','naver']);
 
-// dummyLink('javascript', 'glnt133@naver.com', 'http://d.com','d',['google','naver']);
-// dummyLink('javascript', 'glnt133@naver.com', 'http://e.com','e',['google','naver']);
-// dummyLink('javascript', 'glnt133@naver.com', 'http://e.com','e',['google','naver']);
+// dummyLink(myLanguage, myEmail, 'https://facebook.com','facebook',['google','naver']);
+// dummyLink(myLanguage, myEmail, 'https://github.com/codestates','codestates',['google','naver']);
+// dummyLink(myLanguage, myEmail, 'https://news.ycombinator.com/','hackernews',['google','naver']);
+// dummyLink(myLanguage, myEmail, 'https://news.ycombinator.com/','hackernews',['google','naver']);
+
+
 
 
 
