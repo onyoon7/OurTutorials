@@ -36,7 +36,7 @@ const findUser = (email) => {
     })
 }
 
-const makeUser (name, email) =>{
+const makeUser =(name, email) =>{
     return new Promise((rs, rj)=>{
         new User({
             name: name,
@@ -115,6 +115,8 @@ const dummyLink = (category, email, link, title, tag) =>{
 // makeDummyCategory('db','javascript');
 // makeDummyCategory('datastructure','javascript');
 // makeDummyCategory('algorithm','javascript');
+// makeDummyCategory('angularjs','javascript');
+// makeDummyCategory('nodejs','javascript');
 // makeDummyCategory('client','python');
 // makeDummyCategory('db','python');
 // makeDummyCategory('datastructure','python');
@@ -126,16 +128,17 @@ const dummyLink = (category, email, link, title, tag) =>{
 
 
 //(3) dummy Link
-//let myEmail = '';
-//let myLanguage = 'javascript'
-// dummyLink(myLanguage, myEmail, 'http://google.com','google',['google','naver']);
-// dummyLink(myLanguage, myEmail, 'http://stackoverflow.com','stackoverflow',['google','naver']);
-// dummyLink(myLanguage, myEmail, 'http://yahoo.com','yahoo',['google','naver']);
+let myEmail = 'react@hell.com';
+let myLanguage = 'angularjs'
 
-// dummyLink(myLanguage, myEmail, 'https://facebook.com','facebook',['google','naver']);
-// dummyLink(myLanguage, myEmail, 'https://github.com/codestates','codestates',['google','naver']);
-// dummyLink(myLanguage, myEmail, 'https://news.ycombinator.com/','hackernews',['google','naver']);
-// dummyLink(myLanguage, myEmail, 'https://news.ycombinator.com/','hackernews',['google','naver']);
+dummyLink(myLanguage, myEmail, 'http://google.com','google',['google','naver']);
+dummyLink(myLanguage, myEmail, 'http://stackoverflow.com','stackoverflow',['google','naver']);
+dummyLink(myLanguage, myEmail, 'http://yahoo.com','yahoo',['google','naver']);
+
+dummyLink(myLanguage, myEmail, 'https://facebook.com','facebook',['google','naver']);
+dummyLink(myLanguage, myEmail, 'https://github.com/codestates','codestates',['google','naver']);
+dummyLink(myLanguage, myEmail, 'https://news.ycombinator.com/','hackernews',['google','naver']);
+dummyLink(myLanguage, myEmail, 'https://news.ycombinator.com/','hackernews',['google','naver']);
 
 
 
