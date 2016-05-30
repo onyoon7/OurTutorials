@@ -15,18 +15,11 @@ class Tutorial extends Component {
   //This is used for server side rending via the fetchComponentDataBeforeRender() method
 
   // 서버사이드 렌더링에서 처음에 필요한 작업이 need에 정의 돼 있는 상태.
-  constructor (props){
-    super();
-    console.log('props. in constructor', props)
-  }
-
-  static need =[ 
+  static need =[
           fetchCategories
           ]
-          
-  render() {  
-    console.log('props in rendere', this.props)
-    console.log('need in renderer..', this.need)
+
+  render() {
     const {currentCategory, newCategory, categories, getChildren, getAllLinks, addCategory, typing, url } = this.props;
     return (
       <div className={cx('Tutorial')}>

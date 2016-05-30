@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-
-
-export default class RankItem extends Component {
+export default class LinkItem extends Component {
 	constructor(props){
 		super(props);
 	}
@@ -10,7 +8,7 @@ export default class RankItem extends Component {
 	render(){
 		return(
       <div key = {this.props.index}>
-        <p>{this.props.title}</p>
+        <h3>{this.props.title}</h3>
         <p>{this.props.link}</p>
         <p>{this.props.like}</p>
       </div>
@@ -18,7 +16,7 @@ export default class RankItem extends Component {
 	}
 }
 
-RankItem.protoTypes = {
+LinkItem.protoTypes = {
   index: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
