@@ -35,7 +35,7 @@ export default class CategoryItem extends Component {
             </figure>
           </Link>
         );
-     
+
       // <li className={cx('category-item')} key={this.props.id}>
       //   <div className={
       //     cx('category')
