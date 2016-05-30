@@ -111,9 +111,18 @@ export default function render(req, res) {
               ${header.title.toString()}
               ${header.meta.toString()}
               ${header.link.toString()}
-            </head>
-            <body>
 
+              <style>
+                .hidden {
+                  display: none;
+                }
+              </style>
+
+            </head>
+
+            <body class="hidden">
+
+              <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
               <div id="app">${componentHTML}</div>
 
               <div class="footer text-center spacer">
@@ -123,13 +132,18 @@ export default function render(req, res) {
 
               <a href="#works" class="gototop"><i class="fa fa-angle-up  fa-3x"></i></a>
 
+
+              <script type="text/javascript">
+                $(document).ready(function(){
+                  $("body").removeClass('hidden');
+                });
+              </script>
               <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};</script>
               <script type="text/javascript" charset="utf-8" src="/assets/app.js"></script>
 
             </body>
+
           </html>
-
-
         `);
       })
       .catch((err) => {
