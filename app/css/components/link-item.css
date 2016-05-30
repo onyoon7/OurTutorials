@@ -11,15 +11,15 @@
   font-size: font-medium;
 }
 
-.button {
+{/*.button {
   font-size: font-medium;
   width: 28px;
-  height: 28px;
+  height: 10px;
   border-radius: 50%;
   border: none;
   margin: 0 28px;
   color: #fff;
-}
+}*/}
 
 .increment {
   background-color: color-salem;
