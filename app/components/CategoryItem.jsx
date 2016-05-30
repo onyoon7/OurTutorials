@@ -25,7 +25,7 @@ export default class CategoryItem extends Component {
 
   render() {
     if(!this.props.currentCategory){
-      console.log('currentCategory: ',this.props.currentCategory);
+      // console.log('currentCategory: ',this.props.currentCategory);
       return(
         <Link to ={'/category'}>
           <figure className="effect-oscar  wowload fadeInUp" key = {this.props.id} onClick={this.onGetChildren}>
@@ -37,7 +37,7 @@ export default class CategoryItem extends Component {
         </Link>
       );
     }else{
-      console.log('currentCategory: ',this.props.currentCategory);
+      // console.log('currentCategory: ',this.props.currentCategory);
       return(
         <Link to ={'/rank'}>
           <figure className="effect-oscar  wowload fadeInUp" key = {this.props.index} onClick={this.onGetLinks}>
