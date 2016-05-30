@@ -5,14 +5,14 @@
 
 .header {
   composes: heading from '../common/typography';
-
+  margin-top:20px;
   text-align: center;
 }
 
 .input {
   composes: heading from '../common/typography';
   composes: input from '../common/input';
-
+  padding: 20px;
   text-align: center;
   outline: none;
 }

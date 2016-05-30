@@ -37,7 +37,7 @@ class LoginOrRegister extends Component {
     if (isLogin) {
       return (
         <div className={cx('header')}>
-          <h1 className={cx('heading')}>Login with Email</h1>
+          <div className={cx('heading')}>Login with Email</div>
           <div className={cx('alternative')}>
             Not what you want?
             <a className={cx('alternative-link')}
@@ -73,14 +73,14 @@ class LoginOrRegister extends Component {
               <input className={cx('input')}
               type="email"
               ref="email"
-              placeholder="email" />
+              placeholder="emailllll" />
               <input className={cx('input')}
               type="password"
               ref="password"
               placeholder="password" />
               <div className={cx('hint')}>
-              <div>Hint</div>
-              <div>email: example@ninja.com password: ninja</div>
+
+              <div>Hint //email: code@gmail.com / password: codezoa</div>
               </div>
               <p className={cx('message', {
                 'message-show': message && message.length > 0
@@ -91,9 +91,7 @@ class LoginOrRegister extends Component {
             </form>
           </div>
           <div className={cx('google-container')}>
-            <h1 className={cx('heading')}>Google Login Demo</h1>
-            <a className={cx('button')}
-          href="/auth/google">Login with Google</a>
+            <a className={cx('button')} href="/auth/google">Login with Google</a>
           </div>
         </div>
       </div>
