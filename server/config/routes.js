@@ -57,7 +57,7 @@ export default (app) => {
     app.post('/category', categoryController.addCategory);
     app.get('/category', categoryController.getChildrenCategories);
     app.post('/category/children', categoryController.getChildrenCategories);
-    app.get('/category/link', categoryController.getAllLinks);
+    app.post('/category/link', categoryController.getAllLinks);
     app.get('/category/course', categoryController.getAllCourses);
     app.delete('/category', categoryController.deleteCategoryTree);
   }else{

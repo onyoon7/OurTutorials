@@ -67,7 +67,13 @@ module.exports = {
 					returnArray = returnArray.concat(children[i].links)
 				}
 				console.log(returnArray);
-				res.status(200).json(returnArray);
+				Link.find({
+				    '_id': { $in: returnArray}
+				})
+				.then(allLinks => {
+					res.status(200).json(allLinks);
+				})
+				.catch(e => console.log(e));
 			})
 			.catch((e) => {
 				console.error('Error :' , e)
@@ -113,7 +119,7 @@ module.exports = {
 		let newCategoryName = req.body.newCategoryName
 		console.log('parentId, newCategoryName: ',parentId,newCategoryName);
 		let newCategoryParent;
-		if(!parentId.length) parentId = null;
+		if(!parentId) parentId = null;
 		CategoryTree.findOne({
 			_id: parentId
 		})

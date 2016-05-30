@@ -59,10 +59,9 @@ const dummyLink = (category, link, title, tag) =>{
     })
     .then(r => {
         console.log('found category',r);
-        new User({
+        User.findOne({
             email: 'glnt133@naver.com'
         })
-        .save()
         .then(user => {
             console.log(user);
             req.body.userId = user._id;
@@ -75,7 +74,7 @@ const dummyLink = (category, link, title, tag) =>{
         .catch(e =>console.log(e))
     })
 }
-dummyLink('client','http://go.com','naver',['google','naver']);
+dummyLink('javascript','http://go.com','naver',['google','naver']);
 //(1) parent
 // makeDummyCategory('javascript');
 // makeDummyCategory('python');

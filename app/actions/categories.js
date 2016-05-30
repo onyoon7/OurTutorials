@@ -46,7 +46,7 @@ export function getChildren(id) {
 export function getAllLinks(id) {
   return {
     type: types.GET_ALL_LINKS,
-    promise: makeLinkRequest('get', {
+    promise: makeLinkRequest('post', {
       categoryId: id
     })
   };
