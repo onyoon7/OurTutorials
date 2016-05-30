@@ -7,8 +7,6 @@ module.exports = {
 		if(req && req.body) {
 			myId = req.body.categoryId
 		}
-		// console.log('body is ', req.body);
-		// console.log('my Id ' , myId);
 		CategoryTree.findOne({
 			_id: myId
 		})
@@ -30,12 +28,10 @@ module.exports = {
 				})
 				.catch(e => console.log(e))
 			}else{
-				//console.log('me..? ',me)
 				CategoryTree.find({
 					parent:[]
 				})
 				.then((children) =>{
-					// console.log(children);
 					res.status(200).json(children);
 				})
 				.catch(e => console.log(e))
@@ -63,10 +59,8 @@ module.exports = {
 			.then((children)=>{
 				console.log(' successfully found All children ')
 				for(let i=0; i<children.length; i++){
-					console.log(children[i].name);
 					returnArray = returnArray.concat(children[i].links)
 				}
-				console.log(returnArray);
 				Link.find({
 				    '_id': { $in: returnArray}
 				})
@@ -85,7 +79,7 @@ module.exports = {
 
 	},
 	getAllCourses : (req, res, next) =>{
-		//특정 클래스로부터 자식 클래스에 이르기까지 하위 모든 클래스의 링크들을 전부 배열로 가져옴.
+		//특정 클래스로부터 자식 클래스에 이르기까지 하위 모든 클래스의 코들을 전부 배열로 가져옴.
 		let currentCategoryId = req.body.categoryId;
 		let returnArray = [];
 
@@ -103,7 +97,6 @@ module.exports = {
 					console.log(children[i].name);
 					returnArray = returnArray.concat(children[i].courses)
 				}
-				console.log(returnArray);
 				res.status(200).json(returnArray);
 			})
 			.catch((e) => {
@@ -203,18 +196,11 @@ module.exports = {
 			}else{
 				r.remove()
 				.then(removed =>{
-					//하위의 모든 카테고리를 삭제 해 줍니다.
 					CategoryTree.remove({
 						'parent.parentId': removed._id
 					})
 					.remove()
 					.then((children)=>{
-						// if(!children) { res.json({message: 'this category has no children.'})}
-						// console.log(' successfully found All children ')
-						// for(let i=0; i<children.length; i++){
-						// 	console.log(children[i].name);
-						// 	returnArray = returnArray.concat(children[i].courses)
-						// }
 						res.status(200).json({message: 'successfully deleted.'})
 					})
 					.catch((e) => {
