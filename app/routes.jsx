@@ -6,7 +6,7 @@ import Tutorial from 'containers/Tutorial';
 import Course from 'containers/Course';
 import LoginOrRegister from 'containers/LoginOrRegister';
 import Dashboard from 'containers/Dashboard';
-
+import Rank from 'components/Rank';
 /*
  * @param {Redux Store}
  * We require store as an argument here because we wish to get
@@ -51,6 +51,8 @@ export default (store) => {
       <Route path="login" component={LoginOrRegister} onEnter={redirectAuth} />
       <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
       <Route path="course" component={Course} />
+      <Route path="rank" component={Rank} />
+      <Route path="category" component={Tutorial}/>
     </Route>
   );
 };

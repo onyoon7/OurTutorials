@@ -35,6 +35,7 @@ axios.defaults.baseURL = `http://${clientConfig.host}:${clientConfig.port}`;
 export default function render(req, res) {
   const authenticated = req.isAuthenticated();
   const history = createMemoryHistory();
+  console.log('history: ',history);
   // redux-thunk, redux-logger등을 미들웨어로 가지는 store 생성
   const store = configureStore({
     user: {

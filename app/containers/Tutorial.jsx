@@ -25,7 +25,8 @@ class Tutorial extends Component {
       <div className={cx('Tutorial')}>
         <MainSection categories={categories}
           onGetChildren = {getChildren}
-          onGetLinks = {getAllLinks}/>
+          onGetLinks = {getAllLinks}
+          />
           <EntryBox newCategory = {newCategory}
             currentCategory = {currentCategory}
             onEntryChange = {typing}

@@ -13,6 +13,7 @@ const MainSection = ({onGetChildren, onGetLinks, categories}) => {
         id={category._id}
         key={key}
         name={category.name}
+        parent={category.parent}
         onGetChildren={onGetChildren}
         onGetLinks={onGetLinks} />);
     });
