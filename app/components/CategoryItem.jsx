@@ -24,24 +24,32 @@ export default class CategoryItem extends Component {
   }
 
   render() {
-        // <figure className="effect-oscar  wowload fadeInUp" key = {this.props.id} onClick={this.onGetChildren}>
-        //     <img className={cx('back')} src={back} />
-        //     <figcaption>
-        //       <h2>{this.props.name}</h2>
-        //     </figcaption>
-        // </figure>
-        return (
-          <Link to ={'/rank'}>
-            <figure className="effect-oscar  wowload fadeInUp" key = {this.props.index} onClick={this.onGetLinks}>
-                <img className={cx('back')} src={back} />
-                <figcaption>
-                  <h2>{this.props.name} </h2>
-                </figcaption>
-            </figure>
-          </Link>
-        );
+    if(!this.props.currentCategory){
+      console.log('currentCategory: ',this.props.currentCategory);
+      return(
+        <Link to ={'/category'}>
+          <figure className="effect-oscar  wowload fadeInUp" key = {this.props.id} onClick={this.onGetChildren}>
+              <img className={cx('back')} src={back} />
+              <figcaption>
+                <h2>{this.props.name}</h2>
+              </figcaption>
+          </figure>
+        </Link>
+      );
+    }else{
+      console.log('currentCategory: ',this.props.currentCategory);
+      return(
+        <Link to ={'/rank'}>
+          <figure className="effect-oscar  wowload fadeInUp" key = {this.props.index} onClick={this.onGetLinks}>
+              <img className={cx('back')} src={back} />
+              <figcaption>
+                <h2>{this.props.name} </h2>
+              </figcaption>
+          </figure>
+        </Link>
+      );
+    }
   }
-
 }
 
 CategoryItem.propTypes = {
@@ -50,4 +58,5 @@ CategoryItem.propTypes = {
   index: PropTypes.number.isRequired,
   onGetChildren: PropTypes.func.isRequired,
   onGetLinks: PropTypes.func.isRequired,
+  currentCategory: PropTypes.string.isRequired
 };
