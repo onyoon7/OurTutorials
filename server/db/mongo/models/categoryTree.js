@@ -42,4 +42,4 @@ const CategoryTreeSchema = new Schema({
 })
 
 
-module.exports = mongoose.model('CategoryTree', CategoryTreeSchema);
+export default mongoose.model('CategoryTree', CategoryTreeSchema);

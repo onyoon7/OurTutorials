@@ -15,12 +15,19 @@ class Tutorial extends Component {
   //This is used for server side rending via the fetchComponentDataBeforeRender() method
 
   // 서버사이드 렌더링에서 처음에 필요한 작업이 need에 정의 돼 있는 상태.
-  static need = [  // eslint-disable-line
-    fetchCategories
-  ]
+  constructor (props){
+    super();
+    console.log('props. in constructor', props)
+  }
 
-  render() {
-    const {currentCategory, newCategory, categories, getChildren, getAllLinks, addCategory, typing } = this.props;
+  static need =[ 
+          fetchCategories
+          ]
+          
+  render() {  
+    console.log('props in rendere', this.props)
+    console.log('need in renderer..', this.need)
+    const {currentCategory, newCategory, categories, getChildren, getAllLinks, addCategory, typing, url } = this.props;
     return (
       <div className={cx('Tutorial')}>
         <MainSection categories={categories}
@@ -48,6 +55,7 @@ Tutorial.propTypes = {
 
 function mapStateToProps(state) {
   return {
+    url : state.routing,
     categories: state.category.categories,
     newCategory: state.category.newCategory,
     currentCategory: state.category.currentCategory
