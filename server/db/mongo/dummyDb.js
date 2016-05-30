@@ -67,7 +67,7 @@ makeDelete('server');
 // makeDummyCategory('ruby');
 
 //(2) childrencateogry
-// makeDummyCategory('javascript','server');
+
 // makeDummyCategory('client','javascript');
 // makeDummyCategory('db','javascript');
 // makeDummyCategory('datastructure','javascript');

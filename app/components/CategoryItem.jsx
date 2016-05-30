@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from 'css/components/category-item';
 import back from 'images/back/1.png';
+import {Link} from 'react-router';
 
 const cx = classNames.bind(styles);
 
@@ -23,14 +24,17 @@ export default class CategoryItem extends Component {
   }
 
   render() {
-    return (
 
-          <figure className="effect-oscar  wowload fadeInUp" key = {this.props.id} onClick={this.onGetChildren}>
-              <img className={cx('back')} src={back} />
-              <figcaption>
-                <h3>{this.props.name}</h3>
-              </figcaption>
-          </figure>
+        return (
+          <Link to ={'/rank'}>
+            <figure className="effect-oscar  wowload fadeInUp" key = {this.props.id} onClick={this.onGetLinks}>
+                <img className={cx('back')} src={back} />
+                <figcaption>
+                  <h3>{this.props.name} </h3>
+                </figcaption>
+            </figure>
+          </Link>
+        );
 
       // <li className={cx('category-item')} key={this.props.id}>
       //   <div className={
@@ -40,7 +44,7 @@ export default class CategoryItem extends Component {
       //     cx('button', 'decrement')
       //   } onClick={this.onGetLinks}>Get All Links from this Category</button>
       // </li>
-    );
+    
   }
 }
 
