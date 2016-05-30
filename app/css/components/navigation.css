@@ -17,13 +17,14 @@
   /*css padding 상우하좌 시계방향*/
   padding: 16px 20px;
   color: #A39FAA;
+  margin-right: 30px;
 }
 
 
 .logo {
   clear: both;
   margin-top: 25px;
-  margin-left: 20px;
+  margin-left: 40px;
   float:left;
 }
 

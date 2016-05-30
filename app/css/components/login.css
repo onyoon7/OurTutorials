@@ -56,13 +56,14 @@ width:450px;
 
   .header {
     padding:20px;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .heading {
     composes: subheading from '../common/typography';
     padding: 16px 12px;
     text-align: center;
+    font-size: 30px;
   }
 
   .input {
@@ -76,9 +77,22 @@ width:450px;
 
   .button {
     composes: greenButton from '../common/button';
-        text-align: center;
+    text-align: center;
+    font-size:20px;
+    position:relative;
 
 
+  }
+  .insideButton{
+    background-color: Transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    border: none;
+    overflow: hidden;
+    outline:none;
   }
 
   .hint {

@@ -85,13 +85,20 @@ class LoginOrRegister extends Component {
               <p className={cx('message', {
                 'message-show': message && message.length > 0
               })}>{message}</p>
-              <input className={cx('button')}
-                type="submit"
-                value={isLogin ? 'Login' : 'Register'} />
+              <div className= {cx('button')}>
+                  <input className={cx('insideButton')}
+                    type="submit"
+                    value={isLogin ? 'Login' : 'Register'} />
+              </div>
+
             </form>
-          </div>
-          <div className={cx('google-container')}>
-            <a className={cx('button')} href="/auth/google">Login with Google</a>
+              </div>
+                <div className={cx('google-container')}>
+
+                <div className={cx('button')}>
+                <a className={cx('insideButton')} href="/auth/google">Login with Google</a>
+              </div>
+
           </div>
         </div>
       </div>
