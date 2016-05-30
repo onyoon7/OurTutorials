@@ -1,6 +1,6 @@
-const CategoryTree = require('../models/categoryTree');
-const Course = require('../models/courses');
-const User = require('../models/user')
+import CategoryTree from '../models/categoryTree';
+import Course from '../models/courses';
+import User from '../models/user';
 
 
 module.exports = {

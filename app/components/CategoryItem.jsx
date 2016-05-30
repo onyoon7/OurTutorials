@@ -22,30 +22,42 @@ export default class CategoryItem extends Component {
     const { id, onGetLinks } = this.props;
     onGetLinks(id);
   }
-
+  
   render() {
-
-        return (
-          <Link to ={'/rank'}>
-            <figure className="effect-oscar  wowload fadeInUp" key = {this.props.id} onClick={this.onGetLinks}>
-                <img className={cx('back')} src={back} />
-                <figcaption>
-                  <h3>{this.props.name} </h3>
-                </figcaption>
-            </figure>
-          </Link>
-        );
-
-      // <li className={cx('category-item')} key={this.props.id}>
-      //   <div className={
-      //     cx('category')
-      //   } onClick={this.onGetChildren}>{this.props.name}</div>
-      //   <button className={
-      //     cx('button', 'decrement')
-      //   } onClick={this.onGetLinks}>Get All Links from this Category</button>
-      // </li>
-    
+      if(this.props.parent.length===0){
+          return (
+            <Link to ={'/category'}>
+              <figure className="effect-oscar  wowload fadeInUp" key = {this.props.id} onClick={this.onGetChildren}>
+                  <img className={cx('back')} src={back} />
+                  <figcaption>
+                    <h3>{this.props.name} </h3>
+                  </figcaption>
+              </figure>
+            </Link>
+          );
+        // <li className={cx('category-item')} key={this.props.id}>
+        //   <div className={
+        //     cx('category')
+        //   } onClick={this.onGetChildren}>{this.props.name}</div>
+        //   <button className={
+        //     cx('button', 'decrement')
+        //   } onClick={this.onGetLinks}>Get All Links from this Category</button>
+        // </li>
+      
+    }else{
+      return (
+            <Link to ={'/rank'}>
+              <figure className="effect-oscar  wowload fadeInUp" key = {this.props.id} onClick={this.onGetLinks}>
+                  <img className={cx('back')} src={back} />
+                  <figcaption>
+                    <h3>{this.props.name} </h3>
+                  </figcaption>
+              </figure>
+            </Link>
+          );
+    }
   }
+  
 }
 
 CategoryItem.propTypes = {

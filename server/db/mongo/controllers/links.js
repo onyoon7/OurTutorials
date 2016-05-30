@@ -1,6 +1,6 @@
-var Link = require('../models/links');
-var User = require('../models/user');
-var CategoryTree = require('../models/categoryTree')
+import Link from '../models/links';
+import User from '../models/user';
+import CategoryTree from '../models/categoryTree';
 
 const LinkFunction = {
 		addLink: (req, res, next) => {
