@@ -98,7 +98,7 @@ figcaption은 figure의 캡션이나 제목을 정의함*/
 
 
 .footer{background-color: #111; color: #fff; font-size: 1em;color: #aaa;}
-.footer a{color: #aaa;margin: 0 1em; }
+.footer a{color: #aaa; margin: 0 1em; }
 
 .gototop{position: fixed;bottom: 20px; right: 20px;background: rgba(0,0,0,0.5);padding: 10px;color: #fff;}
 .gototop i{line-height: 0.5em;}

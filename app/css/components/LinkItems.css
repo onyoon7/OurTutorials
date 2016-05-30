@@ -1,0 +1,34 @@
+@value font-medium from '../settings.css';
+@value color-salem, color-dodger-blue, color-punch from '../common/colors.css';
+
+.ranking {
+  float: left;
+  padding: 500px;
+  clear:both;
+}
+
+
+.list{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.rank {
+    padding:0px;
+    margin-bottom:  1000px;
+
+}
+
+.gridChild {
+
+    position: relative;
+    margin-top: 1000px;
+    list-style: none;
+    text-align: center;
+}
+
+.h2 {
+    margin-top: 700px;
+
+}
