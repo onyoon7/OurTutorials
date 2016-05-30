@@ -1,14 +1,14 @@
 require('babel-preset-es2015')
 const mongoose = require('mongoose');
-const dburl = 'mongodb://localhost/ReactWebpackNode'
+const dburl = 'mongodb://localhost/ReactWebpackNode';
 import User from './models/user'
-import Link = from './models/links';
-import Category = from './models/categoryTree';
-import Course = from './models/courses';
+import Link from './models/links';
+import Category from './models/categoryTree';
+import Course from './models/courses';
 import userFunc from './controllers/users.js';
-import linkFunc = from './controllers/links.js';
-import cateFunc = from './controllers/categoryTree.js';
-import courseFunc = from './controllers/courses.js';
+import linkFunc from './controllers/links.js';
+import cateFunc from './controllers/categoryTree.js';
+import courseFunc from './controllers/courses.js';
 mongoose.connect(dburl);
 // userFunc.addUser({
 //  email:'oh@gmail.com'
@@ -59,9 +59,10 @@ const dummyLink = (category, link, title, tag) =>{
     })
     .then(r => {
         console.log('found category',r);
-        User.findOne({
-            email: 'glnt1@naver.com'
+        new User({
+            email: 'glnt133@naver.com'
         })
+        .save()
         .then(user => {
             console.log(user);
             req.body.userId = user._id;
@@ -74,7 +75,7 @@ const dummyLink = (category, link, title, tag) =>{
         .catch(e =>console.log(e))
     })
 }
-dummyLink('client','http://naver.com','naver',['google','naver']);
+dummyLink('client','http://go.com','naver',['google','naver']);
 //(1) parent
 // makeDummyCategory('javascript');
 // makeDummyCategory('python');

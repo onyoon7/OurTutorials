@@ -31,6 +31,7 @@ const LinkFunction = {
 						_id: categoryId
 					})
 					.then((foundCategory) => {
+
 						foundCategory.links.push(savedLink._id);
 						foundCategory
 						.save()
