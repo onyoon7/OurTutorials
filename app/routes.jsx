@@ -3,6 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 
 import App from 'containers/App';
 import Tutorial from 'containers/Tutorial';
+import NoLoad from 'containers/NoLoad';
 import Course from 'containers/Course';
 import LoginOrRegister from 'containers/LoginOrRegister';
 import Dashboard from 'containers/Dashboard';
@@ -52,7 +53,7 @@ export default (store) => {
       <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
       <Route path="course" component={Course} />
       <Route path="rank" component={RankBoard} />
-      <Route path="category" component={Tutorial}/>
+      <Route path="category" component={NoLoad}/>
     </Route>
   );
 };

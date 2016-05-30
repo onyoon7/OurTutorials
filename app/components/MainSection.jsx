@@ -6,7 +6,7 @@ import styles from 'css/components/main-section';
 
 const cx = classNames.bind(styles);
 
-const MainSection = ({onGetChildren, onGetLinks, categories}) => {
+const MainSection = ({onGetChildren, onGetLinks, categories, currentCategory}) => {
   const categoryItems = categories.map((category, key) => {
     return (
       <CategoryItem index={key}
@@ -15,7 +15,8 @@ const MainSection = ({onGetChildren, onGetLinks, categories}) => {
         name={category.name}
         parent={category.parent}
         onGetChildren={onGetChildren}
-        onGetLinks={onGetLinks} />);
+        onGetLinks={onGetLinks}
+        currentCategory={currentCategory} />);
     });
 
   return (
@@ -32,6 +33,7 @@ MainSection.propTypes = {
   categories: PropTypes.array.isRequired,
   onGetChildren: PropTypes.func.isRequired,
   onGetLinks: PropTypes.func.isRequired,
+  currentCategory: PropTypes.string.isRequired
 };
 
 export default MainSection;
