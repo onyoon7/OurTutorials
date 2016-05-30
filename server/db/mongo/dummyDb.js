@@ -74,7 +74,26 @@ const dummyLink = (category, link, title, tag) =>{
         .catch(e =>console.log(e))
     })
 }
-dummyLink('javascript','http://go.com','naver',['google','naver']);
+
+//<get all links>
+Category.findOne({'name':'javascript'})
+.then(r =>{
+    let req = {};
+    req.body = {};
+    req.body.categoryId = r._id
+    cateFunc.getAllLinks(req)
+})
+
+
+//<dummy Link>
+// dummyLink('javascript','http://a.com','a',['google','naver']);
+// dummyLink('javascript','http://b.com','b',['google','naver']);
+// dummyLink('javascript','http://c.com','c',['google','naver']);
+
+// dummyLink('javascript','http://d.com','d',['google','naver']);
+// dummyLink('javascript','http://e.com','e',['google','naver']);
+// dummyLink('javascript','http://e.com','e',['google','naver']);
+
 //(1) parent
 // makeDummyCategory('javascript');
 // makeDummyCategory('python');

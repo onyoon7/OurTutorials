@@ -70,7 +70,9 @@ module.exports = {
 				Link.find({
 				    '_id': { $in: returnArray}
 				})
+				.sort({'like':-1})
 				.then(allLinks => {
+					console.log('allLinks :',allLinks)
 					res.status(200).json(allLinks);
 				})
 				.catch(e => console.log(e));

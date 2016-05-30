@@ -44,7 +44,7 @@ export default class CategoryInput extends Component {
         onChange={this.onChange}
         onKeyDown={this.onKeyDown}
         value={value}
-        autoFocus />
+        />
     );
   }
 }
