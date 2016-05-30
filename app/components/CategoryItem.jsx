@@ -35,7 +35,7 @@ export default class CategoryItem extends Component {
             <figure className="effect-oscar  wowload fadeInUp" key = {this.props.index} onClick={this.onGetLinks}>
                 <img className={cx('back')} src={back} />
                 <figcaption>
-                  <h3>{this.props.name} </h3>
+                  <h2>{this.props.name} </h2>
                 </figcaption>
             </figure>
           </Link>
