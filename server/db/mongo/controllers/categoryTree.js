@@ -113,7 +113,7 @@ module.exports = {
 		let newCategoryName = req.body.newCategoryName
 		console.log('parentId, newCategoryName: ',parentId,newCategoryName);
 		let newCategoryParent;
-		if(!parentId.length) parentId = null;
+		if(!parentId) parentId = null;
 		CategoryTree.findOne({
 			_id: parentId
 		})
