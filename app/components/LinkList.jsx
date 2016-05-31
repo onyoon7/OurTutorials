@@ -17,7 +17,6 @@ const LinkList = ({links}) => {
 
   return (
     <div>
-      <h2 >Ranking</h2>
       <div id="works"  className=" clearfix gridChild">
             <ul>{linkItems}</ul>
       </div>

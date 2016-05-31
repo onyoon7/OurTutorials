@@ -54,6 +54,7 @@
 			req.body.courseId : 좋아유 눌러진 코스 아이디
 
 ##서버 쪽 라우팅
+
 	  ##category
 	    app.post('/category', categoryController.addCategory);
 	    app.get('/category', categoryController.getChildrenCategories);

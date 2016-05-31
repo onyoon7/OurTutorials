@@ -19,13 +19,14 @@ export default class LinkItem extends Component {
           return (
               <figure className="effect-oscar  wowload fadeInUp" key = {this.props.index} >
                   <img className={cx('back')} src={back} />
+                  <a href={this.props.link}>
                   <figcaption>
                     <div className={cx('ranking')}>
                         <h2>{this.props.title}  ♡ {this.props.like} </h2>
-                        <p>  {this.props.link} </p>
-
+                        <p> {this.props.link}</p>
                     </div>
                   </figcaption>
+                  </a>
               </figure>
           );
     }
