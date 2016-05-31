@@ -36,7 +36,7 @@ const findUser = (email) => {
     })
 }
 
-const makeUser (name, email) =>{
+const makeUser =(name, email) =>{
     return new Promise((rs, rj)=>{
         new User({
             name: name,
@@ -102,7 +102,7 @@ const dummyLink = (category, email, link, title, tag) =>{
 
 
 
-//(1) parent
+//(1) parent category(가장 상위 카테고리)
 // makeDummyCategory('javascript');
 // makeDummyCategory('python');
 // makeDummyCategory('lisp');
@@ -110,11 +110,13 @@ const dummyLink = (category, email, link, title, tag) =>{
 // makeDummyCategory('ruby');
 
 
-//(2) children cateogry
+//(2) children cateogry(상위 카테고리의 하위 카테고리 추가)
 // makeDummyCategory('client','javascript');
 // makeDummyCategory('db','javascript');
 // makeDummyCategory('datastructure','javascript');
 // makeDummyCategory('algorithm','javascript');
+// makeDummyCategory('angularjs','javascript');
+// makeDummyCategory('nodejs','javascript');
 // makeDummyCategory('client','python');
 // makeDummyCategory('db','python');
 // makeDummyCategory('datastructure','python');
@@ -125,9 +127,10 @@ const dummyLink = (category, email, link, title, tag) =>{
 // makeDummyCategory('algorithm','ruby');
 
 
-//(3) dummy Link
-//let myEmail = '';
-//let myLanguage = 'javascript'
+//(3) dummy Link( 카테고리에 더미 링크들 매달기)
+// let myEmail = 'react@hell.com';
+// let myLanguage = 'angularjs'
+
 // dummyLink(myLanguage, myEmail, 'http://google.com','google',['google','naver']);
 // dummyLink(myLanguage, myEmail, 'http://stackoverflow.com','stackoverflow',['google','naver']);
 // dummyLink(myLanguage, myEmail, 'http://yahoo.com','yahoo',['google','naver']);
@@ -141,8 +144,7 @@ const dummyLink = (category, email, link, title, tag) =>{
 
 
 
-
-//3.get ALL Links
+//(4) get ALL Links
 // let req = {};
 // req.body = {};
 // Category.findOne({name: 'server'})
@@ -151,12 +153,16 @@ const dummyLink = (category, email, link, title, tag) =>{
 //  req.body.categoryId = result._id;
 //  cateFunc.getAllLinks(req)
 // })
-//4.add dummy User
+
+
+//(5) add dummy User
 // userFunc.addUser({
 //  name: 'hyeonsoo',
 //  email: 'ohs2033@gmail.com',
 //  password: '1234'
 // })
+
+
 //<link query>
 //4. add Link to Category and user
 // let req = {};
