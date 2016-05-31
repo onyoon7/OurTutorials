@@ -49,6 +49,7 @@ export default class CategoryItem extends Component {
         </Link>
       );
     }
+
   }
 }
 

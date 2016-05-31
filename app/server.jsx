@@ -125,10 +125,6 @@ export default function render(req, res) {
               <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
               <div id="app">${componentHTML}</div>
 
-              <div class="footer text-center spacer">
-              <p class="wowload flipInX"></p>
-              Copyright 2016 Code Hot-guys Studio. All rights reserved.
-              </div>
 
               <a href="#works" class="gototop"><i class="fa fa-angle-up  fa-3x"></i></a>
 

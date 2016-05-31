@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import LinkItem from 'components/LinkItem'
+import LinkItem from 'components/LinkItems'
+import classNames from 'classnames/bind';
+
+// const cx = classNames.bind(styles);
 
 const LinkList = ({links}) => {
   const linkItems = links.map((item, key) => {
@@ -14,10 +17,9 @@ const LinkList = ({links}) => {
 
   return (
     <div>
-      <h2>Ranking</h2>
-      <ul>
-        {linkItems}
-      </ul>
+      <div id="works"  className=" clearfix gridChild">
+            <ul>{linkItems}</ul>
+      </div>
     </div>
   );
 };
