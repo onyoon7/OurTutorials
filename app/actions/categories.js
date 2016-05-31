@@ -33,7 +33,7 @@ export function fetchCategories() {
 }
 
 export function getChildren(id) {
-  console.log('parentId: ', id);
+  // console.log('parentId: ', id);
   return {
     type: types.GET_CHILDREN,
     id: id,

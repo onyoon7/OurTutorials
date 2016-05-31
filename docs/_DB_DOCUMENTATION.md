@@ -25,7 +25,7 @@
 
 	5. 유저 : 코스
 		각 유저는 좋아요를 누른 코스, 자신이 만든 코스의 아이디를 배열로 가지고 있습니다.
-		
+
 
 
 ##Parameter + MODEL SUMMARY
@@ -35,17 +35,17 @@
 		따라서 프론트엔드에서 쿼리를 날릴 때는 server/config/routes.js 하단의 라우터 구조를 보고 짝을 맞추어 쿼리를 날려주세요!
 
 
-		1.CategoryTree 
+		1.CategoryTree
 			> 각 링크들이 속하는 항목입니다. 트리 구조로 되어있습니다. 자바스크립트 밑에 서버/클라이언트/디비 등을 매달 수 있는 구조입니다.
-			
+
 			getChildrenCategoryes
-				req.body.categoryId : 칠드런 클래스를 가져올 
+				req.body.categoryId : 칠드런 클래스를 가져올
 				부모 클래스 아이디 (없을경우 가장 상위 클래스들을 가져오게 된다.)
 			getAllLinks
 				req.body.categoryId : 링크를 가져올 기준 클래스 아이디 (이것은 empty경우 아무 데이터도 안나옴.)
 			getAllCourses
 				req.body.categoryId : 코스를 가져올 기준 클래스 아이디
-			addCategory 
+			addCategory
 				req.body.parentId : 새로운 클래스가 붙을 부모 클래스 아이디
 				req.body.neqCategoryName : 새로운 클래스의 이름
 
@@ -57,10 +57,10 @@
 				*원래 링크에 summary field가 있으나 일단 구현하지 않았음.
 				req.body.userId : 새로운 링크를 만든 유저 아이디
 				req.body.categoryId : 새로운 링크가 속할 클래스의 Id
-				req.body.link : 새로운 링크의 링크 
+				req.body.link : 새로운 링크의 링크
 				req.body.title : 새로운 링크의 제목
 				req.body.tag : tag 배열 ex) ['tag1','tag2']
-			deleteLink 
+			deleteLink
 				*req.body.linkId : 삭제할 링크 아이디
 
 			likeLink/unlikeLink는 User 컨트롤러에서 활용하는 함수이므로 여기서는 신경쓰지 않아도 됨.
@@ -69,12 +69,12 @@
 		3.course
 			> 코스는 사람들이 직접 링크주소와 설명을 달아서 구성합니다.
 
-			addCourse 
+			addCourse
 				req.body.userId : course를 만든 유저 아이디
 				req.body.categoryId : course가 속할 categoryId
 				req.body.courseData : course의 실제 데이터 (객체형태)
 				ex)
-				{ 
+				{
 					title: '',
 					summary: '',
 					contents: ''
@@ -85,11 +85,11 @@
 
 
 		4.user
-			> 유저 모델은 코스, 링크 아이디들을 가지고 있습니다. 
+			> 유저 모델은 코스, 링크 아이디들을 가지고 있습니다.
 			> 코스, 링크에서는 유저에 대한 정보가 없음을 유의하시길 바랍니다.
 
 			login, logout, signup : basic 세팅하고 똑같음
-			addLinkToBucekt 
+			addLinkToBucekt
 				req.body.userId : 버켓에 넣을 유저 아이디
 				req.body.linkId : 버켓에 넣을 링크 아이디
 			likeLinkToggle :
@@ -112,14 +112,14 @@
 	  ##link
 	    app.post('/link', linkController.addLink);
 	    app.delete('/link', linkController.deleteLink);
-	   
+
 	  ##topic routes
 	    app.get('/topic', topicsController.all);
 	    app.post('/topic/:id', categoryController.addCategory);
 	    app.put('/topic/:id', topicsController.update);
 	    app.delete('/topic/:id', topicsController.remove);
 
-	  ##코스 쪽은 디비와 쿼리는 기본적으로 갖추어져 있으나, 아직 라우팅에 연결하지 않았음. 
+	  ##코스 쪽은 디비와 쿼리는 기본적으로 갖추어져 있으나, 아직 라우팅에 연결하지 않았음.
 	  	구현을 위해서는 클라이언트 페이지 마련과 서버쪽, 클라이언트 쪽 라우팅이 필요함.
 
 
@@ -128,7 +128,7 @@
 	3가지 Basic Model of One-to-N relationship.
 
 	   	1. One-to-N을 구현하는 기준.
-				1) one-to-n 에서 n쪽이 얼마나 많은가?(cardinality 가 얼마나 되어야 하는가?) 
+				1) one-to-n 에서 n쪽이 얼마나 많은가?(cardinality 가 얼마나 되어야 하는가?)
 				2) n쪽이 stand-alone entity가 되어야 하는가?
 
 		        - one-to-few

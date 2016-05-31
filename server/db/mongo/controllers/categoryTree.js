@@ -12,7 +12,6 @@ module.exports = {
 		})
 		.then((me) => {
 			if(me){
-
 				let id = [];
 				for(let i=0; i<me.children.length; i++){
 				id.push(me.children[i].childId);
