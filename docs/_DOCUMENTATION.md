@@ -1,26 +1,39 @@
 ## Karma(with webpack)
-1. `npm test` - runs all tests in test directory once.
-2. `npm run test_watch` - runs all tests in test directory and keeps watching on changes.
+`npm test`
+: app/test에 있는 모든 test를 한 번 실행함. 그 디렉토리 안에 있는 테스트 파일들은 예제, 실제 테스트는 그 파일들을 바탕으로 새로 작성해야한다.
+
+`npm run test_watch`
+: `npm test`와 동일한 역할을 하지만 테스트를 실행한 후 변화를 지켜보며 파일이 변경될 때마다 테스트를 다시 실행한다.
 
 
 ## ESlint
-1. `npm run lint` - runs eslint once for all files in app.
-
+`npm run lint`
+: .eslintrc 파일에 있는 설정을 바탕으로 app 디렉토리에 있는 파일들의 syntax를 체크한다.
 
 ## Development
-1. `npm run dev` - starts the webpack-dev-server. Hot-loading & linting is enabled.
+`npm run dev`
+: 개발 환경에서의 서버 구동. package.json - scripts - dev와 nodemon.json의 exec 부분, 즉 `npm run build:dev && npm run babe-node -- server/index.js` 이 실행 된다.
 
 
 ## Production
-1. `npm run build`
-2. `npm start`
+`npm run build`
+: Production 용으로 webpack build.
+
+`npm start`
+: Production 용 서버 구동. 실제로 실행되는 것은 `node compiled/index.js`
+
+
+## Reset
+`npm run clean`
+: 빌드 된 파일들과 그 파일들이 있는 디렉토리를 지워준다.
 
 
 ## Testing React
-1. https://facebook.github.io/react/docs/test-utils.html
+https://facebook.github.io/react/docs/test-utils.html 참고할 것.
 
 
-## Redux
+
+## Redux 요약
 ###1. 동기
 - 점점 더 복잡해지는 싱글 페이지 어플리케이션의 상태(서버 응답, 캐시 데이터, 활성화된 라우트, 선택된 탭 등)
 
@@ -46,6 +59,7 @@
 - `store.dispatch()`를 통해 보낸다.
 - example code
 
+  ```
   import {ADD_TODO, REMOVE_TODO } from '../actionTypes'
 
   function addTodo(text) {
@@ -56,12 +70,13 @@
   }
 
   dispatch(addTodo(text));
+  ```
 
 
 ###5. 리듀서
 - 액션은 무엇이 일어날지 기술하지만, 상태가 어떻게 바뀔지는 리듀서가 정한다.
 - example code
-
+  ```
   function todoApp(state = initialState, action) {
     switch (action.type) {
       case SET_VISIBILITY_FILTER:
@@ -79,6 +94,7 @@
         return state;
     }
   }
+  ```
 
 -`Object.assign()`을 통해 state의 복사본을 만들고 그것을 리턴한다.
 
@@ -89,7 +105,7 @@
 2. `dispatch(action)` - 상태를 수정
 3. `subscribe(listener)` - 리스너 등록
 4. example code
-
+  ```
   import { createStore } from 'redux';
   import { addTodo, completTodo, setVisibilityFilter, VisibilityFilters } from './actions';
 
@@ -110,6 +126,7 @@
 
   //상태 변경을 더 이상 받아보지 않는다.
   unsubscribe();
+  ```
 
 
 ###7. 데이터 흐름
@@ -128,6 +145,7 @@
 1. redux-thunk 미들웨어를 사용할 경우, 액션 생산자는 액션 객체 대신 함수를 반환할 수 있다.
 2. 이 함수는 redux-thunk 미들웨어에 의해 실행된다.
 3. example code
+  ```
   import fetch from 'isomorphic-fetch';
 
   export const REQUEST_POSTS = 'REQUEST_POSTS';
@@ -185,6 +203,7 @@
       // 에러도 잡고 싶을겁니다.
     };
   }
+  ```
 
 
 ###10. 비동기 흐름
@@ -199,6 +218,7 @@
 2. 미들웨어를 통해 로깅, 충돌 보고, 비동기 API와의 통신, 라우팅 등등을 할 수 있다.
 ####3. 미들웨어는 Redux에서 만날 가장 마술적인 부분!
 - example code
+  ```
   import { createStore, combineReducers, applyMiddleware } from 'redux';
 
   // applyMiddleware 는 createStore()를 받아서
@@ -208,7 +228,7 @@
   // 이것을 createStore()처럼 사용하면 된다.
   let todoApp = combineReducers(reducers);
   let store = createStoreWithMiddleware(todoApp);
-
+  ```
 
 ###12. 서버 렌더링
 1. 유저가 처음으로 어플리케이션에 요청을 보냈을 때 서버 렌더링이 주로 사용된다. 필요한 컴포넌트들을 HTML string으로 만든 후, 클라이언트에게 보내면, 그 이후는 클라이언트가 렌더링 임무를 넘겨받는다.

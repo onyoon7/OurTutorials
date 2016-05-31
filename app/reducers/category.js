@@ -26,7 +26,6 @@ export default function category(state = {
         newCategory: action.newCategory
       })
     case GET_CATEGORIES_REQUEST:
-      console.log('Request!!!')
       return Object.assign({}, state, {
         isFetching: true
       });
