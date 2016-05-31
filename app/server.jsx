@@ -1,4 +1,4 @@
-// promise 기반 http 클라이언트
+// promise 기반 http 클라이언트(bluebird와 유사한 역)
 import axios from 'axios';
 import React from 'react';
 
@@ -87,7 +87,6 @@ export default function render(req, res) {
       //     promise: makeLinkRequest('get')
       //   };
       // }
-
       // server/routes.js
       // app.get('/link', linksController.all);
       preRenderMiddleware(
