@@ -126,7 +126,10 @@ export default function render(req, res) {
               <div id="app">${componentHTML}</div>
 
 
-              <a href="#works" class="gototop"><i class="fa fa-angle-up  fa-3x"></i></a>
+              <div class="footer text-center spacer">
+               <p class="wowload flipInX"></p>
+                Copyright 2016 Code Hot-guys Studio. All rights reserved.
+              </div>
 
 
               <script type="text/javascript">
