@@ -1,3 +1,12 @@
+## SERVER
+	1. 서버는 가장 기본적인 파일인 server/index.js 에서부터 파악하면 됩니다.
+	2. index.js에서는 다양한 파일을 import해서 app에 통합시켜줍니다.
+	3.이 중에서 눈여겨보아야 할 파일은 routesConfig파일입니다. 이 파일에서 http request에 대해서 routing 설정을 해 줍니다.(server/config/routes.js)
+	4. server/db 폴더에서는 mongo/ 폴더에서 작업하시면 됩니다.
+	5. 나머지 폴더에는 다른 Db를 쓰기 위한 예시들이 들어있습니다.(무시하셔도 됩니다.)
+
+
+
 ##DB RELATION
 	1. 유저 : 링크
 		유저는 자신이 좋아요를 누른 링크, 만든 링크, bucket(일종의 장바구니)에 담은 링크의 ID를 가지고 있습니다.
