@@ -7,6 +7,14 @@
 
 `mongod`
 
+## How to Reset DB
+
+```
+mongo
+use ReactWebpackNode
+db.dropDatabase()
+```
+
 ### Development
 `npm run dev`
 
