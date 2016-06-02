@@ -44,8 +44,7 @@ expressConfig(app);
 routesConfig(app);
 
 /*
- * This is where the magic happens. We take the locals data we have already
- * fetched and seed our stores with data.
+ * 여기서 App.default는 app/server.jsx에서 export한 render 함수이다. webpack.config.dev-server.js 때문에 public/assets/server.js로 번들된 상태다.
  * App is a function that requires store data and url
  * to initialize and return the React-rendered html string
  */

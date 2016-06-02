@@ -19,6 +19,8 @@ export default function configureStore(initialState, history) {
     middleware.push(createLogger());
   }
 
+  // MUST READ!!
+  //[Understanding Redux Middleware](https://medium.com/@meagle/understanding-87566abcfb7a#.2rjp0nco6)
   const store = createStore(rootReducer, initialState, compose(
     applyMiddleware(...middleware),
     typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f

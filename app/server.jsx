@@ -33,10 +33,13 @@ axios.defaults.baseURL = `http://${clientConfig.host}:${clientConfig.port}`;
  * and pass it into the Router.run function.
  */
 export default function render(req, res) {
+  // passport에서 제공하는 함수
   const authenticated = req.isAuthenticated();
+
+  // 주소창에서 읽어오거나 조작하는 것이 아니기 때문에 서버 렌더링에 사용한다. React Native와 같은 다른 환경 혹은 테스트용으로 사용하는 것이 좋다.
   const history = createMemoryHistory();
-  // console.log('history: ',history);
-  // redux-thunk, redux-logger등을 미들웨어로 가지는 store 생성
+
+  // redux-thunk, redux-logger등을 미들웨어로 가지는 store 생성. 히스토리를 받는 이유는 routerMiddleware가 사용하기 때문.
   const store = configureStore({
     user: {
       authenticated,
@@ -96,7 +99,13 @@ export default function render(req, res) {
       )
       .then(() => {
         const initialState = store.getState();
-        // console.log(initialState);
+
+
+        /**
+         * Using Provider - Best practice for passing down store as props to all children components
+         * A <RouterContext> renders the component tree for a given router state
+         * and sets the history object and the current location in context.
+         */
         const componentHTML = renderToString(
           <Provider store={store}>
             <RouterContext {...props} />

@@ -26,7 +26,7 @@ module.exports = {
         {
             test: /\.jsx?$/,
             include: path.join(__dirname, '..', 'app'),
-            loader: 'react-hot!babel',
+            loader: 'babel',
         },
         {
             test: /\.json$/,

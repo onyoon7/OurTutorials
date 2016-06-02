@@ -8,7 +8,6 @@ import styles from 'css/components/Tutorial';
 
 const cx = classNames.bind(styles);
 
-// Tutorial 컴포넌트는 'actions/links'에 정의된 여러 액션 생성자들과 state의 links, newLink을 props로 가진다.
 class Tutorial extends Component {
 
   //Data that needs to be called before rendering the component
@@ -29,10 +28,10 @@ class Tutorial extends Component {
           onGetLinks = {getAllLinks}
           currentCategory = {currentCategory}
           />
-          <EntryBox newCategory = {newCategory}
-            currentCategory = {currentCategory}
-            onEntryChange = {typing}
-            onEntrySave = {addCategory}/>
+        <EntryBox newCategory = {newCategory}
+          currentCategory = {currentCategory}
+          onEntryChange = {typing}
+          onEntrySave = {addCategory}/>
       </div>
     );
   }
