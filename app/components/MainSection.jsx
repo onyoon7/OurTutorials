@@ -13,7 +13,7 @@ const MainSection = ({onGetChildren, onGetLinks, categories, currentCategory}) =
         id={category._id}
         key={key}
         name={category.name}
-        parent={category.parent}
+        category={category}
         onGetChildren={onGetChildren}
         onGetLinks={onGetLinks}
         currentCategory={currentCategory} />);

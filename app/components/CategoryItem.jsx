@@ -44,6 +44,7 @@ export default class CategoryItem extends Component {
               <img className={cx('back')} src={back} />
               <figcaption>
                 <h2>{this.props.name} </h2>
+                <p>{this.props.category.parent[0].parentId} </p>
               </figcaption>
           </figure>
         </Link>
