@@ -128,6 +128,115 @@ const dummyLink = (category, email, link, title, tag) =>{
 
 initDB();
 
+<<<<<<< cf5738fb1ae859684f47c5513250e3f464443ccf
+=======
+
+
+//============================================================
+
+import User from './db/mongo/models/user'
+import Link from './db/mongo/models/links';
+import Category from './db/mongo/models/categoryTree';
+import Course from './db/mongo/models/courses';
+import userFunc from './db/mongo/controllers/users.js';
+import linkFunc from './db/mongo/controllers/links.js';
+import cateFunc from './db/mongo/controllers/categoryTree.js';
+import courseFunc from './db/mongo/controllers/courses.js';
+//mongoose.connect(dburl);
+// userFunc.addUser({
+//  email:'oh@gmail.com'
+// })
+//<categoryTree Query>
+//1. make Category Tree by depth 2
+
+const findCategory = (name) => {
+ return new Promise((rs, rj) =>{
+  Category.findOne({name:name})
+  .then(category =>{
+    console.log('category find ',category)
+    rs(category);
+    })
+  })
+}
+
+const findUser = (email) => {
+  return new Promise((rs, rj) =>{
+    User.findOne({email: email})
+    .then(user => {
+      rs(user);
+    })
+  })
+}
+
+const makeUser =(name, email) =>{
+  return new Promise((rs, rj)=>{
+    new User({
+      name: name,
+      email: email
+    })
+    .then(user => {
+      rs(user)
+    })
+  })
+
+}
+
+const makeDummyCategory = (name, parentName)=>{
+  let req = {};
+  req.body = {};
+  req.body.newCategoryName = name;
+  if(!parentName){
+    req.body.parentId = null;
+    cateFunc.addCategory(req);
+  } else {
+    Category.findOne({
+      name: parentName
+    })
+    .then(p =>{
+      req.body.parentId = p._id
+      cateFunc.addCategory(req);
+    })
+  }
+}
+
+const makeDelete = (name) =>{
+  Category.findOne({
+    name : name
+  })
+  .then(r =>{
+    console.log('name is ', r.name)
+    let req = {};
+    req.body = {};
+    req.body.categoryId = r._id
+    cateFunc.deleteCategryTree(req);
+  })
+}
+
+const dummyLink = (category, email, link, title, tag) =>{
+  let req = {};
+  req.body  = {}
+  findCategory(category)
+  .then(cate =>{
+    console.log('category is ..',cate)
+    findUser(email)
+    .then(user =>{
+      console.log(user);
+      req.body.userId = user._id;
+      req.body.categoryId = cate._id;
+      req.body.link = link;
+      req.body.title = title;
+      req.body.tag = tag;
+      linkFunc.addLink(req)
+    })
+  })
+  Category.findOne({
+    name: category
+  })
+}
+
+initDB();
+
+>>>>>>> (cleanup) Delete the useless dummy file [server/db/mongo/dummyDb.js]
 function initDB() {
   // console.log('>>>> in initDB');
   // console.log('>>>> in initDB');
@@ -190,7 +299,11 @@ function populateDB() {
       console.log('>>>>', sampleCategory[key][i], '>>>>', key)
       makeDummyCategory(sampleCategory[key][i], key)
     }
+<<<<<<< cf5738fb1ae859684f47c5513250e3f464443ccf
   }  
+=======
+  }
+>>>>>>> (cleanup) Delete the useless dummy file [server/db/mongo/dummyDb.js]
 */
 
   //(1) parent category(가장 상위 카테고리)
@@ -230,6 +343,7 @@ function populateDB() {
     let myEmail = 'ohs2033@gmail.com';
     let myLanguage = 'angularjs';
 
+<<<<<<< cf5738fb1ae859684f47c5513250e3f464443ccf
     dummyLink(myLanguage, myEmail, 
       'http://google.com','google',['google','naver']);
     dummyLink(myLanguage, myEmail, 
@@ -244,6 +358,22 @@ function populateDB() {
     dummyLink(myLanguage, myEmail, 
       'https://news.ycombinator.com/','hackernews',['google','naver']);
     dummyLink(myLanguage, myEmail, 
+=======
+    dummyLink(myLanguage, myEmail,
+      'http://google.com','google',['google','naver']);
+    dummyLink(myLanguage, myEmail,
+      'http://stackoverflow.com','stackoverflow',['google','naver']);
+    dummyLink(myLanguage, myEmail,
+      'http://yahoo.com','yahoo',['google','naver']);
+
+    dummyLink(myLanguage, myEmail,
+      'https://facebook.com','facebook',['google','naver']);
+    dummyLink(myLanguage, myEmail,
+      'https://github.com/codestates','codestates',['google','naver']);
+    dummyLink(myLanguage, myEmail,
+      'https://news.ycombinator.com/','hackernews',['google','naver']);
+    dummyLink(myLanguage, myEmail,
+>>>>>>> (cleanup) Delete the useless dummy file [server/db/mongo/dummyDb.js]
       'https://news.ycombinator.com/','hackernews',['google','naver']);
 
 
@@ -281,12 +411,21 @@ expressConfig(app);
 /*
  * REMOVE if you do not need any routes
  *
- * Note: Some of these routes have passport and database model dependencies
+ * Note: Some of thttps://github.com/codearena153/OurTutorials.gitse routes have passport and database model dependencies
  */
 routesConfig(app);
 
 /*
+<<<<<<< cf5738fb1ae859684f47c5513250e3f464443ccf
  * 여기서 App.default는 app/server.jsx에서 export한 render 함수이다. webpack.config.dev-server.js 때문에 public/assets/server.js로 번들된 상태다.
+=======
+ * This is where the magic happens.
+ * We take the locals data we have already
+ * fetched and seed our stores with data.
+ *
+ * 여기서 App.default는 app/server.jsx에서 export한 render 함수이다. webpack.config.dev-server.js 때문에 public/assets/server.js로 번들된 상태다.
+ *
+>>>>>>> (cleanup) Delete the useless dummy file [server/db/mongo/dummyDb.js]
  * App is a function that requires store data and url
  * to initialize and return the React-rendered html string
  */
