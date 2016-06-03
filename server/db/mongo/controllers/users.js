@@ -39,6 +39,7 @@ const UserFunction = {
 	    }
 	    return user.save((saveErr) => {
 	      if (saveErr) return next(saveErr);
+	      if (!req.logIn) return;//for dummy
 	      return req.logIn(user, (loginErr) => {
 	        if (loginErr) return res.status(401).json({ message: loginErr });
 	        return res.status(200).json({
