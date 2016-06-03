@@ -11,17 +11,15 @@ const CategoryTreeSchema = new Schema({
 			parentId:{
 				type: Schema.ObjectId,
 				ref: 'CategoryTree',
-
 			},
 			name:{
 				type: String,
-
 			}
 		}
 	],
 	//자기 자신의 id들을 담고 있는 배열입니다. CategoryTree는 트리의 노드나 마찬가지입니다.
 	children:[{
-			_id: false,
+	 		_id: false,
 			childId:{
 				type: Schema.ObjectId,
 				ref: 'CategoryTree',

@@ -64,8 +64,14 @@ export default (app) => {
   }
 
   if(linkController){
-    app.post('/link', linkController.addLink);
-    app.delete('/link', linkController.deleteLink);
+    // app.put('/put/:name/:title', linkController.addLink)
+    // app.post('/post/:name/:id', )
+    // app.delete('/delete/:name/:id', linkController.deleteLink)
+    app.put('/put/:name/:title', linkController.putLink);
+    app.delete('/delete/:name/:id', linkController.deleteLink);
+    app.post('/like', linkController.likeLink);
+    app.post('/unlike', linkController.unlikeLink);
+    app.post('/edit/:name/:id', linkController.editLink);
   }else{
     console.warn(unsupportedMessage('link routes'));
   }

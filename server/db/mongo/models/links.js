@@ -22,6 +22,10 @@ const LinkSchema = new Schema({
 	like : {
 		type: Number,
 		default: 0
+	},
+	thumbnail: {
+		type: String,
+		default: 'https://facebook.github.io/react/img/logo.svg'
 	}
 });
 
